@@ -7,15 +7,16 @@
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
-    "test": "eslint src/**/*.js src/**/*.jsx --fix"
+    "test": "stylelint src/scss/**/*.scss --syntax scss --fix && eslint src/**/*.js src/**/*.jsx --fix"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "leaflet": "^1.7.1",
     "next": "10.0.4",
     "node-sass": "^5.0.0",
     "normalize.css": "^8.0.1",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
@@ -28,10 +29,11 @@
     "husky": "^4.2.5",
     "jest": "^26.6.3",
     "prettier": "2.2.1",
+    "react-leaflet": "^3.0.5",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
     "stylelint": "13.6.1",
     "stylelint-config-prettier": "^8.0.2",
-    "stylelint-prettier": "^1.1.2",
-    "react-redux": "^7.2.1",
-    "redux": "^4.0.5"
+    "stylelint-prettier": "^1.1.2"
   }
 }
