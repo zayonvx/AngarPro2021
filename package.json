@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
-    "test": "stylelint src/scss/**/*.scss --syntax scss && eslint src/**/*.js src/**/*.jsx"
+    "test": "stylelint src/scss/**/*.scss --syntax scss && eslint",
+    "eslint": "eslint --ext .js,.jsx,.ts,.tsx src"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
@@ -19,12 +20,18 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.12.0",
+    "@typescript-eslint/parser": "^4.12.0",
     "babel-eslint": "^10.1.0",
     "del": "^6.0.0",
     "eslint": "^7.17.0",
+    "eslint-plugin-optimize-regex": "^1.2.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.0.4",
+    "eslint-plugin-sonarjs": "^0.5.0",
     "gulp": "^4.0.2",
     "gulp-imagemin": "^7.1.0",
     "gulp-webp": "^4.0.1",
@@ -36,7 +43,8 @@
     "redux": "^4.0.5",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
-    "stylelint-prettier": "^1.1.2"
+    "stylelint-prettier": "^1.1.2",
+    "typescript": "^4.1.3"
   },
   "husky": {
     "hooks": {

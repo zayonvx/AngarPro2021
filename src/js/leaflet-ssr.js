@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-const MapDiv = dynamic(
+export const MapDiv = dynamic(
   () => {
     return import('react-leaflet').then((obj) => {
       return obj.Map;
@@ -9,7 +9,7 @@ const MapDiv = dynamic(
   { ssr: false }
 );
 
-const TileLayer = dynamic(
+export const TileLayer = dynamic(
   () => {
     return import('react-leaflet').then((obj) => {
       return obj.TileLayer;
@@ -18,7 +18,7 @@ const TileLayer = dynamic(
   { ssr: false }
 );
 
-const Popup = dynamic(
+export const Popup = dynamic(
   () => {
     return import('react-leaflet').then((obj) => {
       return obj.Popup;
@@ -27,7 +27,7 @@ const Popup = dynamic(
   { ssr: false }
 );
 
-const Marker = dynamic(
+export const Marker = dynamic(
   () => {
     return import('react-leaflet').then((obj) => {
       return obj.Marker;
@@ -35,5 +35,3 @@ const Marker = dynamic(
   },
   { ssr: false }
 );
-
-export { MapDiv, TileLayer, Marker, Popup };
