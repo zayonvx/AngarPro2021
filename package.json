@@ -12,28 +12,31 @@
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
     "leaflet": "^1.7.1",
-    "next": "10.0.4",
+    "next": "^10.0.5",
     "node-sass": "^5.0.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^10.0.0",
-    "@commitlint/config-conventional": "^10.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.17.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.0.4",
-    "husky": "^4.2.5",
+    "husky": "^4.3.7",
     "jest": "^26.6.3",
     "prettier": "2.2.1",
     "react-leaflet": "^3.0.5",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
-    "stylelint": "13.6.1",
+    "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-prettier": "^1.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
   }
 }
