@@ -2,7 +2,6 @@
 @import '../../../sass/variables';
 
 .slide {
-  //width: 33.3%;
   height: 100%;
   position: relative;
 }
@@ -59,12 +58,14 @@
   margin: 0 0 $margin-small;
 }
 @media (min-width: $tablet-width) {
+  .masterText,
+  .slaveText {
+    text-align: center;
+  }
   .buttonWrapper {
     flex-direction: row;
   }
-  .buttonQuiz {
-    margin: 0 $margin-tiny;
-  }
+  .buttonQuiz,
   .buttonCalculator {
     margin: 0 $margin-tiny;
   }
