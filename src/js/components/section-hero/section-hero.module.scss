@@ -1,0 +1,82 @@
+@import '../../../sass/colors';
+@import '../../../sass/variables';
+
+$hero_height: 650px;
+$nav_bg_color: rgba(44, 29, 29, 0.9);
+
+.hero_section {
+  position: relative;
+  width: 100%;
+  height: $hero_height;
+}
+.slider_wrapper {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  left: 0;
+}
+$overlay_color: #000;
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($overlay_color, 0.3);
+}
+.nav {
+  position: absolute;
+  top: 50%;
+  height: 6rem;
+  width: 5rem;
+  font-size: 3rem;
+  color: $color-light;
+  z-index: 1000;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: $nav_bg_color;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    color: $color-dark;
+    background-color: $color-light;
+  }
+  &:hover .text {
+    transform: rotateY(0);
+  }
+}
+.prev {
+  opacity: 0;
+  left: 0;
+}
+.next {
+  right: 0;
+}
+.text {
+  user-select: none;
+  position: absolute;
+  padding: 0 $margin-normal;
+  background-color: $nav_bg_color;
+  color: $color-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $font-stack-regular;
+  text-transform: uppercase;
+  font-size: $font-string-small;
+  letter-spacing: 0.15rem;
+  height: 6rem;
+  transform: rotateY(90deg);
+  transition: transform 300ms;
+  &_left {
+    transform-origin: 0 50%;
+    left: 100%;
+  }
+  &_right {
+    transform-origin: 100% 50%;
+    right: 100%;
+  }
+}

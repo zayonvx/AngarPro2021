@@ -1,6 +1,13 @@
+import React, {FunctionComponent} from 'react';
 import styles from './main.module.scss';
-import React from 'react';
+import {SectionHero} from "../section-hero/section-hero";
 
-export const Main = () => {
-  return <div className={styles.wrapper}>Main Page</div>;
+const Main:FunctionComponent = () => {
+  return (
+    <div className={styles.main}>
+        <SectionHero/>
+    </div>
+  );
 };
+
+export default Main;

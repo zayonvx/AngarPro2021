@@ -1,4 +1,4 @@
-import '../src/scss/globals.scss';
+import '../src/sass/globals.scss';
 import React from 'react';
 
 function MyApp({ Component, pageProps }) {

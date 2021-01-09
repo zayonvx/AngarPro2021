@@ -1,0 +1,69 @@
+@import 'fonts';
+
+$width-content-maximum: 1335px;
+
+$fade-anim-timeout: 500ms;
+
+$border-radius: 10px;
+$border-radius-small: 8px;
+$border-radius-smallest: 6px;
+
+$margin-large: 5rem;
+$margin-bigger: 4rem;
+$margin-big: 3rem;
+$margin-normal: 2rem;
+$margin-small: 1.5rem;
+$margin-smaller: 1rem;
+$margin-tiny: 0.5rem;
+
+// *body-width
+$body-min-width: 320px;
+$section-max-width: 900px;
+
+$hover-animation-speed: 150ms;
+
+// Windows buttons constants
+$window-buttons-size: 1.5rem;
+$window-buttons-scale: 1.2;
+
+// Element`s shade constants
+$shade-color: rgb(127, 127, 127);
+$shade-blur: 15px;
+$shade-stretch: 0;
+$shade-X-shift: 0;
+$shade-Y-shift: 0;
+
+// *Fonts sizes
+$font-string-huge: 3rem;
+$font-string-large: 2.5rem;
+$font-string-normal: 2rem;
+$font-string-small: 1.6rem;
+$font-string-pre-smallest: 1.4rem;
+$font-string-smallest: 1.2rem;
+
+// *Fonts styles
+$font-stack-light: 'Futura Light', 'Arial', sans-serif;
+$font-stack-regular: 'Futura Regular', 'Arial', sans-serif;
+$font-stack-medium: 'Futura Medium', 'Arial', sans-serif;
+$font-stack-bold: 'Futura Bold', 'Arial', sans-serif;
+
+$font-title-light: 'Opensans Light', 'Arial', sans-serif;
+$font-title-regular: 'Opensans Regular', 'Arial', sans-serif;
+$font-title-medium: 'Opensans Semibold', 'Arial', sans-serif;
+$font-title-bold: 'Opensans Bold', 'Arial', sans-serif;
+$font-title-extrabold: 'Opensans Extrabold', 'Arial', sans-serif;
+
+// *Resolutions
+$mobile-width: 320px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$mobile-landscape-height: 415px;
+
+// *preview sizes:
+$preview-ratio: 1.5;
+$preview-mobile_height: 160px;
+$preview-mobile_width: $preview-mobile_height * $preview-ratio;
+$preview-tablet_height: 175px;
+$preview-tablet_width: $preview-tablet_height * $preview-ratio;
+$preview-desktop_height: 235px;
+$preview-desktop_width: $preview-desktop_height * $preview-ratio;
