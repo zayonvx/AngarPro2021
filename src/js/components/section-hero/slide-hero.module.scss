@@ -1,8 +1,13 @@
 @import '../../../sass/colors';
 @import '../../../sass/variables';
+@import './_variables';
 
 .slide {
-  height: 100%;
+  height: $hero_height_mobile;
+  @media (min-width: $tablet-width) {
+    height: $hero_height_desktop;
+  }
+  width: 100%;
   position: relative;
 }
 .image {
@@ -55,7 +60,7 @@
   justify-content: center;
 }
 .buttonQuiz {
-  margin: 0 0 $margin-small;
+  margin: 0 0 $margin-normal;
 }
 @media (min-width: $tablet-width) {
   .masterText,
@@ -67,6 +72,6 @@
   }
   .buttonQuiz,
   .buttonCalculator {
-    margin: 0 $margin-tiny;
+    margin: 0 $margin-smaller;
   }
 }

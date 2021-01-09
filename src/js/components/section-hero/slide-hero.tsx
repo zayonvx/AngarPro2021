@@ -22,10 +22,15 @@ export const SlideHero = ({ ...props }: props): any => {
 
   const anim_text = anim ? 'fadeInUp' : 'with_animation';
   const anim_buttons = anim ? 'fadeIn' : 'with_animation';
+  const style = {
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    backgroundImage: 'url(' + fileName + ')',
+  };
 
   return (
-    <div className={styles.slide} id={id}>
-      <img className={styles.image} src={fileName} alt={'Пример здания ангара'} />
+    <div className={styles.slide} id={id} style={style}>
       <div className={styles.wrapper}>
         <h1 className={styles.masterText + ' ' + styles.animated + ' ' + anim_text} id={id + 'Master'}>
           {masterText}

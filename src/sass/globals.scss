@@ -4,8 +4,9 @@
 @import 'animations';
 
 html {
-  font-size: 50%;
-  @media (min-width: $tablet-width) {
+  font-size: 45%;
+  overflow-x: hidden;
+  @media (min-width: $tablet-width) and (min-height: $mobile-landscape-height) {
     font-size: 55%;
   }
   @media (min-width: $desktop-width) {
