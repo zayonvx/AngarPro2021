@@ -6,7 +6,8 @@ import { ButtonQuiz } from './button-quiz';
 interface props {
   fileName: string;
   masterText: string;
-  slaveText: string;
+  slaveTextTop: string;
+  slaveTextBottom: string;
   id: string;
   anim: boolean;
 }
@@ -14,7 +15,8 @@ interface props {
 export const SlideHero = ({ ...props }: props): any => {
   const { fileName } = props;
   const { masterText } = props;
-  const { slaveText } = props;
+  const { slaveTextTop } = props;
+  const { slaveTextBottom } = props;
   const { id } = props;
   const { anim } = props;
 
@@ -22,14 +24,16 @@ export const SlideHero = ({ ...props }: props): any => {
   const anim_buttons = anim ? 'fadeIn' : 'with_animation';
 
   return (
-    <div className={styles.slide}>
+    <div className={styles.slide} id={id}>
       <img className={styles.image} src={fileName} alt={'Пример здания ангара'} />
       <div className={styles.wrapper}>
         <h1 className={styles.masterText + ' ' + styles.animated + ' ' + anim_text} id={id + 'Master'}>
           {masterText}
         </h1>
         <p className={styles.slaveText + ' ' + styles.animated + ' ' + anim_text} id={id + 'Slave'}>
-          {slaveText}
+          {slaveTextTop}
+          <br />
+          {slaveTextBottom}
         </p>
         <div className={styles.buttonWrapper + ' ' + styles.animated + ' ' + anim_buttons} id={id + 'Buttons'}>
           <ButtonQuiz />

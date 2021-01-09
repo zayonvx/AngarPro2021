@@ -4,7 +4,13 @@
 @import 'animations';
 
 html {
-  font-size: 62.5%;
+  font-size: 50%;
+  @media (min-width: $tablet-width) {
+    font-size: 55%;
+  }
+  @media (min-width: $desktop-width) {
+    font-size: 62.5%;
+  }
 }
 .visHidden {
   display: none;
