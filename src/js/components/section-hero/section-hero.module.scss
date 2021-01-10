@@ -32,7 +32,7 @@ $nav_bg_color: rgba(44, 29, 29, 0.9);
   position: absolute;
   top: 50%;
   height: 6rem;
-  width: 5rem;
+  width: 4rem;
   font-size: 3rem;
   color: $color-light;
   z-index: 1000;
@@ -49,6 +49,9 @@ $nav_bg_color: rgba(44, 29, 29, 0.9);
   }
   &:hover .text {
     transform: rotateY(0);
+  }
+  @media (min-width: $desktop-width) {
+    width: 5rem;
   }
 }
 .prev {

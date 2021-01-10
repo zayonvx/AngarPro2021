@@ -9,7 +9,7 @@ export const ButtonQuiz = () => {
   return (
     <button className={styles.buttonQuiz + ' button button--transparent'} onClick={handlerOnClick}>
       <span className="button__text">запрос</span>
-      <i className="far fa-arrow-right button__icon" />
+      <i className={'far fa-arrow-right button__icon'} />
     </button>
   );
 };
