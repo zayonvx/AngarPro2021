@@ -15,6 +15,7 @@ $nav_bg_color: rgba(44, 29, 29, 0.9);
   width: 100%;
   overflow: hidden;
   height: $hero_height_mobile;
+
   @media (min-width: $tablet-width) {
     height: $hero_height_desktop;
   }
@@ -27,6 +28,7 @@ $nav_bg_color: rgba(44, 29, 29, 0.9);
   overflow: hidden;
   background-color: #222222;
   display: flex;
+  cursor: grab;
 }
 .nav {
   position: absolute;

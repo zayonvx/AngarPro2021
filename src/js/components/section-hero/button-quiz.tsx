@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './slide-hero.module.scss';
+import styles from './slides.module.scss';
 
-export const ButtonQuiz = () => {
+export const ButtonQuiz = (): JSX.Element => {
   const handlerOnClick = () => {
     return null;
   };

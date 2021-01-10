@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './slide-hero.module.scss';
+import styles from './slides.module.scss';
 
-export const ButtonCalculator = () => {
+export const ButtonCalculator = (): JSX.Element => {
   const handlerOnClick = () => {
     return null;
   };

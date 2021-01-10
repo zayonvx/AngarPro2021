@@ -1,4 +1,4 @@
-import styles from './slide-hero.module.scss';
+import styles from './slides.module.scss';
 import React from 'react';
 import { ButtonCalculator } from './button-calculator';
 import { ButtonQuiz } from './button-quiz';
@@ -12,7 +12,7 @@ interface props {
   anim: boolean;
 }
 
-export const SlideHero = ({ ...props }: props): any => {
+export const Slides = ({ ...props }: props): JSX.Element => {
   const { fileName } = props;
   const { masterText } = props;
   const { slaveTextTop } = props;
