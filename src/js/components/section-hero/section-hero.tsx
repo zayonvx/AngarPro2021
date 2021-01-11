@@ -35,23 +35,33 @@ const slides = [
     anim: false,
   },
 ];
+const sliderParameters = {
+  wrapperAnimationTransition: {
+    durationMain: '800ms',
+    durationTouchStart: '50ms',
+  },
+  minSwipeDistance: 10,
+  maxSwipeDistance: 150,
+  acceptSwipeDistance: 100,
+  LEFT: 'left',
+  RIGHT: 'right',
+};
+const slideLastIndex = slides.length - 1;
 const animationOff = (slideNumber: number) => {
-  setTimeout(() => {
-    document.getElementById(slides[slideNumber].id + 'Master').classList.replace('fadeInUp', 'with_animation');
-    document.getElementById(slides[slideNumber].id + 'Slave').classList.replace('fadeInUp', 'with_animation');
-    document.getElementById(slides[slideNumber].id + 'Buttons').classList.replace('fadeIn', 'with_animation');
-  }, 1000);
+  document.getElementById(slides[slideNumber].id + 'Master').classList.replace('fadeInUp', 'with_animation');
+  document.getElementById(slides[slideNumber].id + 'Slave').classList.replace('fadeInUp', 'with_animation');
+  document.getElementById(slides[slideNumber].id + 'Buttons').classList.replace('fadeIn', 'with_animation');
 };
 const animationOn = (slideNumber: number) => {
   document.getElementById(slides[slideNumber].id + 'Master').classList.replace('with_animation', 'fadeInUp');
   document.getElementById(slides[slideNumber].id + 'Slave').classList.replace('with_animation', 'fadeInUp');
   document.getElementById(slides[slideNumber].id + 'Buttons').classList.replace('with_animation', 'fadeIn');
 };
-const setWrapperTransform = (wrapperEl, X: number) => {
+const setWrapperTransform = (wrapperEl: HTMLDivElement, X: number) => {
   const coordX = String(X);
-  wrapperEl.current.style.transform = ' translate3d(' + coordX + 'px, 0px, 0px)';
+  wrapperEl.style.transform = ' translate3d(' + coordX + 'px, 0px, 0px)';
 };
-const moveSlide = (wrapper, slide: number) => {
+const moveSlide = (wrapper: HTMLDivElement, slide: number) => {
   const leftCoord = document.documentElement.clientWidth * (0 - slide);
   setWrapperTransform(wrapper, leftCoord);
 };
@@ -83,78 +93,82 @@ export const SectionHero = (): JSX.Element => {
     if (slideNumber === 0) {
       elementNavLeft.removeEventListener('click', handlerNavClick);
       elementNavLeft.style.opacity = '0';
-      elementNavLeft.style.cursor = 'grab';
+      elementNavLeft.style.cursor = 'default';
     }
     if (slideNumber === 1) {
       elementNavLeft.style.opacity = '1';
       elementNavLeft.style.cursor = 'pointer';
     }
-    if (slideNumber === slides.length - 1) {
+    if (slideNumber === slideLastIndex) {
       elementNavRight.removeEventListener('click', handlerNavClick);
       elementNavRight.style.opacity = '0';
-      elementNavRight.style.cursor = 'grab';
+      elementNavRight.style.cursor = 'default';
     }
-    if (slideNumber === slides.length - 2) {
+    if (slideNumber === slideLastIndex - 1) {
       elementNavRight.style.opacity = '1';
       elementNavRight.style.cursor = 'pointer';
     }
   };
   const handlerWindowResize = () => {
     setWrapperWidth();
-    moveSlide(wrapperEl, slideNumber);
+    moveSlide(wrapperEl.current, slideNumber);
   };
   const handlerNavClick = (evt: Event) => {
+    const slideNumberPrev = slideNumber;
     const elem = evt.currentTarget;
     removeTouchListeners(wrapperEl.current);
     switch (elem) {
       case leftNavEl.current:
         if (slideNumber > 0) {
-          animationOff(slideNumber);
-          slideNumber = slideNumber - 1;
+          slideNumber = slideNumberPrev - 1;
         }
         break;
       case rightNavEl.current:
         if (slideNumber < slides.length - 1) {
-          animationOff(slideNumber);
-          slideNumber = slideNumber + 1;
+          slideNumber = slideNumberPrev + 1;
         }
         break;
       default:
         break;
     }
+    setTimeout(() => animationOff(slideNumberPrev), 1500);
     setNavVisibles(leftNavEl.current, rightNavEl.current, slideNumber);
     animationOn(slideNumber);
-    wrapperEl.current.style.transitionDuration = '0.8s';
-    moveSlide(wrapperEl, slideNumber);
+    wrapperEl.current.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationMain;
+    moveSlide(wrapperEl.current, slideNumber);
   };
 
   const handlerOnTouchStart = (evt: TouchEvent) => {
     swipeDistanse = 0;
     touchStartX = evt.touches[0].clientX;
     wrapperElBaseX = Number(getTransform(wrapperEl.current)[0]);
-    console.log(wrapperElBaseX, slideNumber);
-    wrapperEl.current.style.transitionDuration = '50ms';
+    wrapperEl.current.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationTouchStart;
   };
   const handlerOnTouchMove = (evt: TouchEvent) => {
     swipeDistanse = evt.touches[0].clientX - touchStartX;
-    if (Math.abs(swipeDistanse) < 10) {
+    if (Math.abs(swipeDistanse) < sliderParameters.minSwipeDistance) {
       return null;
     }
-    const maxSwipe = document.documentElement.clientWidth * 0.5;
-    swipeDirection = swipeDistanse > 0 ? 'left' : 'right';
-    swipeAcsess = Math.abs(swipeDistanse) > maxSwipe;
+    const maxSwipe = sliderParameters.maxSwipeDistance;
+    swipeDirection = swipeDistanse > 0 ? sliderParameters.LEFT : sliderParameters.RIGHT;
+    swipeAcsess = Math.abs(swipeDistanse) > sliderParameters.acceptSwipeDistance;
 
-    if (swipeDistanse > maxSwipe && swipeDirection === 'left' && slideNumber === 0) {
+    if (swipeDistanse > maxSwipe && swipeDirection === sliderParameters.LEFT && slideNumber === 0) {
       swipeDistanse = maxSwipe;
     }
-    if (Math.abs(swipeDistanse) > maxSwipe && swipeDirection === 'right' && slideNumber === slides.length - 1) {
+    if (
+      Math.abs(swipeDistanse) > maxSwipe &&
+      swipeDirection === sliderParameters.RIGHT &&
+      slideNumber === slideLastIndex
+    ) {
       swipeDistanse = 0 - maxSwipe;
     }
+
     // move wrapper
-    setWrapperTransform(wrapperEl, wrapperElBaseX + swipeDistanse);
+    setWrapperTransform(wrapperEl.current, wrapperElBaseX + swipeDistanse);
   };
   const handlerOnTouchEnd = () => {
-    wrapperEl.current.style.transitionDuration = '0.8s';
+    wrapperEl.current.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationMain;
     if (swipeDistanse !== 0) {
       removeTouchListeners(wrapperEl.current);
       removeClickListeners();
@@ -162,39 +176,37 @@ export const SectionHero = (): JSX.Element => {
 
     if (swipeAcsess) {
       switch (swipeDirection) {
-        case 'right':
-          if (slideNumber < slides.length - 1) {
+        case sliderParameters.RIGHT:
+          if (slideNumber < slideLastIndex) {
             animationOff(slideNumber);
             slideNumber = slideNumber + 1;
             animationOn(slideNumber);
-            moveSlide(wrapperEl, slideNumber);
+            moveSlide(wrapperEl.current, slideNumber);
           } else {
-            setWrapperTransform(wrapperEl, wrapperElBaseX);
+            setWrapperTransform(wrapperEl.current, wrapperElBaseX);
           }
           break;
-        case 'left':
+        case sliderParameters.LEFT:
           if (slideNumber > 0) {
             animationOff(slideNumber);
             slideNumber = slideNumber - 1;
             animationOn(slideNumber);
-            moveSlide(wrapperEl, slideNumber);
+            moveSlide(wrapperEl.current, slideNumber);
           } else {
-            setWrapperTransform(wrapperEl, wrapperElBaseX);
+            setWrapperTransform(wrapperEl.current, wrapperElBaseX);
           }
           break;
         default:
           break;
       }
     } else {
-      setWrapperTransform(wrapperEl, wrapperElBaseX);
+      setWrapperTransform(wrapperEl.current, wrapperElBaseX);
     }
     setNavVisibles(leftNavEl.current, rightNavEl.current, slideNumber);
-    console.log('distanse', swipeDistanse, 'acsess', swipeAcsess);
   };
 
   const handlerTransitionEnd = (evt: Event) => {
     if (evt.target === wrapperEl.current) {
-      console.log('handlerTransitionEnd');
       addTouchListeners(wrapperEl.current);
       addClickListeners();
     }
@@ -202,7 +214,7 @@ export const SectionHero = (): JSX.Element => {
 
   const addClickListeners = () => {
     if (slideNumber > 0) leftNavEl.current.addEventListener('click', handlerNavClick);
-    if (slideNumber < slides.length - 1) rightNavEl.current.addEventListener('click', handlerNavClick);
+    if (slideNumber < slideLastIndex) rightNavEl.current.addEventListener('click', handlerNavClick);
   };
   const removeClickListeners = () => {
     leftNavEl.current.removeEventListener('click', handlerNavClick);
