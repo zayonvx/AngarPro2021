@@ -4,11 +4,14 @@
 
 .slide {
   height: $hero_height_mobile;
-  @media (min-width: $tablet-width) {
-    height: $hero_height_desktop;
-  }
+  display: flex;
+  justify-content: center;
   width: 100%;
   position: relative;
+  @media (min-width: $tablet-width) {
+    height: $hero_height_desktop;
+    padding: 0;
+  }
 }
 .wrapper {
   position: absolute;
@@ -20,7 +23,8 @@
   justify-content: center;
   align-items: center;
   z-index: 3;
-  width: 100%;
+  padding: 0 6rem;
+  max-width: $desktop-width;
 }
 .animated {
   animation-duration: 1s;
@@ -34,8 +38,6 @@
   text-transform: uppercase;
   text-align: left;
   animation-delay: 0.2s;
-  padding: 0 6rem;
-  max-width: 1200px;
 }
 .slaveText {
   margin: $margin-smaller 0;
@@ -44,8 +46,6 @@
   line-height: 1.5em;
   text-align: left;
   animation-delay: 0.6s;
-  padding: 0 6rem;
-  max-width: 1300px;
 }
 .buttonWrapper {
   margin-top: $margin-normal;

@@ -16,3 +16,12 @@ html {
 .visHidden {
   display: none;
 }
+.logo__logo {
+  fill: $color-accent;
+}
+.logo__text {
+  fill: $color-dark;
+  @media (min-width: $desktop-width) {
+    fill: $color-light;
+  }
+}

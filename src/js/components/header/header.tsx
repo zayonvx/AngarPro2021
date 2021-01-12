@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './header.module.scss';
+import Logo from './logo';
 
 const Header = (): JSX.Element => {
   return (
@@ -9,7 +10,28 @@ const Header = (): JSX.Element => {
           <div className={styles.menu_burger}>
             <i className="far fa-bars" />
           </div>
-          <div className={styles.logo}>logo</div>
+          <nav>
+            <ul className={styles.nav_menu_list}>
+              <li className={styles.nav_menu_list_item}>
+                <a href={'#'} className={styles.nav_menu_link}>
+                  портфолио
+                </a>
+              </li>
+              <li className={styles.nav_menu_list_item}>
+                <a href={'#'} className={styles.nav_menu_link}>
+                  о нас
+                </a>
+              </li>
+              <li className={styles.nav_menu_list_item}>
+                <a href={'#'} className={styles.nav_menu_link}>
+                  контакты
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div className={styles.logo} role="img" aria-label="Логотип АнгарПро">
+            <Logo />
+          </div>
         </div>
       </div>
     </header>

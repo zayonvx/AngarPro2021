@@ -6,18 +6,74 @@
   position: relative;
   z-index: 10000;
   @media (min-width: $desktop-width) {
+    width: 100%;
     position: absolute;
   }
 }
 .container {
   position: relative;
+  max-width: $desktop-width;
   margin: 0 auto;
 }
 .row_fluid {
+  padding: 0 $margin-large;
+  display: flex;
+  justify-content: space-between;
+  color: $color-dark;
+  @media (min-width: $desktop-width) {
+    padding: 0 6rem;
+    color: $color-light;
+  }
 }
 .menu_burger {
-  color: $color-dark;
   font-size: 3rem;
+  cursor: pointer;
+  margin: $margin-large 0;
+  @media (min-width: $tablet-width) {
+    display: none;
+  }
+  &:hover,
+  :active {
+    opacity: 0.4;
+  }
 }
 .logo {
+  width: 152px;
+  height: 4.5rem;
+  margin-top: 4rem;
+  @media (min-width: $tablet-width) {
+    margin-top: 3.9rem;
+  }
+  @media (min-width: $tablet-width) {
+    height: 4rem;
+  }
+}
+.nav_menu_list {
+  list-style: none;
+  margin: $margin-large 0;
+  padding: 0;
+  display: none;
+  font-family: $font-stack-medium;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: $font-string-normal;
+  @media (min-width: $tablet-width) {
+    display: flex;
+    color: $color-dark;
+  }
+  @media (min-width: $desktop-width) {
+    color: $color-light;
+  }
+}
+.nav_menu_list_item {
+  margin: 0 $margin-big 0 0;
+  cursor: pointer;
+  &:hover,
+  :active {
+    opacity: 0.8;
+  }
+}
+.nav_menu_link {
+  text-decoration: none;
+  color: inherit;
 }
