@@ -2,6 +2,22 @@
 @import '../../../sass/colors';
 
 .header {
-  background-color: $color-light;
-  height: 200px;
+  background-color: transparent;
+  position: relative;
+  z-index: 10000;
+  @media (min-width: $desktop-width) {
+    position: absolute;
+  }
+}
+.container {
+  position: relative;
+  margin: 0 auto;
+}
+.row_fluid {
+}
+.menu_burger {
+  color: $color-dark;
+  font-size: 3rem;
+}
+.logo {
 }
