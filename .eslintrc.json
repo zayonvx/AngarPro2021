@@ -9,42 +9,78 @@
     "project": "tsconfig.json",
     "tsconfigRootDir": "."
   },
-  "plugins": ["react", "react-hooks", "promise", "optimize-regex", "sonarjs", "@typescript-eslint"],
+  "plugins": [
+    "import",
+    "jest",
+    "react",
+    "react-hooks",
+    "promise",
+    "optimize-regex",
+    "sonarjs",
+    "@typescript-eslint"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:promise/recommended",
     "plugin:sonarjs/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:jest/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
   ],
   "settings": {
     "react": {
-      "createClass": "createReactClass", // Regex for Component Factory to use,
+      "createClass": "createReactClass",
+      // Regex for Component Factory to use,
       // default to "createReactClass"
-      "pragma": "React", // Pragma to use, default to "React"
-      "fragment": "Fragment", // Fragment to use (may be a property of <pragma>), default to "Fragment"
-      "version": "detect", // React version. "detect" automatically picks the version you have installed.
+      "pragma": "React",
+      // Pragma to use, default to "React"
+      "fragment": "Fragment",
+      // Fragment to use (may be a property of <pragma>), default to "Fragment"
+      "version": "detect",
+      // React version. "detect" automatically picks the version you have installed.
       // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
       // default to latest and warns if missing
       // It will default to "detect" in the future
-      "flowVersion": "0.53" // Flow version
+      "flowVersion": "0.53"
+      // Flow version
     },
     "propWrapperFunctions": [
       // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
       "forbidExtraProps",
-      { "property": "freeze", "object": "Object" },
-      { "property": "myFavoriteWrapper" }
+      {
+        "property": "freeze",
+        "object": "Object"
+      },
+      {
+        "property": "myFavoriteWrapper"
+      }
     ],
     "linkComponents": [
       // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
       "Hyperlink",
-      { "name": "Link", "linkAttribute": "to" }
+      {
+        "name": "Link",
+        "linkAttribute": "to"
+      }
     ]
   },
   "rules": {
-    //"@typescript-eslint/no-unsafe-member-access": "off",
-    //"@typescript-eslint/no-unsafe-assignment": "off"
+    "import/no-unresolved": [
+      2,
+      {
+        "commonjs": true,
+        "amd": true
+      }
+    ],
+    "import/named": 2,
+    "import/namespace": 2,
+    "import/default": 2,
+    "import/export": 2
   }
 }
