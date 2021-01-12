@@ -4,9 +4,9 @@ import { SectionHero } from '../section-hero/section-hero';
 
 const Main: FunctionComponent = () => {
   return (
-    <div className={styles.main} id={'main'}>
+    <main className={styles.main} id={'main'}>
       <SectionHero />
-    </div>
+    </main>
   );
 };
 

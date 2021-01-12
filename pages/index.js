@@ -3,6 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from '../src/store/store';
 import Main from '../src/js/components/main/main';
+import Header from '../src/js/components/header/header';
 
 export default function Home() {
   return (
@@ -25,7 +26,7 @@ export default function Home() {
         <meta name="msapplication-TileColor" content="#2b5797" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-
+      <Header />
       <Main />
     </Provider>
   );
