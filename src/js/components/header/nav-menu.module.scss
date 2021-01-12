@@ -1,0 +1,44 @@
+@import '../../../sass/variables';
+@import '../../../sass/colors';
+
+$trans-duration: 200ms;
+
+.row {
+  transition-duration: $trans-duration;
+  transition-property: height;
+}
+.wrapper {
+  position: relative;
+  background-color: $color-very-dark;
+  width: 100%;
+  display: block;
+  padding: $margin-normal;
+  transform: rotateX(90deg);
+  transition-property: transform;
+  transition-duration: $trans-duration;
+  transform-origin: 50% 0;
+  @media (min-width: $tablet-width) {
+    display: none;
+  }
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.listItem {
+  margin: $margin-big;
+}
+.link {
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: $color-light;
+  font-family: $font-stack-regular;
+  font-size: $font-string-large;
+  text-transform: uppercase;
+  &:hover,
+  :active {
+    opacity: 0.8;
+  }
+}

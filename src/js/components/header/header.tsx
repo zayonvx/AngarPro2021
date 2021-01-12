@@ -1,39 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './header.module.scss';
 import Logo from './logo';
+import NavMenu from './nav-menu';
+import { menuList } from './nav-menu-const';
 
 const Header = (): JSX.Element => {
+  const [menuVisible, setMenuVisible] = useState(false);
+  const handlerMenuButton = () => {
+    setMenuVisible(!menuVisible);
+  };
+
+  const getMenuList = () => {
+    return (
+      <nav>
+        <ul className={styles.list}>
+          {menuList.map((it) => {
+            return (
+              <li className={styles.listItem} key={it.id}>
+                <a href={it.link} className={styles.link}>
+                  <span>{it.text}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    );
+  };
   return (
     <header id="header" className={styles.header}>
       <div className={styles.container}>
-        <div className={styles.row_fluid}>
-          <div className={styles.menu_burger}>
-            <i className="far fa-bars" />
-          </div>
-          <nav>
-            <ul className={styles.nav_menu_list}>
-              <li className={styles.nav_menu_list_item}>
-                <a href={'#'} className={styles.nav_menu_link}>
-                  портфолио
-                </a>
-              </li>
-              <li className={styles.nav_menu_list_item}>
-                <a href={'#'} className={styles.nav_menu_link}>
-                  о нас
-                </a>
-              </li>
-              <li className={styles.nav_menu_list_item}>
-                <a href={'#'} className={styles.nav_menu_link}>
-                  контакты
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div className={styles.logo} role="img" aria-label="Логотип АнгарПро">
-            <Logo />
-          </div>
+        <button className={styles.menu_burger} type={'button'} onClick={handlerMenuButton}>
+          <i className="far fa-bars" />
+        </button>
+        {getMenuList()}
+        <div className={styles.logo} role="img" aria-label="Логотип АнгарПро">
+          <Logo />
         </div>
       </div>
+      <NavMenu visible={menuVisible} />
     </header>
   );
 };
