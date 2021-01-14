@@ -44,6 +44,8 @@ $nav_bg_color: rgba(44, 29, 29, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
+  outline: none;
   &:hover {
     color: $color-dark;
     background-color: $color-light;

@@ -1,9 +1,9 @@
-import styles from './slides.module.scss';
 import React from 'react';
-import { ButtonCalculator } from './button-calculator';
-import { ButtonQuiz } from './button-quiz';
+import styles from './slides.module.scss';
+import ButtonCalculator from './button-calculator';
+import ButtonQuiz from './button-quiz';
 
-interface props {
+interface PropsSlides {
   fileName: string;
   masterText: string;
   slaveTextTop: string;
@@ -12,7 +12,7 @@ interface props {
   anim: boolean;
 }
 
-export const Slides = ({ ...props }: props): JSX.Element => {
+const Slides = ({ ...props }: PropsSlides): JSX.Element => {
   const { fileName } = props;
   const { masterText } = props;
   const { slaveTextTop } = props;
@@ -20,27 +20,27 @@ export const Slides = ({ ...props }: props): JSX.Element => {
   const { id } = props;
   const { anim } = props;
 
-  const anim_text = anim ? 'fadeInUp' : 'with_animation';
-  const anim_buttons = anim ? 'fadeIn' : 'with_animation';
+  const animText = anim ? 'fadeInUp' : 'with_animation';
+  const animButtons = anim ? 'fadeIn' : 'with_animation';
   const style = {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
-    backgroundImage: 'url(' + fileName + ')',
+    backgroundImage: `url(${fileName})`,
   };
 
   return (
     <div className={styles.slide} id={id} style={style}>
       <div className={styles.wrapper}>
-        <h1 className={styles.masterText + ' ' + styles.animated + ' ' + anim_text} id={id + 'Master'}>
+        <h1 className={`${styles.masterText} ${styles.animated} ${animText}`} id={`${id}Master`}>
           {masterText}
         </h1>
-        <p className={styles.slaveText + ' ' + styles.animated + ' ' + anim_text} id={id + 'Slave'}>
+        <p className={`${styles.slaveText} ${styles.animated} ${animText}`} id={`${id}Slave`}>
           {slaveTextTop}
           <br />
           {slaveTextBottom}
         </p>
-        <div className={styles.buttonWrapper + ' ' + styles.animated + ' ' + anim_buttons} id={id + 'Buttons'}>
+        <div className={`${styles.buttonWrapper} ${styles.animated} ${animButtons}`} id={`${id}Buttons`}>
           <ButtonQuiz />
           <ButtonCalculator />
         </div>
@@ -48,3 +48,5 @@ export const Slides = ({ ...props }: props): JSX.Element => {
     </div>
   );
 };
+
+export default Slides;

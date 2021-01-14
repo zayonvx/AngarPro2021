@@ -1,7 +1,4 @@
-import PropTypes from 'prop-types';
-
 export const projectsOrder = [5, 7, 6, 10, 11, 8, 9, 4, 13, 12, 1, 2, 3, 14];
-
 export const projects = [
   {
     // Ангар в Якутии
@@ -218,7 +215,6 @@ export const projects = [
     coordinates: [55.845359, 36.495301],
   },
 ];
-
 export const projectTemplate = {
   id: '',
   preview: '',
@@ -234,12 +230,12 @@ export const projectTemplate = {
   coordinates: [],
 };
 
-export const projectTypes = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  saga: PropTypes.objectOf(PropTypes.string).isRequired,
-  photos: PropTypes.arrayOf(PropTypes.number).isRequired,
-  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-});
+// export const projectTypes = PropTypes.shape({
+//  id: PropTypes.string.isRequired,
+//  name: PropTypes.string.isRequired,
+//  location: PropTypes.string.isRequired,
+//  description: PropTypes.string.isRequired,
+//  saga: PropTypes.objectOf(PropTypes.string).isRequired,
+//  photos: PropTypes.arrayOf(PropTypes.number).isRequired,
+//  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+// });

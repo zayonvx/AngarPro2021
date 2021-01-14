@@ -10,27 +10,23 @@ const Header = (): JSX.Element => {
     setMenuVisible(!menuVisible);
   };
 
-  const getMenuList = () => {
-    return (
-      <nav>
-        <ul className={styles.list}>
-          {menuList.map((it) => {
-            return (
-              <li className={styles.listItem} key={it.id}>
-                <a href={it.link} className={styles.link}>
-                  <span>{it.text}</span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    );
-  };
+  const getMenuList = () => (
+    <nav>
+      <ul className={styles.list}>
+        {menuList.map((it) => (
+          <li className={styles.listItem} key={it.id}>
+            <a href={it.link} className={styles.link}>
+              <span>{it.text}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
   return (
     <header id="header" className={styles.header}>
       <div className={styles.container}>
-        <button className={styles.menu_burger} type={'button'} onClick={handlerMenuButton}>
+        <button className={styles.menu_burger} type="button" onClick={handlerMenuButton}>
           <i className="far fa-bars" />
         </button>
         {getMenuList()}
