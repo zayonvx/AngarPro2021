@@ -5,7 +5,7 @@
 $nav_bg_color: rgba(44, 29, 29, 0.9);
 
 .slider_fullwidth {
-  background-color: rgb(119, 119, 119);
+  background-color: $color-very-dark;
   margin-top: 0;
   width: 100%;
   user-select: none;

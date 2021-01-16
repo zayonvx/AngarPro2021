@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, MouseEvent, TouchEvent } from 'react';
+import React, { useRef, useEffect, MouseEvent, TouchEvent, useState } from 'react';
 import styles from './section-hero.module.scss';
 import Slides from './slides';
 import { getTransform } from '../../utils/functions';
@@ -67,6 +67,7 @@ const SectionHero = (): JSX.Element => {
   const wrapperEl: React.Ref<HTMLDivElement> = useRef(null);
   const leftNavEl: React.Ref<HTMLButtonElement> = useRef(null);
   const rightNavEl: React.Ref<HTMLButtonElement> = useRef(null);
+  const [loaded, setLoaded] = useState(false);
   let slideNumber = 0;
   let touchStartX = 0;
   let wrapperElBaseX = 0;
@@ -85,7 +86,6 @@ const SectionHero = (): JSX.Element => {
   const moveSlide = (wrapper: HTMLDivElement, slideNumberNew: number, slideNumberPrev: number) => {
     const setNavVisibles = (NavLeft: HTMLButtonElement, NavRight: HTMLButtonElement, slide: number) => {
       if (slide === 0) {
-        // NavLeft.removeEventListener('click', handlerNavClick);
         NavLeft.style.opacity = '0';
         NavLeft.style.cursor = 'default';
       }
@@ -94,7 +94,6 @@ const SectionHero = (): JSX.Element => {
         NavLeft.style.cursor = 'pointer';
       }
       if (slide === slideLastIndex) {
-        // NavRight.removeEventListener('click', handlerNavClick);
         NavRight.style.opacity = '0';
         NavRight.style.cursor = 'default';
       }
@@ -103,7 +102,6 @@ const SectionHero = (): JSX.Element => {
         NavRight.style.cursor = 'pointer';
       }
     };
-    // removeDriveListeners(wrapperEl.current, leftNavEl.current, rightNavEl.current);
     wrapperEl.current.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationMain;
     setTimeout(() => {
       animationOff(slideNumberPrev);
@@ -200,6 +198,10 @@ const SectionHero = (): JSX.Element => {
 
   useEffect(() => {
     window.addEventListener('resize', handlerWindowResize);
+    window.addEventListener('load', () => {
+      setLoaded(true);
+      document.getElementById('slider_swiper_payload').classList.remove('visHidden');
+    });
     setWrapperWidth();
     return () => {
       window.removeEventListener('resize', handlerWindowResize);
@@ -209,36 +211,39 @@ const SectionHero = (): JSX.Element => {
   return (
     <section className={styles.slider_fullwidth}>
       <div className={styles.slider_swiper}>
-        <Loading />
-        <div className="paginationParent">
-          <button className={`${styles.nav} ${styles.prev}`} ref={leftNavEl} type="button" onClick={handlerNavClick}>
-            <span className="far fa-chevron-left" />
-            <div className={`${styles.text} ${styles.text_left}`}>назад</div>
-          </button>
-          <button className={`${styles.nav} ${styles.next}`} ref={rightNavEl} type="button" onClick={handlerNavClick}>
-            <span className="far fa-chevron-right" />
-            <div className={`${styles.text} ${styles.text_right}`}>далее</div>
-          </button>
-        </div>
-        <div
-          className={styles.slider_wrapper}
-          ref={wrapperEl}
-          style={{ transform: 'translate3d(0,0,0)' }}
-          onTouchStart={handlerOnTouchStart}
-          onTouchMove={handlerOnTouchMove}
-          onTouchEnd={handlerOnTouchEnd}
-        >
-          {slides.map((it) => (
-            <Slides
-              fileName={it.fileBG}
-              masterText={it.textMaster}
-              slaveTextTop={it.textSlave.top}
-              slaveTextBottom={it.textSlave.bottom}
-              id={it.id}
-              anim={it.anim}
-              key={it.id}
-            />
-          ))}
+        <Loading loaded={loaded} />
+        <div id="slider_swiper_payload" className="visHidden">
+          <div className="paginationParent">
+            <button className={`${styles.nav} ${styles.prev}`} ref={leftNavEl} type="button" onClick={handlerNavClick}>
+              <span className="far fa-chevron-left" />
+              <div className={`${styles.text} ${styles.text_left}`}>назад</div>
+            </button>
+            <button className={`${styles.nav} ${styles.next}`} ref={rightNavEl} type="button" onClick={handlerNavClick}>
+              <span className="far fa-chevron-right" />
+              <div className={`${styles.text} ${styles.text_right}`}>далее</div>
+            </button>
+          </div>
+
+          <div
+            className={styles.slider_wrapper}
+            ref={wrapperEl}
+            style={{ transform: 'translate3d(0,0,0)' }}
+            onTouchStart={handlerOnTouchStart}
+            onTouchMove={handlerOnTouchMove}
+            onTouchEnd={handlerOnTouchEnd}
+          >
+            {slides.map((it) => (
+              <Slides
+                fileName={it.fileBG}
+                masterText={it.textMaster}
+                slaveTextTop={it.textSlave.top}
+                slaveTextBottom={it.textSlave.bottom}
+                id={it.id}
+                anim={it.anim}
+                key={it.id}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

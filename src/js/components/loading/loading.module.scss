@@ -1,5 +1,12 @@
 @import '../../../sass/colors';
 
 .loading {
+  height: 100%;
+  width: 100%;
   color: $color-light;
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-very-dark;
 }
