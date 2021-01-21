@@ -1,0 +1,61 @@
+@import '../../../sass/colors';
+@import '../../../sass/variables';
+
+.wrapper {
+  margin-bottom: $margin-huge;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avantage {
+  width: 28rem;
+  height: 22rem;
+  margin: 0 $margin-small;
+  text-align: center;
+}
+.btn_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $margin-normal;
+}
+.button {
+  height: 10rem;
+  width: 10rem;
+  border: none;
+  outline: none;
+  background-color: $color-light-gray;
+  border-radius: 50%;
+  font-size: 4.5rem;
+  color: $color-accent;
+  cursor: pointer;
+  transition: all 400ms;
+  &:hover {
+    background-color: $color-accent;
+    color: $color-light;
+  }
+}
+.header {
+  transition-duration: 400ms;
+  font-size: $font-string-normal;
+  letter-spacing: 0.1rem;
+  font-family: $font-stack-regular;
+  color: $color-dark;
+  cursor: pointer;
+  line-height: 2.4rem;
+  margin: 1.5rem 0 0;
+  transition: all 400ms;
+  &:hover {
+    color: $color-accent;
+  }
+}
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+.text {
+  margin: 0.7rem 0 0;
+  font-family: $font-stack-regular;
+  font-size: $font-string-small;
+}
