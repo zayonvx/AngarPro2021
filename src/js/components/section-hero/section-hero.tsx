@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, MouseEvent, TouchEvent, useState } from 'react';
+import React, { useRef, useEffect, MouseEvent, TouchEvent } from 'react';
 import styles from './section-hero.module.scss';
 import Slides from './slides';
 import { getTransform } from '../../utils/functions';
@@ -13,7 +13,7 @@ const slides = [
       top: 'У нас вы можете заказать проектирование, производство и монтаж здания из сендвич панелей.',
       bottom: 'Сделаем устройство фундаментов и полов, а также подготовим площадку.',
     },
-    anim: true,
+    amin: true,
   },
   {
     id: 'slide1',
@@ -23,7 +23,7 @@ const slides = [
       top: 'Мы производим и монтируем комплекты каркасных ангаров с ограждениями из профнастила.',
       bottom: 'Воспользуйтесь калькулятором стоимости зданий чтобы узнать цену.',
     },
-    anim: false,
+    amin: false,
   },
   {
     id: 'slide2',
@@ -41,22 +41,22 @@ const sliderParameters = {
     durationMain: '800ms',
     durationTouchStart: '50ms',
   },
-  minSwipeDistance: 10,
-  maxEdgeSwipeDistance: 150,
-  acceptSwipeDistance: 100,
+  acceptSwipeDistance: 150,
   LEFT: 'left',
   RIGHT: 'right',
 };
 const slideLastIndex = slides.length - 1;
-const animationOff = (slideNumber: number) => {
+const animationPrepare = (slideNumber: number) => {
   document.getElementById(`${slides[slideNumber].id}Master`).classList.replace('fadeInUp', 'with_animation');
   document.getElementById(`${slides[slideNumber].id}Slave`).classList.replace('fadeInUp', 'with_animation');
   document.getElementById(`${slides[slideNumber].id}Buttons`).classList.replace('fadeIn', 'with_animation');
 };
-const animationOn = (slideNumber: number) => {
-  document.getElementById(`${slides[slideNumber].id}Master`).classList.replace('with_animation', 'fadeInUp');
-  document.getElementById(`${slides[slideNumber].id}Slave`).classList.replace('with_animation', 'fadeInUp');
-  document.getElementById(`${slides[slideNumber].id}Buttons`).classList.replace('with_animation', 'fadeIn');
+const animationStart = (slideNumber: number) => {
+  setTimeout(() => {
+    document.getElementById(`${slides[slideNumber].id}Master`).classList.replace('with_animation', 'fadeInUp');
+    document.getElementById(`${slides[slideNumber].id}Slave`).classList.replace('with_animation', 'fadeInUp');
+    document.getElementById(`${slides[slideNumber].id}Buttons`).classList.replace('with_animation', 'fadeIn');
+  }, 100);
 };
 const translate = {
   prefix: ' translate3d(',
@@ -67,14 +67,31 @@ const SectionHero = (): JSX.Element => {
   const wrapperEl: React.Ref<HTMLDivElement> = useRef(null);
   const leftNavEl: React.Ref<HTMLButtonElement> = useRef(null);
   const rightNavEl: React.Ref<HTMLButtonElement> = useRef(null);
-  const [loaded, setLoaded] = useState(false);
+  const loaded = true;
   let slideNumber = 0;
-  let touchStartX = 0;
-  let wrapperElBaseX = 0;
-  let swipeDirection = '';
-  let swipeDistanse = 0;
-  let swipeAcsess = false;
+  let startX = 0;
+  let elementX = 0;
 
+  const arrowVisibles = () => {
+    const navLeft = leftNavEl.current;
+    const navRight = rightNavEl.current;
+    switch (slideNumber) {
+      case 0:
+        navLeft.style.opacity = '0';
+        navLeft.style.cursor = 'default';
+        break;
+      case slideLastIndex:
+        navRight.style.opacity = '0';
+        navRight.style.cursor = 'default';
+        break;
+      default:
+        navLeft.style.opacity = '1';
+        navLeft.style.cursor = 'pointer';
+        navRight.style.opacity = '1';
+        navRight.style.cursor = 'pointer';
+        break;
+    }
+  };
   const setWrapperWidth = () => {
     wrapperEl.current.style.transitionDuration = '0s';
     const width = document.documentElement.clientWidth;
@@ -82,53 +99,39 @@ const SectionHero = (): JSX.Element => {
     slides.forEach((it) => {
       document.getElementById(it.id).style.width = `${String(width)}px`;
     });
-  };
-  const moveSlide = (wrapper: HTMLDivElement, slideNumberNew: number, slideNumberPrev: number) => {
-    const setNavVisibles = (NavLeft: HTMLButtonElement, NavRight: HTMLButtonElement, slide: number) => {
-      if (slide === 0) {
-        NavLeft.style.opacity = '0';
-        NavLeft.style.cursor = 'default';
-      }
-      if (slide === 1) {
-        NavLeft.style.opacity = '1';
-        NavLeft.style.cursor = 'pointer';
-      }
-      if (slide === slideLastIndex) {
-        NavRight.style.opacity = '0';
-        NavRight.style.cursor = 'default';
-      }
-      if (slide === slideLastIndex - 1) {
-        NavRight.style.opacity = '1';
-        NavRight.style.cursor = 'pointer';
-      }
-    };
     wrapperEl.current.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationMain;
-    setTimeout(() => {
-      animationOff(slideNumberPrev);
-    }, 500);
-    setNavVisibles(leftNavEl.current, rightNavEl.current, slideNumberNew);
-    animationOn(slideNumberNew);
-    const leftCoord = String(document.documentElement.clientWidth * (0 - slideNumberNew));
-    wrapper.style.transform = translate.prefix + leftCoord + translate.suffix;
   };
-  const handlerNavClick = (event: MouseEvent) => {
-    const slideNumberPrev = slideNumber;
-    switch (event.currentTarget) {
-      case leftNavEl.current:
+  const moveSlide = (direction: string) => {
+    const prevSlideNumber = slideNumber;
+    let willSlided = false;
+    switch (direction) {
+      case sliderParameters.LEFT:
         if (slideNumber > 0) {
+          willSlided = true;
           slideNumber -= 1;
-          moveSlide(wrapperEl.current, slideNumber, slideNumberPrev);
         }
         break;
-      case rightNavEl.current:
+      case sliderParameters.RIGHT:
         if (slideNumber < slideLastIndex) {
+          willSlided = true;
           slideNumber += 1;
-          moveSlide(wrapperEl.current, slideNumber, slideNumberPrev);
         }
         break;
       default:
         break;
     }
+    if (willSlided) {
+      arrowVisibles();
+      setTimeout(() => animationPrepare(prevSlideNumber), 500);
+      animationStart(slideNumber);
+      const leftCoord = String(document.documentElement.clientWidth * (0 - slideNumber));
+      wrapperEl.current.style.transform = translate.prefix + leftCoord + translate.suffix;
+    }
+  };
+  const handlerNavClick = (event: MouseEvent) => {
+    const target = event.currentTarget;
+    const direction = target === leftNavEl.current ? sliderParameters.LEFT : sliderParameters.RIGHT;
+    moveSlide(direction);
   };
   const handlerWindowResize = () => {
     setWrapperWidth();
@@ -137,71 +140,44 @@ const SectionHero = (): JSX.Element => {
   };
 
   const handlerOnTouchStart = (evt: TouchEvent) => {
-    swipeDistanse = 0;
-    touchStartX = evt.touches[0].clientX;
-    wrapperElBaseX = Number(getTransform(wrapperEl.current)[0]);
     wrapperEl.current.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationTouchStart;
+    startX = evt.touches[0].clientX;
+    elementX = Number(getTransform(wrapperEl.current)[0]);
   };
   const handlerOnTouchMove = (evt: TouchEvent) => {
-    swipeDistanse = evt.touches[0].clientX - touchStartX;
-    if (Math.abs(swipeDistanse) < sliderParameters.minSwipeDistance) {
-      return null;
-    }
-    const maxEdgeSwipe = sliderParameters.maxEdgeSwipeDistance;
-    swipeDirection = swipeDistanse > 0 ? sliderParameters.LEFT : sliderParameters.RIGHT;
-    swipeAcsess = Math.abs(swipeDistanse) > sliderParameters.acceptSwipeDistance;
-    if (Math.abs(swipeDistanse) > maxEdgeSwipe) {
-      switch (swipeDirection) {
-        case sliderParameters.LEFT:
-          if (slideNumber === 0) {
-            swipeDistanse = maxEdgeSwipe;
-            swipeAcsess = false;
-          }
-          break;
-        case sliderParameters.RIGHT:
-          if (slideNumber === slideLastIndex) {
-            swipeDistanse = 0 - maxEdgeSwipe;
-            swipeAcsess = false;
-          }
-          break;
-        default:
-          break;
-      }
-    }
-    // move wrapper
-    const vector = String(wrapperElBaseX + swipeDistanse);
-    wrapperEl.current.style.transform = translate.prefix + vector + translate.suffix;
-    return null;
+    // evt.preventDefault();
+    const currentX = evt.touches[0].clientX;
+    const distance = startX - currentX;
+    const localX = String(elementX - distance);
+    wrapperEl.current.style.transform = translate.prefix + localX + translate.suffix;
   };
-  const handlerOnTouchEnd = () => {
-    if (
-      (swipeAcsess && swipeDirection === sliderParameters.RIGHT && slideNumber < slideLastIndex) ||
-      (swipeAcsess && swipeDirection === sliderParameters.LEFT && slideNumber > 0)
-    ) {
-      const slideNumberPrev = slideNumber;
-
-      switch (swipeDirection) {
-        case sliderParameters.RIGHT:
-          slideNumber += 1;
-          break;
-        case sliderParameters.LEFT:
-          slideNumber -= 1;
-          break;
-        default:
-          break;
+  const handlerOnTouchEnd = (evt: TouchEvent) => {
+    // evt.preventDefault();
+    const currentX = evt.changedTouches[0].clientX;
+    const distance = currentX - startX;
+    if (Math.abs(distance) > sliderParameters.acceptSwipeDistance) {
+      if (distance > 0) {
+        moveSlide(sliderParameters.LEFT);
+      } else {
+        moveSlide(sliderParameters.RIGHT);
       }
-      moveSlide(wrapperEl.current, slideNumber, slideNumberPrev);
-    } else {
-      wrapperEl.current.style.transform = translate.prefix + String(wrapperElBaseX) + translate.suffix;
     }
+    const leftCoord = String(document.documentElement.clientWidth * (0 - slideNumber));
+    wrapperEl.current.style.transform = translate.prefix + leftCoord + translate.suffix;
+    wrapperEl.current.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationMain;
+  };
+  const handlerOnTouchCancel = () => {
+    // evt.preventDefault();
+    const leftCoord = String(document.documentElement.clientWidth * (0 - slideNumber));
+    wrapperEl.current.style.transform = translate.prefix + leftCoord + translate.suffix;
   };
 
   useEffect(() => {
     window.addEventListener('resize', handlerWindowResize);
     window.addEventListener('load', () => {
-      setLoaded(true);
       document.getElementById('slider_swiper_payload').classList.remove('visHidden');
     });
+    animationStart(0);
     setWrapperWidth();
     return () => {
       window.removeEventListener('resize', handlerWindowResize);
@@ -231,6 +207,7 @@ const SectionHero = (): JSX.Element => {
             onTouchStart={handlerOnTouchStart}
             onTouchMove={handlerOnTouchMove}
             onTouchEnd={handlerOnTouchEnd}
+            onTouchCancel={handlerOnTouchCancel}
           >
             {slides.map((it) => (
               <Slides
