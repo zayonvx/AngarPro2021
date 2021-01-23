@@ -32,9 +32,9 @@ const Slides = ({ ...props }: PropsSlides): JSX.Element => {
   return (
     <div className={styles.slide} id={id} style={style}>
       <div className={styles.wrapper}>
-        <h1 className={`${styles.masterText} ${styles.animated} ${animText}`} id={`${id}Master`}>
+        <h2 className={`${styles.masterText} ${styles.animated} ${animText}`} id={`${id}Master`}>
           {masterText}
-        </h1>
+        </h2>
         <p className={`${styles.slaveText} ${styles.animated} ${animText}`} id={`${id}Slave`}>
           {slaveTextTop}
           <br />

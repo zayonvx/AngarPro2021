@@ -2,17 +2,19 @@
 @import '../../../sass/variables';
 
 .wrapper {
-  margin-bottom: $margin-huge;
+  margin-bottom: $margin-large;
 }
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 $margin-normal 0;
 }
 .avantage {
-  width: 28rem;
+  max-width: 28rem;
   height: 22rem;
-  margin: 0 $margin-small;
+  margin: 0 $margin-small $margin-small;
   text-align: center;
 }
 .btn_wrapper {

@@ -1,0 +1,93 @@
+@import '../../../sass/colors';
+@import '../../../sass/variables';
+
+.list {
+  width: 100%;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+  margin: 0;
+}
+.list_item {
+  z-index: 50;
+  position: relative;
+  cursor: pointer;
+  background-color: $color-light;
+  display: flex;
+  justify-content: center;
+  &:hover .image_wrapper {
+    top: -8.5rem;
+  }
+  &:hover .image {
+    filter: grayscale(0%);
+  }
+  &:hover .triangle {
+    opacity: 1;
+  }
+  &:hover .description_wrapper {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+.image_wrapper {
+  position: relative;
+  top: 0;
+  transition: top 400ms;
+}
+.image {
+  position: relative;
+  filter: grayscale(95%);
+  width: 100%;
+  object-fit: contain;
+  transition: filter 600ms;
+}
+.triangle {
+  opacity: 0;
+  border-top: 1.5rem solid transparent;
+  border-left: 1.5rem solid transparent;
+  border-right: 1.5rem solid transparent;
+  border-bottom: 1.5rem solid $color-light;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 400ms;
+}
+.description_wrapper {
+  position: absolute;
+  font-size: $font-string-normal;
+  font-family: $font-stack-regular;
+  color: $color-dark;
+  cursor: pointer;
+  line-height: 2.4rem;
+  margin: 1.5rem 0;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  bottom: -8.5rem;
+  transition: bottom 400ms, opacity 600ms;
+}
+.header {
+  letter-spacing: 0.1rem;
+  margin: 0;
+}
+.link {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: $color-accent;
+  }
+}
+.text {
+  margin: 0.7rem 0 0;
+  font-family: $font-stack-regular;
+  font-size: $font-string-small;
+  text-align: center;
+}

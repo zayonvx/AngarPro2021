@@ -19,7 +19,7 @@ export const projects = [
   {
     // Спортнавес Патриот
     id: '002',
-    name: 'Навес над спортивной площадкой 15х30х6м',
+    name: 'Навес над спортивной площадкой',
     location: 'Парк "Патриот", Московская область',
     description: 'Навес над спортивной площадкой.',
     saga: {
@@ -171,7 +171,7 @@ export const projects = [
   {
     // Ябедино КСК
     id: '012',
-    name: 'Конно-спортивный комплекс (строится)',
+    name: 'Конно-спортивный комплекс',
     location: 'д.Ябедино, Московская область',
     description: 'Манеж, конюшни, "бочки", склады сена, летние конюшни.',
     saga: {
@@ -202,7 +202,7 @@ export const projects = [
   {
     // Онуфриево
     id: '014',
-    name: 'Конно-спортивный комплекс (строится)',
+    name: 'Конный комплекс',
     location: 'д.Онуфриево, Московская область',
     description: 'В комплекс входят манеж, конюшня и вспомогательные сооружения',
     saga: {
@@ -229,13 +229,3 @@ export const projectTemplate = {
   photos: [],
   coordinates: [],
 };
-
-// export const projectTypes = PropTypes.shape({
-//  id: PropTypes.string.isRequired,
-//  name: PropTypes.string.isRequired,
-//  location: PropTypes.string.isRequired,
-//  description: PropTypes.string.isRequired,
-//  saga: PropTypes.objectOf(PropTypes.string).isRequired,
-//  photos: PropTypes.arrayOf(PropTypes.number).isRequired,
-//  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-// });

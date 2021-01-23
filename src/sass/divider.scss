@@ -1,0 +1,20 @@
+@import 'colors';
+
+.divider {
+  width: 21rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.divider__line {
+  height: 1px;
+  width: 8.5rem;
+  background-color: $color-gray;
+}
+.divider__circle {
+  height: 1rem;
+  width: 1rem;
+  border: 1px solid $color-gray;
+}
