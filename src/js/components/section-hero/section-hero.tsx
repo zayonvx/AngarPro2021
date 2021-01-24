@@ -1,10 +1,11 @@
-import React, { useRef, useEffect, MouseEvent, TouchEvent } from 'react';
+import React, { useRef, useEffect, MouseEvent, TouchEvent, useState } from 'react';
 import styles from './section-hero.module.scss';
 import Slides from './slides';
 import { getTransform, setHeroWrapperWidth } from '../../utils/functions';
 import { slides, sliderParameters } from '../../database/slider';
 import store from '../../../store/store';
 import changeSlideNumber from '../../../store/slider/actions';
+import Loading from '../loading/loading';
 
 const slideLastIndex = slides.length - 1;
 const animationPrepare = (slideNumber: number) => {
@@ -28,7 +29,7 @@ const SectionHero = (): JSX.Element => {
   const wrapperEl: React.Ref<HTMLDivElement> = useRef(null);
   const leftNavEl: React.Ref<HTMLButtonElement> = useRef(null);
   const rightNavEl: React.Ref<HTMLButtonElement> = useRef(null);
-  // const loaded = true;
+  const [loaded, setLoaded] = useState(false);
 
   let startX = 0;
   let elementX = 0;
@@ -97,14 +98,12 @@ const SectionHero = (): JSX.Element => {
     elementX = Number(getTransform(wrapperEl.current)[0]);
   };
   const handlerOnTouchMove = (evt: TouchEvent) => {
-    // evt.preventDefault();
     const currentX = evt.touches[0].clientX;
     const distance = startX - currentX;
     const localX = String(elementX - distance);
     wrapperEl.current.style.transform = translate.prefix + localX + translate.suffix;
   };
   const handlerOnTouchEnd = (evt: TouchEvent) => {
-    // evt.preventDefault();
     const currentX = evt.changedTouches[0].clientX;
     const distance = currentX - startX;
     let willSlided = false;
@@ -123,7 +122,6 @@ const SectionHero = (): JSX.Element => {
     wrapperEl.current.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationMain;
   };
   const handlerOnTouchCancel = () => {
-    // evt.preventDefault();
     const slideNumber = store.getState().slider.currentSlider;
     const leftCoord = String(document.documentElement.clientWidth * (0 - slideNumber));
     wrapperEl.current.style.transform = translate.prefix + leftCoord + translate.suffix;
@@ -132,6 +130,7 @@ const SectionHero = (): JSX.Element => {
   useEffect(() => {
     window.addEventListener('load', () => {
       document.getElementById('slider_swiper_payload').classList.remove('visHidden');
+      setLoaded(true);
     });
     animationStart(0);
     setHeroWrapperWidth();
@@ -140,6 +139,7 @@ const SectionHero = (): JSX.Element => {
   return (
     <section className={styles.slider_fullwidth}>
       <div className={styles.slider_swiper}>
+        <Loading loaded={loaded} />
         <div id="slider_swiper_payload" className="visHidden">
           <div className="paginationParent">
             <button className={`${styles.nav} ${styles.prev}`} ref={leftNavEl} type="button" onClick={handlerNavClick}>

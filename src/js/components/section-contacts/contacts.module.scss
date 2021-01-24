@@ -1,0 +1,58 @@
+@import '../../../sass/colors';
+@import '../../../sass/variables';
+
+.contacts {
+  width: 100%;
+  padding: $margin-huge 0;
+  display: flex;
+}
+.wrapper {
+  margin: 0 auto;
+  max-width: $width-content-maximum;
+}
+.header {
+  font-family: $font-stack-regular;
+  text-transform: uppercase;
+  color: $color-dark;
+  font-size: $font-string-normal;
+  letter-spacing: 0.15rem;
+  margin: 0 0 $margin-big;
+}
+.cards_wrapper {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: $tablet-width) {
+    flex-direction: row;
+  }
+}
+.card {
+  margin: $margin-normal $margin-larger;
+  display: flex;
+}
+.icon {
+  font-family: $font-stack-regular;
+  color: $color-accent;
+  font-size: 4rem;
+  letter-spacing: 0.1rem;
+  margin: $margin-tiny $margin-small 0 0;
+  display: flex;
+  //align-items: center;
+  justify-content: center;
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list_item {
+  padding: $margin-tiny 0;
+}
+.link {
+  text-decoration: none;
+  font-family: $font-stack-regular;
+  color: $color-dark;
+  font-size: $font-string-normal;
+  &:hover {
+    color: $color-accent;
+  }
+}

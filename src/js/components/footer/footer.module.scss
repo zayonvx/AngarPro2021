@@ -1,0 +1,52 @@
+@import '../../../sass/colors';
+@import '../../../sass/variables';
+
+.footer {
+  background-color: $color-very-dark;
+  width: 100%;
+}
+.wrapper {
+  margin: 0 auto;
+  max-width: $width-content-maximum;
+}
+.data_wrapper {
+  color: $color-gray;
+  font-family: $font-stack-light;
+  font-size: $font-string-small;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: $tablet-width) {
+    flex-direction: row;
+  }
+}
+.address_wrapper {
+  padding: $margin-bigger $margin-normal 0;
+  @media (min-width: $tablet-width) {
+    width: 100%;
+  }
+}
+.address_title {
+  margin: 0 0 $margin-normal;
+  font-size: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+}
+.address_text {
+  margin: 0 0 $margin-smaller;
+}
+.bar {
+  font-size: $font-string-small;
+  font-family: $font-stack-light;
+  color: $color-dark-gray;
+  display: flex;
+  justify-content: space-between;
+  margin-top: $margin-small;
+  padding: $margin-small;
+}
+.bar a {
+  text-decoration: none;
+  color: $color-gray;
+  &:hover {
+    color: $color-accent;
+  }
+}

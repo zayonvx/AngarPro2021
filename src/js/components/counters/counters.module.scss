@@ -1,0 +1,51 @@
+@import '../../../sass/colors';
+@import '../../../sass/variables';
+
+.wrapper {
+  padding: 5rem 0;
+  background-repeat: no-repeat;
+  margin: 0;
+  width: 100%;
+  background-image: url('/img/system/stone-24.jpg');
+  background-position: 50%;
+  position: relative;
+}
+.bg_overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(245, 245, 245, 0.8);
+}
+.row {
+  margin: 0 auto;
+  max-width: 1100px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: $tablet-width) {
+    margin: $margin-normal;
+  }
+}
+.icon {
+  color: $color-accent;
+  font-size: 5rem;
+  margin: 0 0 $margin-normal;
+}
+.digit {
+  font-family: $font-stack-regular;
+  font-size: 4.8rem;
+}
+.text {
+  font-family: $font-stack-light;
+  font-size: $font-string-normal;
+}

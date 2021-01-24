@@ -12,6 +12,7 @@
   padding: 0;
   overflow: hidden;
   margin: 0;
+  animation-duration: 400ms;
 }
 .list_item {
   z-index: 50;
@@ -20,6 +21,7 @@
   background-color: $color-light;
   display: flex;
   justify-content: center;
+  animation-duration: 400ms;
   &:hover .image_wrapper {
     top: -8.5rem;
   }

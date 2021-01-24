@@ -1,0 +1,67 @@
+@import '../../../sass/colors';
+@import '../../../sass/variables';
+
+.choose {
+  width: 100%;
+  padding: 8rem 0 0;
+  margin: 0;
+}
+.wrapper {
+  margin: 0 auto;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: $tablet-width) {
+    flex-direction: row;
+    max-width: none;
+    width: 725px;
+  }
+  @media (min-width: $desktop-width) {
+    width: 87%;
+    max-width: 110rem !important;
+  }
+}
+.image_container {
+  font-size: 50px;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  @media (min-width: $tablet-width) {
+    width: 100%;
+  }
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.text_container {
+  padding: 0 2rem;
+  @media (min-width: $tablet-width) {
+    padding: 0 1.5rem;
+    width: 100%;
+  }
+}
+.header_main {
+  margin: 0;
+  text-align: left;
+  text-transform: uppercase;
+  line-height: 2.4rem;
+  letter-spacing: 0.2rem;
+  color: $color-dark;
+  font-family: $font-stack-regular;
+  font-size: $font-string-normal;
+}
+.header_additional {
+  margin: 0;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0.15rem;
+  color: $color-dark-gray;
+  font-family: $font-stack-light;
+  font-size: $font-string-normal;
+}
+.text {
+  font-family: $font-stack-regular;
+  font-size: $font-string-small;
+  color: $color-dark;
+}

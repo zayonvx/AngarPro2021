@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from '../src/store/store';
 import Main from '../src/js/components/main/main';
 import Header from '../src/js/components/header/header';
+import Footer from '../src/js/components/footer/footer';
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       </Head>
       <Header />
       <Main />
+      <Footer />
     </Provider>
   );
 }

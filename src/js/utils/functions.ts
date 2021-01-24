@@ -50,11 +50,11 @@ const setPreviewSize = (): void => {
   store.dispatch(changePreviewsRows(previewsRows));
   const previewWidth = clientWidth / previewsInRow;
   const previewElements = document.querySelectorAll('.preview__image-wrapper');
-  const width = `width: ${String(previewWidth)}px`;
-  const height = `height: ${String(previewWidth)}px`;
-  const style = `${width}; ${height}`;
+  const widthLi = `width: ${String(previewWidth)}px`;
+  const heightLi = `height: ${String(previewWidth)}px`;
+  const styleLi = `${widthLi}; ${heightLi}`;
   previewElements.forEach((it) => {
-    it.setAttribute('style', style);
+    it.setAttribute('style', styleLi);
   });
 };
 const windowResize = (): void => {

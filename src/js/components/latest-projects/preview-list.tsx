@@ -24,13 +24,13 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
     setPreviewSize();
   });
   return (
-    <ul className={styles.list}>
+    <ul className={`fadeIn ${styles.list}`}>
       {order.map((it) => {
         const { id } = projects[it - 1];
         const header = projects[it - 1].name;
         const text = projects[it - 1].location;
         return (
-          <li className={`${styles.list_item} preview__list-item`} key={id}>
+          <li className={`fadeIn ${styles.list_item} preview__list-item`} key={id}>
             <div className={`${styles.image_wrapper} preview__image-wrapper`}>
               <img
                 className={`${styles.image} preview__image`}

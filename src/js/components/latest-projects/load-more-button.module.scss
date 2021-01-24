@@ -2,6 +2,8 @@
 @import '../../../sass/variables';
 
 .loadMore {
-  margin-top: $margin-small;
+  //margin-top: $margin-small;
   width: 100%;
+  border-radius: 0;
+  padding: $margin-normal;
 }
