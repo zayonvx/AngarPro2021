@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './slides.module.scss';
+import styles from './slide.module.scss';
 
 const ButtonCalculator = (): JSX.Element => {
   const handlerOnClick = () => null;

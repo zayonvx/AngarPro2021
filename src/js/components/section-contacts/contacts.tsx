@@ -2,14 +2,13 @@ import React from 'react';
 import styles from './contacts.module.scss';
 import { contactEmails, contactPhones } from '../../database/contact-data';
 
-const getList = (array: { string: string; link: string; ID: number }[]) =>
-  array.map((it) => (
-    <li className={styles.list_item} key={it.ID}>
-      <a href={it.link} className={styles.link}>
-        {it.string}
-      </a>
-    </li>
-  ));
+const getList = (array: { string: string; link: string; ID: number }[]) => array.map((it) => (
+  <li className={styles.list_item} key={it.ID}>
+    <a href={it.link} className={styles.link}>
+      {it.string}
+    </a>
+  </li>
+));
 
 const Contacts = (): JSX.Element => (
   <section id="contacts" className={styles.contacts}>

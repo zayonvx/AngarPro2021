@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import Image from 'next/image';
 import styles from './preview-list.module.scss';
 import { projects, projectsOrder } from '../../database/gallery-base';
 import { setPreviewSize } from '../../utils/functions';
@@ -32,9 +33,10 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
         return (
           <li className={`fadeIn ${styles.list_item} preview__list-item`} key={id}>
             <div className={`${styles.image_wrapper} preview__image-wrapper`}>
-              <img
+              <Image
                 className={`${styles.image} preview__image`}
                 src={`/img/photos/gallery/preview/preview_${id}.jpg`}
+                layout="fill"
                 alt="Превью фотогалереи"
               />
               <div className={styles.triangle} />

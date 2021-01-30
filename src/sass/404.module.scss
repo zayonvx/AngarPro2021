@@ -1,0 +1,39 @@
+@import 'colors';
+@import 'variables';
+
+.wrapper {
+  color: $color-dark;
+  height: 100%;
+  font-family: $font-stack-regular;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header {
+  font-size: $font-string-huge;
+  margin-right: $margin-normal;
+}
+.data_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: $color-gray 0.2rem solid;
+  padding: $margin-normal 0 $margin-normal $margin-normal;
+}
+.text {
+  font-size: $font-string-large;
+  margin: 0 0 $margin-normal;
+}
+.link {
+  font-size: $font-string-normal;
+  text-decoration: none;
+  color: $color-accent;
+}

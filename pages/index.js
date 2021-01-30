@@ -11,7 +11,6 @@ export default function Home() {
     <Provider store={store}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        {/*<link rel="canonical" href="https://angarpro.com/" />*/}
         <meta
           name="Description"
           content="Сайт компании АнгарПро. Проектирование, производство и строительство быстровозводимых зданий."

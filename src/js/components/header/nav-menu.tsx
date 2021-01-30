@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import styles from './nav-menu.module.scss';
 import { menuList } from './nav-menu-const';
 
@@ -19,9 +20,11 @@ const NavMenu = ({ ...props }: Props): JSX.Element => {
     <ul className={styles.list}>
       {menuList.map((it) => (
         <li className={styles.listItem} key={it.id}>
-          <a href={it.link} className={styles.link}>
-            <span>{it.text}</span>
-          </a>
+          <Link href={it.link}>
+            <a className={styles.link}>
+              <span>{it.text}</span>
+            </a>
+          </Link>
         </li>
       ))}
     </ul>

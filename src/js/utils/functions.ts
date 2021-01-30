@@ -1,4 +1,4 @@
-import { slides, sliderParameters } from '../database/slider';
+import { sliderParameters } from '../database/slides';
 import store from '../../store/store';
 import { changePreviewsInRow, changePreviewsRows } from '../../store/preview/actions';
 
@@ -18,9 +18,9 @@ const setHeroWrapperWidth = (): void => {
   element.style.transitionDuration = '0s';
   const width = document.documentElement.clientWidth;
   element.style.width = `${String(width * 3)}px`;
-  slides.forEach((it) => {
-    document.getElementById(it.id).style.width = `${String(width)}px`;
-  });
+  // slides.forEach((it) => {
+  //   // document.getElementById(it.id).style.width = `${String(width)}px`;
+  // });
 };
 const setPreviewSize = (): void => {
   const { clientWidth } = document.documentElement;

@@ -1,4 +1,8 @@
 export interface IInitialState {
+  loaded: {
+    slide: boolean;
+    gallery: boolean;
+  };
   slider: {
     currentSlider: number;
   };
@@ -10,6 +14,10 @@ export interface IInitialState {
 }
 
 export const initialState = {
+  loaded: {
+    slide: false,
+    gallery: false,
+  },
   slider: {
     currentSlider: 0,
   },

@@ -1,4 +1,4 @@
-const slides = [
+export const slides = [
   {
     id: 'slide0',
     fileBG: '/img/system/HeroImages/hero_image_1.jpg',
@@ -7,7 +7,8 @@ const slides = [
       top: 'У нас вы можете заказать проектирование, производство и монтаж здания из сендвич панелей.',
       bottom: 'Сделаем устройство фундаментов и полов, а также подготовим площадку.',
     },
-    amin: true,
+    anim: true,
+    alt: 'Изображение ангара из сендвича',
   },
   {
     id: 'slide1',
@@ -17,7 +18,8 @@ const slides = [
       top: 'Мы производим и монтируем комплекты каркасных ангаров с ограждениями из профнастила.',
       bottom: 'Воспользуйтесь калькулятором стоимости зданий чтобы узнать цену.',
     },
-    amin: false,
+    anim: false,
+    alt: 'Изображение ангара из профлиста',
   },
   {
     id: 'slide2',
@@ -28,9 +30,10 @@ const slides = [
       bottom: 'Вы можете заполнить и отправить форму запроса. Мы вышлем коммерческое предложение.',
     },
     anim: false,
+    alt: 'Изображение ангара из тента',
   },
 ];
-const sliderParameters = {
+export const sliderParameters = {
   wrapperAnimationTransition: {
     durationMain: '800ms',
     durationTouchStart: '50ms',
@@ -39,5 +42,3 @@ const sliderParameters = {
   LEFT: 'left',
   RIGHT: 'right',
 };
-
-export { slides, sliderParameters };

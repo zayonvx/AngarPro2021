@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './slides.module.scss';
+import styles from './slide.module.scss';
 
 const ButtonQuiz = (): JSX.Element => {
   const handlerOnClick = () => null;

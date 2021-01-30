@@ -1,11 +1,13 @@
-import React, { useRef, useEffect, MouseEvent, TouchEvent, useState } from 'react';
+import React, { useRef, useEffect, MouseEvent, TouchEvent } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import styles from './section-hero.module.scss';
-import Slides from './slides';
+import Slides from './slide';
 import { getTransform, setHeroWrapperWidth } from '../../utils/functions';
-import { slides, sliderParameters } from '../../database/slider';
+import { slides, sliderParameters } from '../../database/slides';
 import store from '../../../store/store';
 import changeSlideNumber from '../../../store/slider/actions';
 import Loading from '../loading/loading';
+import { IInitialState } from '../../../store/initial-state';
 
 const slideLastIndex = slides.length - 1;
 const animationPrepare = (slideNumber: number) => {
@@ -25,11 +27,15 @@ const translate = {
   suffix: 'px, 0px, 0px)',
 };
 
-const SectionHero = (): JSX.Element => {
+const mapState = (state: IInitialState) => ({ loaded: state.loaded.slide });
+const connector = connect(mapState);
+type StateProps = ConnectedProps<typeof connector>;
+
+const SectionHero = ({ ...props }: StateProps): JSX.Element => {
   const wrapperEl: React.Ref<HTMLDivElement> = useRef(null);
   const leftNavEl: React.Ref<HTMLButtonElement> = useRef(null);
   const rightNavEl: React.Ref<HTMLButtonElement> = useRef(null);
-  const [loaded, setLoaded] = useState(false);
+  const { loaded } = props;
 
   let startX = 0;
   let elementX = 0;
@@ -128,10 +134,6 @@ const SectionHero = (): JSX.Element => {
   };
 
   useEffect(() => {
-    window.addEventListener('load', () => {
-      document.getElementById('slider_swiper_payload').classList.remove('visHidden');
-      setLoaded(true);
-    });
     animationStart(0);
     setHeroWrapperWidth();
     wrapperEl.current.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationMain;
@@ -140,7 +142,7 @@ const SectionHero = (): JSX.Element => {
     <section className={styles.slider_fullwidth}>
       <div className={styles.slider_swiper}>
         <Loading loaded={loaded} />
-        <div id="slider_swiper_payload" className="visHidden">
+        <div id="slider_swiper_payload">
           <div className="paginationParent">
             <button className={`${styles.nav} ${styles.prev}`} ref={leftNavEl} type="button" onClick={handlerNavClick}>
               <span className="far fa-chevron-left" />
@@ -170,6 +172,7 @@ const SectionHero = (): JSX.Element => {
                 slaveTextBottom={it.textSlave.bottom}
                 id={it.id}
                 anim={it.anim}
+                alt={it.alt}
                 key={it.id}
               />
             ))}
@@ -180,4 +183,4 @@ const SectionHero = (): JSX.Element => {
   );
 };
 
-export default SectionHero;
+export default connector(SectionHero);
