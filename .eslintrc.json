@@ -89,6 +89,9 @@
     "max-len": "off",
     "operator-linebreak": "off",
     "object-curly-newline": "off",
-    "jsx-a11y/anchor-is-valid": "off" // on in release
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
   }
 }

@@ -3,6 +3,7 @@
 @import 'awesome/fontawesome';
 @import 'animations';
 @import 'divider';
+@import 'popup-wrapper';
 
 html {
   font-size: 45%;
@@ -16,6 +17,9 @@ html {
 }
 .visHidden {
   display: none;
+}
+.noscroll {
+  overflow: hidden;
 }
 .logo__logo {
   fill: $color-accent;

@@ -1,0 +1,33 @@
+@import '../../../sass/variables';
+@import '../../../sass/colors';
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $modal-bars-bg-color;
+  padding: $margin-smaller 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.name {
+  color: $color-light;
+  font-family: $font-stack-regular;
+  font-size: $font-string-normal;
+}
+.button {
+  cursor: pointer;
+  color: $color-light;
+  font-size: $font-string-large;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 0 $margin-small;
+  display: flex;
+  align-items: center;
+  &:hover {
+    color: $color-gray;
+  }
+}

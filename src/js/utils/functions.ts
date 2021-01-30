@@ -69,4 +69,21 @@ const windowResize = (): void => {
     elementSliderWrapper.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationMain;
   }, 500);
 };
-export { getTransform, setHeroWrapperWidth, setPreviewSize, windowResize };
+const toggleBodyNoScroll = (value: boolean): null => {
+  try {
+    const bodyTag = document.querySelector('html');
+    if (value && bodyTag) {
+      bodyTag.classList.add('noscroll');
+    } else {
+      bodyTag.classList.remove('noscroll');
+    }
+  } catch {
+    return null;
+  }
+  return null;
+};
+const setTrailingZeros = (num: number, size: number): string => {
+  const stringNum = `${num}`;
+  return stringNum.padStart(size, '0');
+};
+export { getTransform, setHeroWrapperWidth, setPreviewSize, windowResize, toggleBodyNoScroll, setTrailingZeros };

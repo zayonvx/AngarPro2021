@@ -7,6 +7,7 @@ import { windowResize } from '../../utils/functions';
 import Choose from '../section-choose-us/choose';
 import Counters from '../counters/counters';
 import Contacts from '../section-contacts/contacts';
+import PopupWrapper from '../popup-wrapper/popup-wrapper';
 
 const Main = (): JSX.Element => {
   const handlerWindowResize = () => {
@@ -27,6 +28,7 @@ const Main = (): JSX.Element => {
       <Choose />
       <Counters />
       <Contacts />
+      <PopupWrapper />
     </main>
   );
 };

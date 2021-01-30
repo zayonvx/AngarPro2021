@@ -132,7 +132,6 @@ const SectionHero = ({ ...props }: StateProps): JSX.Element => {
     const leftCoord = String(document.documentElement.clientWidth * (0 - slideNumber));
     wrapperEl.current.style.transform = translate.prefix + leftCoord + translate.suffix;
   };
-
   useEffect(() => {
     animationStart(0);
     setHeroWrapperWidth();
@@ -143,6 +142,7 @@ const SectionHero = ({ ...props }: StateProps): JSX.Element => {
       <div className={styles.slider_swiper}>
         <Loading loaded={loaded} />
         <div id="slider_swiper_payload">
+          {/* TODO need move pagination to external element */}
           <div className="paginationParent">
             <button className={`${styles.nav} ${styles.prev}`} ref={leftNavEl} type="button" onClick={handlerNavClick}>
               <span className="far fa-chevron-left" />
@@ -153,7 +153,6 @@ const SectionHero = ({ ...props }: StateProps): JSX.Element => {
               <div className={`${styles.text} ${styles.text_right}`}>далее</div>
             </button>
           </div>
-
           <div
             id="sliderWrapper"
             className={styles.slider_wrapper}

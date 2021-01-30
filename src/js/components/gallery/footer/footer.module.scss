@@ -1,0 +1,29 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/colors';
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: $modal-bars-bg-color;
+  padding: $margin-smaller 0;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (min-width: $tablet-width) {
+    display: flex;
+  }
+}
+.description {
+  color: $color-light;
+  font-family: $font-stack-regular;
+  font-size: $font-string-normal;
+  margin: 0 $margin-small;
+}
+.number {
+  color: $color-light;
+  font-size: $font-string-normal;
+  font-family: $font-stack-regular;
+  margin: 0 $margin-small;
+}
