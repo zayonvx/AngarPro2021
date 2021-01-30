@@ -18,8 +18,10 @@
   left: 0;
   background: rgba(245, 245, 245, 0.8);
 }
-.row {
+.list {
+  list-style: none;
   margin: 0 auto;
+  padding: 0;
   max-width: 1100px;
   position: relative;
   z-index: 1;
@@ -28,7 +30,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.cell {
+.listItem {
   display: flex;
   flex-direction: column;
   align-items: center;
