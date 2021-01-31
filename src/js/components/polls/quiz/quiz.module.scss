@@ -1,0 +1,14 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/colors';
+
+.quiz {
+  background-color: $color-light;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media screen and (min-width: $tablet-width) {
+    width: auto;
+    min-width: 80rem;
+  }
+}

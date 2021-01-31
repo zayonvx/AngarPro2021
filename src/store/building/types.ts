@@ -2,10 +2,13 @@ export const BUILDING_WIDTH_CHANGE = 'BUILDING_WIDTH_CHANGE';
 export const BUILDING_LENGTH_CHANGE = 'BUILDING_LENGTH_CHANGE';
 export const BUILDING_HEIGHT_CHANGE = 'BUILDING_HEIGHT_CHANGE';
 export const BUILDING_REGION_CHANGE = 'BUILDING_REGION_CHANGE';
+export const BUILDING_REGION_STR_CHANGE = 'BUILDING_REGION_STR_CHANGE';
 export const BUILDING_ARCHTYPE_CHANGE = 'BUILDING_ARCHTYPE_CHANGE';
 export const BUILDING_FOUNDATION_CHANGE = 'BUILDING_FOUNDATION_CHANGE';
 export const BUILDING_FLOOR_CHANGE = 'BUILDING_FLOOR_CHANGE';
 export const BUILDING_FENCES_CHANGE = 'BUILDING_FENCES_CHANGE';
+export const BUILDING_SANDWICH_TYPE_CHANGE = 'BUILDING_SANDWICH_TYPE_CHANGE';
+export const BUILDING_TENT_TYPE_CHANGE = 'BUILDING_TENT_TYPE_CHANGE';
 export const BUILDING_GATE_COUNT_CHANGE = 'BUILDING_GATE_COUNT_CHANGE';
 export const BUILDING_GATE_TYPE_CHANGE = 'BUILDING_GATE_TYPE_CHANGE';
 export const BUILDING_GATE_WIDTH_CHANGE = 'BUILDING_GATE_WIDTH_CHANGE';
@@ -19,10 +22,13 @@ export interface BuildingState {
   length: number;
   height: number;
   region: number;
+  regionStr: string;
   archType: number;
   foundation: number;
   floor: number;
   fences: number;
+  sandwichType: number;
+  tentType: number;
   gatesCount: number;
   gatesType: number;
   gatesWidth: number;
@@ -48,6 +54,10 @@ interface BuildingChangeRegion {
   type: typeof BUILDING_REGION_CHANGE;
   payload: number;
 }
+interface BuildingChangeRegionStr {
+  type: typeof BUILDING_REGION_STR_CHANGE;
+  payload: string;
+}
 interface BuildingChangeArchType {
   type: typeof BUILDING_ARCHTYPE_CHANGE;
   payload: number;
@@ -62,6 +72,14 @@ interface BuildingChangeFloor {
 }
 interface BuildingChangeFences {
   type: typeof BUILDING_FENCES_CHANGE;
+  payload: number;
+}
+interface BuildingChangeSandwichType {
+  type: typeof BUILDING_SANDWICH_TYPE_CHANGE;
+  payload: number;
+}
+interface BuildingChangeTentType {
+  type: typeof BUILDING_TENT_TYPE_CHANGE;
   payload: number;
 }
 interface BuildingChangeGatesCount {
@@ -98,10 +116,13 @@ export type BuildingActionsCreators =
   | BuildingChangeLength
   | BuildingChangeHeight
   | BuildingChangeRegion
+  | BuildingChangeRegionStr
   | BuildingChangeArchType
   | BuildingChangeFoundation
   | BuildingChangeFloor
   | BuildingChangeFences
+  | BuildingChangeSandwichType
+  | BuildingChangeTentType
   | BuildingChangeGatesCount
   | BuildingChangeGatesType
   | BuildingChangeGatesWidth

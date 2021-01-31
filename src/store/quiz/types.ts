@@ -3,6 +3,10 @@ export const QUIZ_CHANGE_PAGE = 'QUIZ_CHANGE_PAGE';
 export const QUIZ_TOGGLE_BACK_VISIBLE = 'QUIZ_TOGGLE_BACK_VISIBLE';
 export const QUIZ_TOGGLE_FORWARD_VISIBLE = 'QUIZ_TOGGLE_FORWARD_VISIBLE';
 export const QUIZ_TOGGLE_SEND_VISIBLE = 'QUIZ_TOGGLE_SEND_VISIBLE';
+export const QUIZ_CHILDREN_CHANGE = 'QUIZ_CHILDREN_CHANGE';
+export const QUIZ_NAME_CHANGE = 'QUIZ_NAME_CHANGE';
+export const QUIZ_MAIL_CHANGE = 'QUIZ_MAIL_CHANGE';
+export const QUIZ_TEL_CHANGE = 'QUIZ_TEL_CHANGE';
 
 export interface QuizState {
   visible: boolean;
@@ -10,6 +14,10 @@ export interface QuizState {
   buttonBackVisible: boolean;
   buttonForwardVisible: boolean;
   buttonSendVisible: boolean;
+  children: JSX.Element;
+  name: string;
+  mail: string;
+  tel: string;
 }
 
 interface QuizToggleVisible {
@@ -36,9 +44,32 @@ interface QuizToggleSendVisible {
   type: typeof QUIZ_TOGGLE_SEND_VISIBLE;
   payload: boolean;
 }
+
+interface QuizChangeChildren {
+  type: typeof QUIZ_CHILDREN_CHANGE;
+  payload: JSX.Element;
+}
+
+interface QuizChangeName {
+  type: typeof QUIZ_NAME_CHANGE;
+  payload: string;
+}
+interface QuizChangeMail {
+  type: typeof QUIZ_MAIL_CHANGE;
+  payload: string;
+}
+interface QuizChangeTel {
+  type: typeof QUIZ_TEL_CHANGE;
+  payload: string;
+}
+
 export type QuizActionsCreators =
   | QuizToggleVisible
   | QuizChangePage
   | QuizToggleBackVisible
   | QuizToggleForwardVisible
-  | QuizToggleSendVisible;
+  | QuizToggleSendVisible
+  | QuizChangeChildren
+  | QuizChangeName
+  | QuizChangeMail
+  | QuizChangeTel;

@@ -1,0 +1,12 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/colors';
+
+.footer {
+  background-color: $color-light;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: $color-light;
+  padding: $margin-small $margin-normal;
+  margin-top: $margin-normal;
+}

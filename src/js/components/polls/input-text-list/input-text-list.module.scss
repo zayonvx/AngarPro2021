@@ -1,0 +1,12 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/colors';
+
+.list {
+  list-style: none;
+}
+.listItem {
+  display: flex;
+}
+.listItem:not(:last-child) {
+  margin-bottom: $margin-small;
+}

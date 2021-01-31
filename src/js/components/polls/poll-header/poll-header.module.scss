@@ -1,0 +1,23 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/colors';
+
+.header {
+  background-color: $color-accent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $color-light;
+  padding: $margin-small $margin-normal;
+  margin-bottom: $margin-big;
+}
+.text {
+  font-family: $font-stack-regular;
+  font-size: $font-string-normal;
+}
+.button {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font-size: $font-string-large;
+  cursor: pointer;
+}

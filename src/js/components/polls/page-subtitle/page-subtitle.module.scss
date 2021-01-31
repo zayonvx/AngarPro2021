@@ -1,0 +1,9 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/colors';
+
+.text {
+  font-family: $font-stack-regular;
+  font-size: $font-string-large;
+  color: $color-dark;
+  margin-bottom: $margin-normal;
+}

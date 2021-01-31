@@ -9,5 +9,4 @@ export const handlerClickPopup = (): void => {
     store.dispatch(changeCurrentPhoto('001'));
   }
 };
-
-export const noErrors = null;
+export const noError = null;

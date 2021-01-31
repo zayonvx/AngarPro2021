@@ -1,15 +1,16 @@
 import React from 'react';
 import styles from './slide.module.scss';
+import { handlerOnClickCalculator } from '../polls/quiz/_handlers';
 
-const ButtonCalculator = (): JSX.Element => {
-  const handlerOnClick = () => null;
-
-  return (
-    <button className={`${styles.buttonCalculator} button button--accent`} type="button" onClick={handlerOnClick}>
-      <span className="button__text">калькулятор</span>
-      <i className="far fa-arrow-right button__icon" />
-    </button>
-  );
-};
+const ButtonCalculator = (): JSX.Element => (
+  <button
+    className={`${styles.buttonCalculator} button button__accent button__accent--light`}
+    type="button"
+    onClick={handlerOnClickCalculator}
+  >
+    <span className="button__text">калькулятор</span>
+    <i className="far fa-arrow-right button__icon" />
+  </button>
+);
 
 export default ButtonCalculator;

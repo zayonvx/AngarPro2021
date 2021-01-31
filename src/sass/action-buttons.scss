@@ -17,8 +17,13 @@
   font-family: $font-stack-bold;
   cursor: pointer;
 }
-.button--transparent {
+
+$disable-color: $color-gray;
+
+.button__transparent {
   background-color: transparent;
+}
+.button__transparent--light {
   color: $color-light;
   &:hover {
     background-color: $color-accent;
@@ -26,8 +31,21 @@
     color: $color-light;
   }
 }
-.button--accent {
-  color: $color-light;
+.button__transparent--dark-gray {
+  color: $color-dark-gray;
+  border-color: $color-dark-gray;
+}
+.button__transparent--disabled {
+  color: $disable-color;
+  border-color: $disable-color;
+  pointer-events: none;
+  &:hover {
+    color: $disable-color;
+    border-color: $disable-color;
+  }
+}
+
+.button__accent {
   background-color: $color-accent;
   border: solid $color-accent;
   &:hover {
@@ -36,6 +54,29 @@
     color: $color-accent;
   }
 }
+.button__accent--light {
+  color: $color-light;
+}
+.button__accent--dark-gray {
+  color: $color-light;
+  &:hover {
+    background-color: $color-dark-gray;
+    border-color: $color-dark-gray;
+    color: $color-light;
+  }
+}
+.button__accent--disabled {
+  color: $color-light;
+  background-color: $disable-color;
+  border-color: $disable-color;
+  pointer-events: none;
+  &:hover {
+    background-color: $disable-color;
+    color: $color-light;
+    border-color: $disable-color;
+  }
+}
+
 .button__icon {
   opacity: 0;
   transition: opacity 0.3s ease, left 0.3s ease;

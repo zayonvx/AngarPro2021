@@ -1,0 +1,25 @@
+@import '../../../../../sass/variables';
+@import '../../../../../sass/colors';
+
+.fieldSet {
+  border: none;
+}
+.input {
+  padding: $margin-smaller $margin-normal;
+  color: $color-dark;
+  min-width: 30rem;
+  border-radius: 0.5rem;
+  border: 0.2rem solid $color-dark;
+  transition: all 400ms;
+  outline: none;
+  font-size: $font-string-normal;
+  font-family: $font-stack-regular;
+  &:hover {
+    border-color: $color-accent;
+  }
+}
+.legend {
+  margin-left: $margin-small;
+  font-family: $font-stack-regular;
+  font-size: $font-string-small;
+}
