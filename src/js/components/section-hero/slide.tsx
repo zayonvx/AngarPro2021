@@ -39,7 +39,7 @@ const Slide = ({ ...props }: PropsSlides): JSX.Element => {
   useEffect(() => {
     image.current.src = fileName;
   });
-  //TODO need to add <picture>
+  // TODO need to add <picture>
   return (
     <div className={styles.slide}>
       <img src="" className={styles.image} onLoad={handlerLoad} id={id} alt={alt} ref={image} />

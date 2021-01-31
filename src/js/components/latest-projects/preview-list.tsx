@@ -36,7 +36,7 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
   useEffect(() => {
     setPreviewSize();
   });
-  //TODO need to add <picture>
+  // TODO need to add <picture>
   return (
     <ul className={`fadeIn ${styles.list}`}>
       {order.map((it) => {
