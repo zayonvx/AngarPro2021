@@ -19,8 +19,6 @@
   position: relative;
   cursor: pointer;
   background-color: $color-light;
-  display: flex;
-  justify-content: center;
   animation-duration: 400ms;
   &:hover .image_wrapper {
     top: -8.5rem;
@@ -40,6 +38,8 @@
   border: none;
   outline: none;
   padding: 0;
+  display: flex;
+  justify-content: center;
 }
 .image_wrapper {
   position: relative;

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Image from 'next/image';
 import styles from './preview-list.module.scss';
 import { projects, projectsOrder } from '../../database/gallery-base';
 import { setPreviewSize } from '../../utils/functions';
@@ -37,6 +36,7 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
   useEffect(() => {
     setPreviewSize();
   });
+  //TODO need to add <picture>
   return (
     <ul className={`fadeIn ${styles.list}`}>
       {order.map((it) => {
@@ -47,10 +47,9 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
           <li className={`fadeIn ${styles.list_item} preview__list-item`} key={id}>
             <button className={styles.button} onClick={handlerOnClick} type="button" id={`gp${id}`}>
               <div className={`${styles.image_wrapper} preview__image-wrapper`}>
-                <Image
+                <img
                   className={`${styles.image} preview__image`}
                   src={`/img/photos/gallery/preview/preview_${id}.jpg`}
-                  layout="fill"
                   alt="Превью фотогалереи"
                 />
                 <div className={styles.triangle} />

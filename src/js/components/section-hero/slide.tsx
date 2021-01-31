@@ -1,5 +1,4 @@
-import React, { SyntheticEvent } from 'react';
-import Image from 'next/image';
+import React, { SyntheticEvent, useEffect, useRef } from 'react';
 import styles from './slide.module.scss';
 import ButtonCalculator from './button-calculator';
 import ButtonQuiz from './button-quiz';
@@ -25,6 +24,7 @@ const Slide = ({ ...props }: PropsSlides): JSX.Element => {
   const { id } = props;
   const { anim } = props;
   const { alt } = props;
+  const image: React.Ref<HTMLImageElement> = useRef(null);
 
   const animText = anim ? 'fadeInUp' : 'with_animation';
   const animButtons = anim ? 'fadeIn' : 'with_animation';
@@ -36,9 +36,13 @@ const Slide = ({ ...props }: PropsSlides): JSX.Element => {
     }
   };
 
+  useEffect(() => {
+    image.current.src = fileName;
+  });
+  //TODO need to add <picture>
   return (
     <div className={styles.slide}>
-      <Image src={fileName} layout="fill" className={styles.image} onLoad={handlerLoad} id={id} alt={alt} />
+      <img src="" className={styles.image} onLoad={handlerLoad} id={id} alt={alt} ref={image} />
       <div className={styles.wrapper}>
         <h2 className={`${styles.masterText} ${styles.animated} ${animText}`} id={`${id}Master`}>
           {masterText}

@@ -22,6 +22,7 @@ const Main = (): JSX.Element => {
   return (
     <main className={styles.main} id="main">
       <h1 className="visHidden">Строительство каркасных зданий из сендвич-панелей, профнастила и тента</h1>
+
       <SectionHero />
       <SectionContent />
       <LatestProjects />
