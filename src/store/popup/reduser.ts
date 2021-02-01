@@ -1,5 +1,11 @@
-import { initialState } from '../initial-state';
-import { POPUP_CHILDREN_CHANGE, POPUP_TOGGLE_VISIBLE, PopupActionsCreators, PopupState } from './types';
+import initialState from '../initial-state';
+import {
+  POPUP_CHILDREN_CHANGE,
+  POPUP_TOGGLE_CLOSEABLE,
+  POPUP_TOGGLE_VISIBLE,
+  PopupActionsCreators,
+  PopupState,
+} from './types';
 
 const popupRedusers = (state = initialState.popup, action: PopupActionsCreators): PopupState => {
   switch (action.type) {
@@ -7,6 +13,8 @@ const popupRedusers = (state = initialState.popup, action: PopupActionsCreators)
       return { ...state, visible: action.payload };
     case POPUP_CHILDREN_CHANGE:
       return { ...state, children: action.payload };
+    case POPUP_TOGGLE_CLOSEABLE:
+      return { ...state, closeable: action.payload };
     default:
       return state;
   }

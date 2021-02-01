@@ -20,4 +20,8 @@
   color: inherit;
   font-size: $font-string-large;
   cursor: pointer;
+  outline: none;
+  &:hover {
+    color: $color-gray;
+  }
 }

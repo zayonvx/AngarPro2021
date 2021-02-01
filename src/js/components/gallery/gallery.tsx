@@ -6,11 +6,11 @@ import PaginationChevron from '../pagination-chevron/pagination-chevron';
 import { setTrailingZeros } from '../../utils/functions';
 import store from '../../../store/store';
 import { changeCurrentPhoto, changeGalleryCoordinates } from '../../../store/gallery/actions';
-import { IInitialState } from '../../../store/initial-state';
 import Footer from './footer/footer';
 import ObjectMap from './object-map/object-map';
 import ModalHeader from '../modal-header/modal-header';
-import { handlerClickPopup } from '../../utils/handlers';
+import { togglePopupVisible } from '../../../store/popup/actions';
+import { IInitialState } from '../../../store/types';
 
 interface Props {
   projectID: string;
@@ -37,6 +37,11 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
     store.dispatch(changeCurrentPhoto(newImage));
   };
 
+  const handlerClose = () => {
+    store.dispatch(changeCurrentPhoto('001'));
+    store.dispatch(togglePopupVisible(false));
+  };
+
   const getImagePath = `/img/photos/gallery/${project.id}__${currentPhoto}-photo-1x.jpg`;
 
   return (
@@ -44,7 +49,7 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
       <div className={styles.wrapper}>
         <img src={getImagePath} className={styles.image} alt="Фото ангара" />
         <PaginationChevron handlerClickNext={handlerClickNext} handlerClickPrev={handlerClickPrev} />
-        <ModalHeader header={project.name} buttonMapVisible zedIndex={300} handlerClose={handlerClickPopup} />
+        <ModalHeader header={project.name} buttonMapVisible zedIndex={300} handlerClose={handlerClose} />
         <Footer
           projecDescription={project.description}
           projectTotalPhotos={project.photos.length}

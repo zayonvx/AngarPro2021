@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import styles from './preview-list.module.scss';
 import { projects, projectsOrder } from '../../database/gallery-base';
 import { setPreviewSize } from '../../utils/functions';
-import { IInitialState } from '../../../store/initial-state';
 import store from '../../../store/store';
-import { changePopupChildren, togglePopupVisible } from '../../../store/popup/actions';
+import { changePopupChildren, togglePopupCloseable, togglePopupVisible } from '../../../store/popup/actions';
 import Gallery from '../gallery/gallery';
+import { IInitialState } from '../../../store/types';
 
 interface Props {
   collapsed: boolean;
@@ -28,9 +28,9 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
     const e = event as MouseEvent;
     const project = e.currentTarget as Element;
     const projectID = project.id.slice(2);
+    store.dispatch(togglePopupCloseable(true));
     store.dispatch(togglePopupVisible(true));
-    const layout = <Gallery projectID={projectID} />;
-    store.dispatch(changePopupChildren(layout));
+    store.dispatch(changePopupChildren(<Gallery projectID={projectID} />));
   };
 
   useEffect(() => {

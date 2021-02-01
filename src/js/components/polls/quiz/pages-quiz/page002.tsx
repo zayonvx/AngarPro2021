@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PageSubtitle from '../../page-subtitle/page-subtitle';
 import PollRadioList from '../../radio-list/poll-radio-list';
-import { IInitialState } from '../../../../../store/initial-state';
 import store from '../../../../../store/store';
 import { buildingChangeSandwichType } from '../../../../../store/building/actions';
+import { IInitialState } from '../../../../../store/types';
 
 interface Props {
   sandwichType: number;

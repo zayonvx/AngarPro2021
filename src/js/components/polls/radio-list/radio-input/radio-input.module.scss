@@ -10,12 +10,12 @@
   min-width: 30rem;
   background-color: transparent;
   border-radius: 0.5rem;
-  border: 0.2rem solid $color-accent;
+  border: 0.2rem solid $color-dark;
   transition: all 400ms;
   outline: none;
   &:hover {
-    color: $color-light;
-    background-color: $color-accent;
+    color: $color-accent;
+    border: 0.2rem solid $color-accent;
   }
 }
 .text {

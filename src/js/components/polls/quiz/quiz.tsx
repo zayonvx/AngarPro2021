@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styles from './quiz.module.scss';
-import { IInitialState } from '../../../../store/initial-state';
 import PollHeader from '../poll-header/poll-header';
 import PollFooter from '../poll-footer/poll-footer';
 import store from '../../../../store/store';
 import { togglePopupVisible } from '../../../../store/popup/actions';
+import { IInitialState } from '../../../../store/types';
 
 interface Props {
   children: JSX.Element;

@@ -1,4 +1,4 @@
-import { initialState } from '../initial-state';
+import initialState from '../initial-state';
 import {
   CALCULATOR_CHANGE_PAGE,
   CALCULATOR_TOGGLE_BACK_VISIBLE,

@@ -7,7 +7,7 @@
   margin: 0;
 }
 .wrapper {
-  margin: 0 auto;
+  margin: 0 auto $margin-normal;
   max-width: 420px;
   display: flex;
   flex-direction: column;
@@ -52,16 +52,17 @@
   font-size: $font-string-normal;
 }
 .header_additional {
-  margin: 0;
+  margin-bottom: $margin-small;
   text-align: left;
   text-transform: none;
   letter-spacing: 0.15rem;
   color: $color-dark-gray;
   font-family: $font-stack-light;
-  font-size: $font-string-normal;
+  font-size: $font-string-large;
 }
 .text {
   font-family: $font-stack-regular;
-  font-size: $font-string-small;
+  font-size: $font-string-normal;
   color: $color-dark;
+  margin-bottom: $margin-smaller;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { IInitialState } from '../../../../store/initial-state';
+import { IInitialState } from '../../../../store/types';
 
 interface Props {
   visible: boolean;

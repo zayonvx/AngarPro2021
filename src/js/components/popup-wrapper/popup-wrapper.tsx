@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react';
-import { connect, ConnectedProps } from 'react-redux';
-import { IInitialState } from '../../../store/initial-state';
+import { connect } from 'react-redux';
 import { toggleBodyNoScroll } from '../../utils/functions';
-import { handlerClickPopup } from '../../utils/handlers';
+import store from '../../../store/store';
+import { togglePopupVisible } from '../../../store/popup/actions';
+import { IInitialState } from '../../../store/types';
 
-const mapState = (state: IInitialState) => ({ visible: state.popup.visible, children: state.popup.children });
-const connector = connect(mapState);
-type StateProps = ConnectedProps<typeof connector>;
+interface Props {
+  visible: boolean;
+  children: JSX.Element;
+  closeable: boolean;
+}
 
-const PopupWrapper = ({ ...props }: StateProps): JSX.Element => {
+const PopupWrapper = ({ ...props }: Props): JSX.Element => {
   const { visible } = props;
   const { children } = props;
+  const { closeable } = props;
   toggleBodyNoScroll(visible);
   const className = visible ? 'popup active' : 'popup';
 
@@ -19,6 +23,12 @@ const PopupWrapper = ({ ...props }: StateProps): JSX.Element => {
     e.stopPropagation();
     const { key } = e;
     return key;
+  };
+
+  const handlerClickPopup = (): void => {
+    if (closeable) {
+      store.dispatch(togglePopupVisible(false));
+    }
   };
 
   useEffect(() => {
@@ -43,4 +53,10 @@ const PopupWrapper = ({ ...props }: StateProps): JSX.Element => {
   );
 };
 
-export default connector(PopupWrapper);
+const mapState = (state: IInitialState) => ({
+  visible: state.popup.visible,
+  children: state.popup.children,
+  closeable: state.popup.closeable,
+});
+
+export default connect(mapState)(PopupWrapper);

@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import styles from './load-more-button.module.scss';
 import store from '../../../store/store';
 import { togglePreviewCollapsed } from '../../../store/preview/actions';
-import { IInitialState } from '../../../store/initial-state';
+import { IInitialState } from '../../../store/types';
 
 const mapState = (state: IInitialState) => ({ visible: state.preview.collapsed });
 const connector = connect(mapState);
@@ -17,7 +17,11 @@ const LoadMoreButton = ({ ...props }: StateProps): JSX.Element => {
   const text = visible ? 'показать все' : 'свернуть';
 
   return (
-    <button className={`button button--accent ${styles.loadMore}`} type="button" onClick={onClick}>
+    <button
+      className={`button button__accent button__accent--dark-gray ${styles.loadMore}`}
+      type="button"
+      onClick={onClick}
+    >
       {text}
     </button>
   );

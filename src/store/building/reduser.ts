@@ -1,4 +1,4 @@
-import { initialState } from '../initial-state';
+import initialState from '../initial-state';
 import {
   BUILDING_ARCHTYPE_CHANGE,
   BUILDING_DOOR_COUNT_CHANGE,

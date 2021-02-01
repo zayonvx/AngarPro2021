@@ -1,4 +1,4 @@
-import { initialState } from '../initial-state';
+import initialState from '../initial-state';
 import {
   GALLERY_CHANGE_COORDINATES,
   GALLERY_CHANGE_CURRENT_PHOTO,

@@ -1,4 +1,4 @@
-import { initialState } from '../initial-state';
+import initialState from '../initial-state';
 import {
   QUIZ_CHANGE_PAGE,
   QUIZ_CHILDREN_CHANGE,

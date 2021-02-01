@@ -5,12 +5,13 @@ import {
   quizChangePage,
 } from '../../../../store/quiz/actions';
 import QuizPage001 from './pages-quiz/page001';
-import { changePopupChildren, togglePopupVisible } from '../../../../store/popup/actions';
+import { changePopupChildren, togglePopupCloseable, togglePopupVisible } from '../../../../store/popup/actions';
 import Quiz from './quiz';
 import { calculatorChangePage } from '../../../../store/calculator/actions';
 import Calculator from '../calculator/calculator';
 
 export const handlerOnClickQuiz = (): void => {
+  store.dispatch(togglePopupCloseable(false));
   store.dispatch(quizChangePage(1));
   store.dispatch(togglePopupVisible(true));
   store.dispatch(quizChangeChildren(<QuizPage001 />));

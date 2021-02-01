@@ -11,3 +11,14 @@ export const quizDefaultCranePower = [
   { id: 4, power: '5,0т' },
   { id: 5, power: '8,0т' },
 ];
+export const quizPostConst = {
+  sandwich: {
+    types: ['mineral', 'PIR', 'stirol'],
+  },
+  fences: {
+    types: ['blockTent', 'blockTent', 'blockTent'],
+  },
+  tent: {
+    heat: ['cold', 'warm'],
+  },
+};

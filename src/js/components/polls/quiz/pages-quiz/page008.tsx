@@ -2,9 +2,9 @@ import React, { SyntheticEvent, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PageSubtitle from '../../page-subtitle/page-subtitle';
 import InputTextList from '../../input-text-list/input-text-list';
-import { IInitialState } from '../../../../../store/initial-state';
 import store from '../../../../../store/store';
 import { quizChangeMail, quizChangeName, quizChangeTel } from '../../../../../store/quiz/actions';
+import { IInitialState } from '../../../../../store/types';
 
 interface Props {
   name: string;
@@ -40,7 +40,8 @@ const QuizPage008 = ({ ...props }: Props): JSX.Element => {
   };
 
   useEffect(() => {
-    const buttonForward = document.getElementById('buttonForward');
+    // TODO veryfications of inputs
+    const buttonForward = document.getElementById('buttonSend');
     if (name === '' || mail === '' || tel === '') {
       buttonForward.classList.add('button__accent--disabled');
     } else {

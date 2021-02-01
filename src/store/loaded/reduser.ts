@@ -1,4 +1,4 @@
-import { initialState } from '../initial-state';
+import initialState from '../initial-state';
 import { LoadActionsCreators, LOADED_TOGGLE_GALLERY, LOADED_TOGGLE_SLIDE, LoadState } from './types';
 
 const loadedRedusers = (state = initialState.loaded, action: LoadActionsCreators): LoadState => {

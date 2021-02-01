@@ -4,7 +4,7 @@ import PollRadioList from '../../radio-list/poll-radio-list';
 import store from '../../../../../store/store';
 import PageSubtitle from '../../page-subtitle/page-subtitle';
 import { buildingChangeFences } from '../../../../../store/building/actions';
-import { IInitialState } from '../../../../../store/initial-state';
+import { IInitialState } from '../../../../../store/types';
 
 interface Props {
   fences: number;

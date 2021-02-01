@@ -2,9 +2,9 @@ import React, { SyntheticEvent, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PageSubtitle from '../../page-subtitle/page-subtitle';
 import InputTextList from '../../input-text-list/input-text-list';
-import { IInitialState } from '../../../../../store/initial-state';
 import store from '../../../../../store/store';
 import { buildingChangeRegionStr } from '../../../../../store/building/actions';
+import { IInitialState } from '../../../../../store/types';
 
 interface Props {
   region: string;

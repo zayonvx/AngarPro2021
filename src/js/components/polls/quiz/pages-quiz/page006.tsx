@@ -1,11 +1,11 @@
 import React, { SyntheticEvent, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PageSubtitle from '../../page-subtitle/page-subtitle';
-import { IInitialState } from '../../../../../store/initial-state';
 import InputRange from '../../input-range/input-range';
 import { quizDefaultSizes } from '../_const';
 import store from '../../../../../store/store';
 import { buildingChangeHeight } from '../../../../../store/building/actions';
+import { IInitialState } from '../../../../../store/types';
 
 interface Props {
   height: number;
@@ -19,8 +19,9 @@ const QuizPage006 = ({ ...props }: Props): JSX.Element => {
     store.dispatch(buildingChangeHeight(newHeight));
   };
 
-  const defaultWidth = Math.round((quizDefaultSizes.heights.min + quizDefaultSizes.heights.max) / 2);
-  const currentWidth = height === 0 ? defaultWidth : height;
+  const defaultHeigth = Math.round((quizDefaultSizes.heights.min + quizDefaultSizes.heights.max) / 2);
+  const currentHeigth = height === 0 ? defaultHeigth : height;
+  store.dispatch(buildingChangeHeight(currentHeigth));
   const params = quizDefaultSizes.heights;
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const QuizPage006 = ({ ...props }: Props): JSX.Element => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>
       <PageSubtitle text="Задайте высоту до несущих конструкций" />
-      <InputRange params={params} value={currentWidth} prefix="" suffix="м" handlerRangeChange={handler} />
+      <InputRange params={params} value={currentHeigth} prefix="" suffix="м" handlerRangeChange={handler} />
     </div>
   );
 };
