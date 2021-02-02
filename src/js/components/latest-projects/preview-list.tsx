@@ -6,7 +6,7 @@ import { setPreviewSize } from '../../utils/functions';
 import store from '../../../store/store';
 import { changePopupChildren, togglePopupCloseable, togglePopupVisible } from '../../../store/popup/actions';
 import Gallery from '../gallery/gallery';
-import { IInitialState } from '../../../store/types';
+import { IPreviewState } from '../../../store/preview/types';
 
 interface Props {
   collapsed: boolean;
@@ -69,7 +69,7 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IPreviewState) => ({
   collapsed: state.preview.collapsed,
   previewsInRow: state.preview.previewsInRow,
   previewsRows: state.preview.previewsRows,

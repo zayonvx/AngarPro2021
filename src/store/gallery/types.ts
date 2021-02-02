@@ -2,10 +2,12 @@ export const GALLERY_CHANGE_CURRENT_PHOTO = 'GALLERY_CHANGE_CURRENT_PHOTO';
 export const GALLERY_TOGGLE_MAP_SHOW = 'GALLERY_TOGGLE_MAP_SHOW';
 export const GALLERY_CHANGE_COORDINATES = 'GALLERY_CHANGE_COORDINATES';
 
-export interface GalleryState {
-  currentPhoto: string;
-  mapVisible: boolean;
-  coordinates: number[];
+export interface IGalleryState {
+  gallery: {
+    currentPhoto: string;
+    mapVisible: boolean;
+    coordinates: number[];
+  };
 }
 
 interface ChangeCurrentPhoto {

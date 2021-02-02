@@ -5,7 +5,9 @@ import PollHeader from '../poll-header/poll-header';
 import PollFooter from '../poll-footer/poll-footer';
 import store from '../../../../store/store';
 import { togglePopupVisible } from '../../../../store/popup/actions';
-import { IInitialState } from '../../../../store/types';
+import { IQuizState } from '../../../../store/quiz/types';
+
+// TODO add span and crane pages
 
 interface Props {
   children: JSX.Element;
@@ -25,7 +27,7 @@ const Quiz = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IQuizState) => ({
   children: state.quiz.children,
 });
 

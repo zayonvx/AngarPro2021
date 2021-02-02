@@ -17,25 +17,28 @@ export const BUILDING_DOOR_COUNT_CHANGE = 'BUILDING_DOOR_COUNT_CHANGE';
 export const BUILDING_DOOR_TYPE_CHANGE = 'BUILDING_DOOR_TYPE_CHANGE';
 export const BUILDING_WINDOWS_TYPE_CHANGE = 'BUILDING_WINDOWS_TYPE_CHANGE';
 
-export interface BuildingState {
-  width: number;
-  length: number;
-  height: number;
-  region: number;
-  regionStr: string;
-  archType: number;
-  foundation: number;
-  floor: number;
-  fences: number;
-  sandwichType: number;
-  tentType: number;
-  gatesCount: number;
-  gatesType: number;
-  gatesWidth: number;
-  gatesHeight: number;
-  doorCount: number;
-  doorType: number;
-  windowsType: number;
+export interface IBuildingState {
+  building: {
+    width: number;
+    length: number;
+    height: number;
+    angle: number;
+    region: number;
+    regionStr: string;
+    archType: number;
+    foundation: number;
+    floor: number;
+    fences: number;
+    sandwichType: number;
+    tentType: number;
+    gatesCount: number;
+    gatesType: number;
+    gatesWidth: number;
+    gatesHeight: number;
+    doorsCount: number;
+    doorsType: number;
+    windowsRows: number;
+  };
 }
 
 interface BuildingChangeWidth {

@@ -2,7 +2,7 @@ import { sliderParameters } from '../database/slides';
 import store from '../../store/store';
 import { changePreviewsInRow, changePreviewsRows } from '../../store/preview/actions';
 
-const getTransform = (el: Element): string[] => {
+export const getTransform = (el: Element): string[] => {
   const thing = /matrix(?:(3d)\(-{0,1}\d+(?:, -{0,1}\d+)*(?:, (-{0,1}\d+))(?:, (-{0,1}\d+))(?:, (-{0,1}\d+)), -{0,1}\d+\)|\(-{0,1}\d+(?:, -{0,1}\d+)*(?:, (-{0,1}\d+))(?:, (-{0,1}\d+))\))/;
   const transform = window.getComputedStyle(el, null).getPropertyValue('-webkit-transform');
   const results = thing.exec(transform); // transform.match(thing);
@@ -13,7 +13,7 @@ const getTransform = (el: Element): string[] => {
   results.push(String(0));
   return results.slice(5, 8); // returns the [X,Y,Z,1] values
 };
-const setHeroWrapperWidth = (): void => {
+export const setHeroWrapperWidth = (): void => {
   const element = document.getElementById('sliderWrapper');
   element.style.transitionDuration = '0s';
   const width = document.documentElement.clientWidth;
@@ -22,7 +22,7 @@ const setHeroWrapperWidth = (): void => {
   //   // document.getElementById(it.id).style.width = `${String(width)}px`;
   // });
 };
-const setPreviewSize = (): void => {
+export const setPreviewSize = (): void => {
   const { clientWidth } = document.documentElement;
   let previewsInRow = 7;
   let previewsRows = 2;
@@ -57,7 +57,7 @@ const setPreviewSize = (): void => {
     it.setAttribute('style', styleLi);
   });
 };
-const windowResize = (): void => {
+export const windowResize = (): void => {
   const elementSliderWrapper = document.getElementById('sliderWrapper');
   setHeroWrapperWidth();
   setPreviewSize();
@@ -69,7 +69,7 @@ const windowResize = (): void => {
     elementSliderWrapper.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationMain;
   }, 500);
 };
-const toggleBodyNoScroll = (value: boolean): null => {
+export const toggleBodyNoScroll = (value: boolean): null => {
   try {
     const bodyTag = document.querySelector('html');
     if (value && bodyTag) {
@@ -82,8 +82,8 @@ const toggleBodyNoScroll = (value: boolean): null => {
   }
   return null;
 };
-const setTrailingZeros = (num: number, size: number): string => {
+export const setTrailingZeros = (num: number, size: number): string => {
   const stringNum = `${num}`;
   return stringNum.padStart(size, '0');
 };
-export { getTransform, setHeroWrapperWidth, setPreviewSize, windowResize, toggleBodyNoScroll, setTrailingZeros };
+export const convertDegToRad = (degrees: number): number => (degrees * Math.PI) / 180;

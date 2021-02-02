@@ -1,13 +1,13 @@
-import initialState from '../initial-state';
+import initialState from './initial-state';
 import {
+  IPopupState,
   POPUP_CHILDREN_CHANGE,
   POPUP_TOGGLE_CLOSEABLE,
   POPUP_TOGGLE_VISIBLE,
   PopupActionsCreators,
-  PopupState,
 } from './types';
 
-const popupRedusers = (state = initialState.popup, action: PopupActionsCreators): PopupState => {
+const popupRedusers = (state = initialState.popup, action: PopupActionsCreators): IPopupState['popup'] => {
   switch (action.type) {
     case POPUP_TOGGLE_VISIBLE:
       return { ...state, visible: action.payload };

@@ -12,6 +12,7 @@ interface Post {
   height: number;
   craneHeight: number;
   cranePower: number;
+
 }
 
 export type QuizIntefaces = Post;

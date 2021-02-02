@@ -5,7 +5,7 @@ import InputRange from '../../input-range/input-range';
 import { quizDefaultSizes } from '../_const';
 import store from '../../../../../store/store';
 import { buildingChangeWidth } from '../../../../../store/building/actions';
-import { IInitialState } from '../../../../../store/types';
+import { IBuildingState } from '../../../../../store/building/types';
 
 interface Props {
   width: number;
@@ -32,7 +32,7 @@ const QuizPage004 = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IBuildingState) => ({
   width: state.building.width,
 });
 

@@ -4,7 +4,7 @@ import PageSubtitle from '../../page-subtitle/page-subtitle';
 import InputTextList from '../../input-text-list/input-text-list';
 import store from '../../../../../store/store';
 import { buildingChangeRegionStr } from '../../../../../store/building/actions';
-import { IInitialState } from '../../../../../store/types';
+import { IBuildingState } from '../../../../../store/building/types';
 
 interface Props {
   region: string;
@@ -36,7 +36,7 @@ const QuizPage007 = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IBuildingState) => ({
   region: state.building.regionStr,
 });
 

@@ -1,13 +1,13 @@
-import initialState from '../initial-state';
+import initialState from './initial-state';
 import {
   CHANGE_PREVIEWS_IN_ROW,
   CHANGE_PREVIEWS_ROWS,
+  IPreviewState,
   PreviewActionsCreators,
-  PreviewState,
   TOGGLE_PREVIEW_COLLAPSED,
 } from './types';
 
-const previewRedusers = (state = initialState.preview, action: PreviewActionsCreators): PreviewState => {
+const previewRedusers = (state = initialState.preview, action: PreviewActionsCreators): IPreviewState['preview'] => {
   switch (action.type) {
     case TOGGLE_PREVIEW_COLLAPSED:
       return { ...state, collapsed: action.payload };

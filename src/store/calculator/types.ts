@@ -3,11 +3,14 @@ export const CALCULATOR_CHANGE_PAGE = 'CALCULATOR_CHANGE_PAGE';
 export const CALCULATOR_TOGGLE_BACK_VISIBLE = 'CALCULATOR_TOGGLE_BACK_VISIBLE';
 export const CALCULATOR_TOGGLE_FORWARD_VISIBLE = 'CALCULATOR_TOGGLE_FORWARD_VISIBLE';
 
-export interface CalculatorState {
-  visible: boolean;
-  currentPage: number;
-  buttonBackVisible: boolean;
-  buttonForwardVisible: boolean;
+export interface ICalculatorState {
+  calculator: {
+    visible: boolean;
+    currentPage: number;
+    buttonBackVisible: boolean;
+    buttonForwardVisible: boolean;
+    children: null;
+  };
 }
 
 interface CalculatorToggleVisible {

@@ -3,9 +3,9 @@ import { connect, ConnectedProps } from 'react-redux';
 import styles from './load-more-button.module.scss';
 import store from '../../../store/store';
 import { togglePreviewCollapsed } from '../../../store/preview/actions';
-import { IInitialState } from '../../../store/types';
+import { IPreviewState } from '../../../store/preview/types';
 
-const mapState = (state: IInitialState) => ({ visible: state.preview.collapsed });
+const mapState = (state: IPreviewState) => ({ visible: state.preview.collapsed });
 const connector = connect(mapState);
 type StateProps = ConnectedProps<typeof connector>;
 

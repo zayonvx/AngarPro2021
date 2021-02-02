@@ -1,4 +1,4 @@
-import initialState from '../initial-state';
+import initialState from './initial-state';
 import {
   BUILDING_ARCHTYPE_CHANGE,
   BUILDING_DOOR_COUNT_CHANGE,
@@ -19,10 +19,13 @@ import {
   BUILDING_WIDTH_CHANGE,
   BUILDING_WINDOWS_TYPE_CHANGE,
   BuildingActionsCreators,
-  BuildingState,
+  IBuildingState,
 } from './types';
 
-const buildingRedusers = (state = initialState.building, action: BuildingActionsCreators): BuildingState => {
+const buildingRedusers = (
+  state = initialState.building,
+  action: BuildingActionsCreators,
+): IBuildingState['building'] => {
   switch (action.type) {
     case BUILDING_WIDTH_CHANGE:
       return { ...state, width: action.payload };
@@ -55,11 +58,11 @@ const buildingRedusers = (state = initialState.building, action: BuildingActions
     case BUILDING_GATE_HEIGHT_CHANGE:
       return { ...state, gatesHeight: action.payload };
     case BUILDING_DOOR_COUNT_CHANGE:
-      return { ...state, doorCount: action.payload };
+      return { ...state, doorsCount: action.payload };
     case BUILDING_DOOR_TYPE_CHANGE:
-      return { ...state, doorType: action.payload };
+      return { ...state, doorsType: action.payload };
     case BUILDING_WINDOWS_TYPE_CHANGE:
-      return { ...state, windowsType: action.payload };
+      return { ...state, windowsRows: action.payload };
     default:
       return state;
   }

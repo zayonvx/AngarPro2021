@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { toggleBodyNoScroll } from '../../utils/functions';
 import store from '../../../store/store';
 import { togglePopupVisible } from '../../../store/popup/actions';
-import { IInitialState } from '../../../store/types';
+import { IPopupState } from '../../../store/popup/types';
 
 interface Props {
   visible: boolean;
@@ -53,7 +53,7 @@ const PopupWrapper = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IPopupState) => ({
   visible: state.popup.visible,
   children: state.popup.children,
   closeable: state.popup.closeable,

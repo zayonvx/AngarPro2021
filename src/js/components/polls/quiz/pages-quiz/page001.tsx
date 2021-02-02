@@ -4,7 +4,7 @@ import PollRadioList from '../../radio-list/poll-radio-list';
 import store from '../../../../../store/store';
 import PageSubtitle from '../../page-subtitle/page-subtitle';
 import { buildingChangeFences } from '../../../../../store/building/actions';
-import { IInitialState } from '../../../../../store/types';
+import { IBuildingState } from '../../../../../store/building/types';
 
 interface Props {
   fences: number;
@@ -40,7 +40,7 @@ const QuizPage001 = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IBuildingState) => ({
   fences: state.building.fences,
 });
 

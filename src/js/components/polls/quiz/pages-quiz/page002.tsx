@@ -4,7 +4,7 @@ import PageSubtitle from '../../page-subtitle/page-subtitle';
 import PollRadioList from '../../radio-list/poll-radio-list';
 import store from '../../../../../store/store';
 import { buildingChangeSandwichType } from '../../../../../store/building/actions';
-import { IInitialState } from '../../../../../store/types';
+import { IBuildingState } from '../../../../../store/building/types';
 
 interface Props {
   sandwichType: number;
@@ -40,7 +40,7 @@ const QuizPage002 = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IBuildingState) => ({
   sandwichType: state.building.sandwichType,
 });
 

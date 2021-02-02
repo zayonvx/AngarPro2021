@@ -8,16 +8,18 @@ export const QUIZ_NAME_CHANGE = 'QUIZ_NAME_CHANGE';
 export const QUIZ_MAIL_CHANGE = 'QUIZ_MAIL_CHANGE';
 export const QUIZ_TEL_CHANGE = 'QUIZ_TEL_CHANGE';
 
-export interface QuizState {
-  visible: boolean;
-  currentPage: number;
-  buttonBackVisible: boolean;
-  buttonForwardVisible: boolean;
-  buttonSendVisible: boolean;
-  children: JSX.Element;
-  name: string;
-  mail: string;
-  tel: string;
+export interface IQuizState {
+  quiz: {
+    visible: boolean;
+    currentPage: number;
+    buttonBackVisible: boolean;
+    buttonForwardVisible: boolean;
+    buttonSendVisible: boolean;
+    children: JSX.Element;
+    name: string;
+    mail: string;
+    tel: string;
+  };
 }
 
 interface QuizToggleVisible {

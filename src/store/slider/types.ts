@@ -1,7 +1,9 @@
 export const CHANGE_SLIDE_NUMBER = 'CHANGE_SLIDE_NUMBER';
 
-export interface SliderState {
-  currentSlider: number;
+export interface ISliderState {
+  slider: {
+    currentSlider: number;
+  };
 }
 
 interface ChangeSlideNumber {

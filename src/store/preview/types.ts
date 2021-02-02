@@ -2,10 +2,12 @@ export const TOGGLE_PREVIEW_COLLAPSED = 'TOGGLE_PREVIEW_COLLAPSED';
 export const CHANGE_PREVIEWS_IN_ROW = 'CHANGE_PREVIEWS_IN_ROW';
 export const CHANGE_PREVIEWS_ROWS = 'CHANGE_PREVIEWS_ROWS';
 
-export interface PreviewState {
-  collapsed: boolean;
-  previewsInRow: number;
-  previewsRows: number;
+export interface IPreviewState {
+  preview: {
+    collapsed: boolean;
+    previewsInRow: number;
+    previewsRows: number;
+  };
 }
 
 interface TogglePreviewCollapsed {

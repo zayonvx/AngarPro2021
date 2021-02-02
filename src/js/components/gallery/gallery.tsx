@@ -10,7 +10,7 @@ import Footer from './footer/footer';
 import ObjectMap from './object-map/object-map';
 import ModalHeader from '../modal-header/modal-header';
 import { togglePopupVisible } from '../../../store/popup/actions';
-import { IInitialState } from '../../../store/types';
+import { IGalleryState } from '../../../store/gallery/types';
 
 interface Props {
   projectID: string;
@@ -61,7 +61,7 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IGalleryState) => ({
   currentPhoto: state.gallery.currentPhoto,
   visibleMap: state.gallery.mapVisible,
 });

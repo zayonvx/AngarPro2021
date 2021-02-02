@@ -1,5 +1,6 @@
-import initialState from '../initial-state';
+import initialState from './initial-state';
 import {
+  IQuizState,
   QUIZ_CHANGE_PAGE,
   QUIZ_CHILDREN_CHANGE,
   QUIZ_MAIL_CHANGE,
@@ -10,10 +11,9 @@ import {
   QUIZ_TOGGLE_SEND_VISIBLE,
   QUIZ_TOGGLE_VISIBLE,
   QuizActionsCreators,
-  QuizState,
 } from './types';
 
-const quizRedusers = (state = initialState.quiz, action: QuizActionsCreators): QuizState => {
+const quizRedusers = (state = initialState.quiz, action: QuizActionsCreators): IQuizState['quiz'] => {
   switch (action.type) {
     case QUIZ_TOGGLE_VISIBLE:
       return { ...state, visible: action.payload };

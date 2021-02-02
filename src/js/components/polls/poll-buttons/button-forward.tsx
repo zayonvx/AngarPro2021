@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { IInitialState } from '../../../../store/types';
+import { IQuizState } from '../../../../store/quiz/types';
 
 interface Props {
   visible: boolean;
@@ -25,7 +25,7 @@ const ButtonForward = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IQuizState) => ({
   visible: state.quiz.buttonForwardVisible,
 });
 

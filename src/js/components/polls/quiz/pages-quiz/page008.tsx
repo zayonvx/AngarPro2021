@@ -4,7 +4,7 @@ import PageSubtitle from '../../page-subtitle/page-subtitle';
 import InputTextList from '../../input-text-list/input-text-list';
 import store from '../../../../../store/store';
 import { quizChangeMail, quizChangeName, quizChangeTel } from '../../../../../store/quiz/actions';
-import { IInitialState } from '../../../../../store/types';
+import { IQuizState } from '../../../../../store/quiz/types';
 
 interface Props {
   name: string;
@@ -57,7 +57,7 @@ const QuizPage008 = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IQuizState) => ({
   name: state.quiz.name,
   mail: state.quiz.mail,
   tel: state.quiz.tel,

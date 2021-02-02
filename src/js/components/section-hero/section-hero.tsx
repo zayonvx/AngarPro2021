@@ -7,7 +7,7 @@ import { slides, sliderParameters } from '../../database/slides';
 import store from '../../../store/store';
 import changeSlideNumber from '../../../store/slider/actions';
 import Loading from '../loading/loading';
-import { IInitialState } from '../../../store/types';
+import { ILoadedState } from '../../../store/loaded/types';
 
 const slideLastIndex = slides.length - 1;
 const animationPrepare = (slideNumber: number) => {
@@ -27,7 +27,7 @@ const translate = {
   suffix: 'px, 0px, 0px)',
 };
 
-const mapState = (state: IInitialState) => ({ loaded: state.loaded.slide });
+const mapState = (state: ILoadedState) => ({ loaded: state.loaded.slide });
 const connector = connect(mapState);
 type StateProps = ConnectedProps<typeof connector>;
 

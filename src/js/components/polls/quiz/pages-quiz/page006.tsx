@@ -5,7 +5,7 @@ import InputRange from '../../input-range/input-range';
 import { quizDefaultSizes } from '../_const';
 import store from '../../../../../store/store';
 import { buildingChangeHeight } from '../../../../../store/building/actions';
-import { IInitialState } from '../../../../../store/types';
+import { IBuildingState } from '../../../../../store/building/types';
 
 interface Props {
   height: number;
@@ -37,7 +37,7 @@ const QuizPage006 = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IInitialState) => ({
+const mapState = (state: IBuildingState) => ({
   height: state.building.height,
 });
 

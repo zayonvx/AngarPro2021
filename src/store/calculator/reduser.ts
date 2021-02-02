@@ -1,14 +1,17 @@
-import initialState from '../initial-state';
+import initialState from './initial-state';
 import {
   CALCULATOR_CHANGE_PAGE,
   CALCULATOR_TOGGLE_BACK_VISIBLE,
   CALCULATOR_TOGGLE_FORWARD_VISIBLE,
   CALCULATOR_TOGGLE_VISIBLE,
   CalculatorActionsCreators,
-  CalculatorState,
+  ICalculatorState,
 } from './types';
 
-const calculatorRedusers = (state = initialState.calculator, action: CalculatorActionsCreators): CalculatorState => {
+const calculatorRedusers = (
+  state = initialState.calculator,
+  action: CalculatorActionsCreators,
+): ICalculatorState['calculator'] => {
   switch (action.type) {
     case CALCULATOR_TOGGLE_VISIBLE:
       return { ...state, visible: action.payload };
