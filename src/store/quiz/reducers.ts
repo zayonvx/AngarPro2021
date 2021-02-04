@@ -6,9 +6,6 @@ import {
   QUIZ_MAIL_CHANGE,
   QUIZ_NAME_CHANGE,
   QUIZ_TEL_CHANGE,
-  QUIZ_TOGGLE_BACK_VISIBLE,
-  QUIZ_TOGGLE_FORWARD_VISIBLE,
-  QUIZ_TOGGLE_SEND_VISIBLE,
   QUIZ_TOGGLE_VISIBLE,
   QuizActionsCreators,
 } from './types';
@@ -19,12 +16,6 @@ const quizRedusers = (state = initialState.quiz, action: QuizActionsCreators): I
       return { ...state, visible: action.payload };
     case QUIZ_CHANGE_PAGE:
       return { ...state, currentPage: action.payload };
-    case QUIZ_TOGGLE_BACK_VISIBLE:
-      return { ...state, buttonBackVisible: action.payload };
-    case QUIZ_TOGGLE_FORWARD_VISIBLE:
-      return { ...state, buttonForwardVisible: action.payload };
-    case QUIZ_TOGGLE_SEND_VISIBLE:
-      return { ...state, buttonSendVisible: action.payload };
     case QUIZ_CHILDREN_CHANGE:
       return { ...state, children: action.payload };
     case QUIZ_NAME_CHANGE:

@@ -1,4 +1,5 @@
 import {
+  CALCULATOR_CHANGE_CHILDREN,
   CALCULATOR_CHANGE_PAGE,
   CALCULATOR_TOGGLE_BACK_VISIBLE,
   CALCULATOR_TOGGLE_FORWARD_VISIBLE,
@@ -23,5 +24,10 @@ export const calculatorChangeBackVisible = (value: boolean): CalculatorActionsCr
 
 export const calculatorChangeForwardVisible = (value: boolean): CalculatorActionsCreators => ({
   type: CALCULATOR_TOGGLE_FORWARD_VISIBLE,
+  payload: value,
+});
+
+export const calculatorChangeChildren = (value: JSX.Element): CalculatorActionsCreators => ({
+  type: CALCULATOR_CHANGE_CHILDREN,
   payload: value,
 });

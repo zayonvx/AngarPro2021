@@ -1,0 +1,35 @@
+@import '../../../../../sass/variables';
+@import '../../../../../sass/colors';
+
+.table {
+  font-family: $font-stack-light;
+  background-color: $color-light;
+  color: $color-dark;
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: $font-string-smallest;
+  margin-bottom: $margin-smaller;
+}
+.cellHeader {
+  padding: $margin-small $margin-small;
+}
+.cellData {
+  padding: $margin-smaller $margin-small;
+}
+.cellFooter {
+  padding: $margin-smaller $margin-small;
+}
+.cellAlignLeft {
+  text-align: left;
+}
+.cellAlignRight {
+  text-align: right;
+}
+.rowAccent {
+  font-size: $font-string-pre-smallest;
+  color: $color-light;
+  background-color: $color-accent;
+}
+.rowData:not(:last-child) {
+  border-bottom: 0.2rem $color-light-gray solid;
+}

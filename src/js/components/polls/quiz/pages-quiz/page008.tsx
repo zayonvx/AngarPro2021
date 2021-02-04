@@ -50,7 +50,7 @@ const QuizPage008 = ({ ...props }: Props): JSX.Element => {
   });
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>
+    <div className="popup__wrapper">
       <PageSubtitle text="Сообщите регион строительства" />
       <InputTextList inputs={inputs} handlerOnChange={handlerOnChange} />
     </div>

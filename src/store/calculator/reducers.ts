@@ -1,5 +1,6 @@
 import initialState from './initial-state';
 import {
+  CALCULATOR_CHANGE_CHILDREN,
   CALCULATOR_CHANGE_PAGE,
   CALCULATOR_TOGGLE_BACK_VISIBLE,
   CALCULATOR_TOGGLE_FORWARD_VISIBLE,
@@ -21,6 +22,8 @@ const calculatorRedusers = (
       return { ...state, buttonBackVisible: action.payload };
     case CALCULATOR_TOGGLE_FORWARD_VISIBLE:
       return { ...state, buttonForwardVisible: action.payload };
+    case CALCULATOR_CHANGE_CHILDREN:
+      return { ...state, children: action.payload };
     default:
       return state;
   }

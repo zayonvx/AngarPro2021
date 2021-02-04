@@ -1,10 +1,7 @@
 import {
-  CALC_DOORS,
-  CALC_FENSES,
   CALC_FLOOR,
   CALC_FOUNDATION,
   CALC_GATES,
-  CALC_WINDOWS,
 } from './calc-constants-general';
 
 export const priceConcrete = 4500; //  per 1 qubic meter
@@ -27,16 +24,16 @@ export const pricesFloor = [
   // pump+lighthouse)
 ];
 
-export const pricesWallFenses = [
-  { id: CALC_FENSES[0].id, price: 210 },
-  { id: CALC_FENSES[1].id, price: 450 },
-  { id: CALC_FENSES[2].id, price: 1550 },
-];
-export const pricesRoofFenses = [
-  { id: CALC_FENSES[0].id, price: 210 },
-  { id: CALC_FENSES[1].id, price: 550 },
-  { id: CALC_FENSES[2].id, price: 1850 },
-];
+export const pricesWallFenses = {
+  priceTent: 210,
+  priceProfnastil: 450,
+  priceSandwich: 1550,
+};
+export const pricesRoofFenses = {
+  priceTent: 210,
+  priceProfnastil: 550,
+  priceSandwich: 1850,
+};
 
 export const pricesGates = [
   { id: CALC_GATES.types[0].id, price: 0 },
@@ -49,16 +46,12 @@ export const pricesGates = [
   { id: CALC_GATES.types[7].id, price: 6000 },
   { id: CALC_GATES.types[8].id, price: 8000 },
 ];
-export const pricesDoors = [
-  { id: CALC_DOORS.types[0].id, price: 0 },
-  { id: CALC_DOORS.types[1].id, price: 13000 },
-  { id: CALC_DOORS.types[2].id, price: 22000 },
-];
-export const pricesWindows = [
-  { id: CALC_WINDOWS[0].id, price: 3000 },
-  { id: CALC_WINDOWS[1].id, price: 3700 },
-];
-
+export const pricesDoors = {
+  none: 0,
+  PVC: 13000,
+  steel: 22000,
+};
+export const pricesWindows = 3000;
 export const priceSkeletonMetalTent = 100;
 export const priceSkeletonMetal = 95;
 export const priceBolts = 300;
@@ -66,8 +59,8 @@ export const pricePressureProfile = 170;
 
 export const priceSkeletonMountingTent = 25;
 export const priceSkeletonMounting = 20;
-export const pricesFensesMounting = [
-  { id: CALC_FENSES[0].id, price: 100 },
-  { id: CALC_FENSES[1].id, price: 200 },
-  { id: CALC_FENSES[2].id, price: 300 },
-];
+export const pricesFensesMounting = {
+  priceTent: 50,
+  priceProfnastil: 100,
+  priceSandwich: 200,
+};

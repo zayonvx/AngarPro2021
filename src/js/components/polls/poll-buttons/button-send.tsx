@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { IQuizState } from '../../../../store/quiz/types';
+import { IPopupState } from '../../../../store/popup/types';
 
 interface Props {
   visible: boolean;
@@ -25,8 +25,8 @@ const ButtonSend = ({ ...props }: Props): JSX.Element => {
   );
 };
 
-const mapState = (state: IQuizState) => ({
-  visible: state.quiz.buttonSendVisible,
+const mapState = (state: IPopupState) => ({
+  visible: state.popup.buttonSendVisible,
 });
 
 export default connect(mapState)(ButtonSend);

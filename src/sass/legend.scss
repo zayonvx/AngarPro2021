@@ -1,0 +1,8 @@
+@import './variables';
+@import './colors';
+
+.legend__input {
+  font-family: $font-stack-regular;
+  font-size: $font-string-small;
+  margin-bottom: $margin-tiny;
+}

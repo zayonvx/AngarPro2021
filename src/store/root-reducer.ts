@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import sliderRedusers from './slider/reduser';
-import previewRedusers from './preview/reduser';
-import popupRedusers from './popup/reduser';
-import galleryRedusers from './gallery/reduser';
-import quizRedusers from './quiz/reduser';
-import calculatorRedusers from './calculator/reduser';
-import buildingRedusers from './building/reduser';
-import loadedRedusers from './loaded/reduser';
+import sliderRedusers from './slider/reducers';
+import previewRedusers from './preview/reducers';
+import popupRedusers from './popup/reducers';
+import galleryRedusers from './gallery/reducers';
+import quizRedusers from './quiz/reducers';
+import calculatorRedusers from './calculator/reducers';
+import buildingRedusers from './building/reducers';
+import loadedRedusers from './loaded/reducers';
 
 export default combineReducers({
   slider: sliderRedusers,

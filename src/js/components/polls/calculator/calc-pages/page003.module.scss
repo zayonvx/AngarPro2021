@@ -1,0 +1,34 @@
+@import '../../../../../sass/variables';
+@import '../../../../../sass/colors';
+
+.countWrapper {
+  margin-left: $margin-normal;
+  min-width: 7rem;
+}
+.gatesWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.doorsWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.windowsWrapper {
+  width: 100%;
+}
+.inputList {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  & li {
+    width: 100%;
+  }
+  & li:not(:last-child) {
+    margin-right: $margin-tiny;
+  }
+  & li:last-child {
+    margin-left: $margin-tiny;
+  }
+}

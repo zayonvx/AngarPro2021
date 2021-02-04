@@ -6,6 +6,7 @@ import PollFooter from '../poll-footer/poll-footer';
 import store from '../../../../store/store';
 import { togglePopupVisible } from '../../../../store/popup/actions';
 import { IQuizState } from '../../../../store/quiz/types';
+import { quizBackwardPage, quizForwardPage, quizSend } from '../poll-footer/handlersQuiz';
 
 // TODO add span and crane pages
 
@@ -22,7 +23,11 @@ const Quiz = ({ ...props }: Props): JSX.Element => {
     <div className={styles.quiz}>
       <PollHeader text="Узнайте цену за 6 шагов" handlerClose={handlerOnClickQuizClose} />
       {children}
-      <PollFooter />
+      <PollFooter
+        handlerBackwardClick={quizBackwardPage}
+        handlerForwardClick={quizForwardPage}
+        handlerSendClick={quizSend}
+      />
     </div>
   );
 };

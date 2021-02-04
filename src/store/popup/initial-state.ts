@@ -3,6 +3,9 @@ const initialState = {
     visible: false,
     children: null,
     closeable: false,
+    buttonBackVisible: false,
+    buttonForwardVisible: true,
+    buttonSendVisible: false,
   },
 };
 

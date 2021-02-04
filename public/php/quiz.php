@@ -64,7 +64,7 @@ function telegramQuiz($name, $email, $phone, $size, $h, $span, $typeName, $site)
 
     $token = "1094014637:AAGDcDmU8ggmpYiG14yjZAZy3sqMKQykZe0";
     $chat_id = "-439440818";
-    fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
+    fopen("https://features.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
 }
 
 function getTypeName($type, $warming, $sandwich) {

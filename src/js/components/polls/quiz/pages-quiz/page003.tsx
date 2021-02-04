@@ -32,7 +32,7 @@ const QuizPage003 = ({ ...props }: Props): JSX.Element => {
   });
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>
+    <div className="popup__wrapper">
       <PageSubtitle text="Выберите тип тентового покрытия" />
       <PollRadioList radio={radio} handlerOnClick={handlerClick} />
     </div>

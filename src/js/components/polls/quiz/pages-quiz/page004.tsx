@@ -2,10 +2,10 @@ import React, { SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
 import PageSubtitle from '../../page-subtitle/page-subtitle';
 import InputRange from '../../input-range/input-range';
-import { quizDefaultSizes } from '../_const';
 import store from '../../../../../store/store';
 import { buildingChangeWidth } from '../../../../../store/building/actions';
 import { IBuildingState } from '../../../../../store/building/types';
+import { buildingDefaultSizes } from '../../../../utils/const';
 
 interface Props {
   width: number;
@@ -19,15 +19,12 @@ const QuizPage004 = ({ ...props }: Props): JSX.Element => {
     store.dispatch(buildingChangeWidth(newWidth));
   };
 
-  const defaultWidth = Math.round((quizDefaultSizes.width.min + quizDefaultSizes.width.max) / 2);
-  const currentWidth = width === 0 ? defaultWidth : width;
-  store.dispatch(buildingChangeWidth(currentWidth));
-  const params = quizDefaultSizes.width;
+  const params = buildingDefaultSizes.width;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>
+    <div className="popup__wrapper">
       <PageSubtitle text="Задайте ширину здания" />
-      <InputRange params={params} value={currentWidth} prefix="" suffix="м" handlerRangeChange={handler} />
+      <InputRange params={params} value={width} prefix="" suffix="м" handlerRangeChange={handler} />
     </div>
   );
 };

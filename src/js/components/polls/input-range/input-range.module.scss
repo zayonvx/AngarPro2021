@@ -3,8 +3,19 @@
 
 .wrapper {
   position: relative;
-  width: 90%;
-  margin-bottom: 2rem;
+  width: 100%;
+  margin-bottom: $margin-normal;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+}
+.bordered {
+  background-color: $color-light-gray;
+  border: $color-dark 0.15rem solid;
+  border-radius: 0.5rem;
+  padding-bottom: $margin-smaller;
 }
 .data_field {
   display: flex;
@@ -15,23 +26,20 @@
   color: $color-dark;
   text-align: center;
 }
+.textContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $margin-small;
+}
 .text {
-  position: absolute;
-  bottom: -1.7rem;
   font-family: $font-stack-regular;
   font-size: $font-string-small;
   color: $color-dark;
-  &Min {
-    left: 0;
-  }
-  &Max {
-    right: 0;
-  }
 }
 .input {
   -webkit-appearance: none;
+  margin: 0 $margin-small;
   height: 3rem;
-  width: 100%;
   cursor: pointer;
   background-color: transparent;
   outline: none;
