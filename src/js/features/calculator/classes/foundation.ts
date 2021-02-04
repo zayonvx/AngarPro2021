@@ -1,15 +1,18 @@
 import store from '../../../../store/store';
 import { CALC_FOUNDATION, CALC_PRICE_LIST_NAMES } from '../constants/calc-constants-general';
 import { pricesFoundation } from '../constants/calc-constants-prices';
-import { taxFactoryOpenings } from '../constants/calc-constants-taxes';
+import { taxFoundation } from '../constants/calc-constants-taxes';
 import Building from './building';
 
 class Foundation extends Building {
   private readonly foundation: number;
 
+  private readonly taxes: number;
+
   constructor() {
     super();
     this.foundation = store.getState().building.foundation;
+    this.taxes = taxFoundation;
   }
 
   get concreteVolume(): number {
@@ -59,9 +62,7 @@ class Foundation extends Building {
         costBrutto = pricesFoundation[index].price * concreteVolume;
         break;
     }
-    const factoryCostGates = Math.ceil(costBrutto);
-    const cost = factoryCostGates * taxFactoryOpenings;
-    return Math.ceil(cost);
+    return Math.ceil(costBrutto * this.taxes);
   }
 }
 

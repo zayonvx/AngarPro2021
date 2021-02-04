@@ -124,15 +124,15 @@ class Roof extends Fences {
     let price: number;
     switch (this.fences) {
       case 0: {
-        price = this.priceTent;
+        price = this.mountingTent;
         break;
       }
       case 1: {
-        price = this.priceProfnastil;
+        price = this.mountingProfnastil;
         break;
       }
       case 2: {
-        price = this.priceSandwich;
+        price = this.mountingSandwich;
         break;
       }
       default:

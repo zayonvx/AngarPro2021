@@ -1,8 +1,4 @@
-import {
-  CALC_FLOOR,
-  CALC_FOUNDATION,
-  CALC_GATES,
-} from './calc-constants-general';
+import { CALC_FLOOR, CALC_FOUNDATION, CALC_GATES } from './calc-constants-general';
 
 export const priceConcrete = 4500; //  per 1 qubic meter
 export const priceReinforcement = 2500; //  per 1 tonn
@@ -52,13 +48,10 @@ export const pricesDoors = {
   steel: 22000,
 };
 export const pricesWindows = 3000;
-export const priceSkeletonMetalTent = 100;
 export const priceSkeletonMetal = 95;
 export const priceBolts = 300;
-export const pricePressureProfile = 170;
 
-export const priceSkeletonMountingTent = 25;
-export const priceSkeletonMounting = 20;
+export const priceSkeletonMounting = 15;
 export const pricesFensesMounting = {
   priceTent: 50,
   priceProfnastil: 100,
