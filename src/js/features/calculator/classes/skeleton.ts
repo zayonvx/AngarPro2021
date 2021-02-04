@@ -37,7 +37,7 @@ class Skeleton extends Building {
     const weight = this.skeletonWeight;
     const boltsCost = Math.ceil(weight * this.boltCoeff * this.priceBolts);
     const factoryCost = Math.ceil(weight * this.priceMaterial + boltsCost);
-    return factoryCost * this.taxesMaterial;
+    return Math.ceil(factoryCost * this.taxesMaterial);
   }
 
   nameMounting = CALC_PRICE_LIST_NAMES.skeletonMounting;

@@ -1,14 +1,45 @@
 import { IPriceRow } from './_types';
-import PriceListAbstract from './price-list-abstract';
 import { CALC_PRICE_LIST_NAMES } from '../constants/calc-constants-general';
 import Building from './building';
+import Foundation from './foundation';
+import Skeleton from './skeleton';
+import Roof from './roof';
+import Walls from './walls';
+import Gates from './gates';
+import Doors from './doors';
+import Windows from './windows';
+import Floor from './floor';
 
-class PriceListRow extends PriceListAbstract {
+class PriceListRow {
   private building: Building;
 
+  private skeleton: Skeleton;
+
+  private roof: Roof;
+
+  private walls: Walls;
+
+  private gates: Gates;
+
+  private doors: Doors;
+
+  private foundation: Foundation;
+
+  private windows: Windows;
+
+  private floor: Floor;
+
   constructor() {
-    super();
     this.building = new Building();
+    this.foundation = new Foundation();
+    this.skeleton = new Skeleton();
+    this.roof = new Roof();
+    this.walls = new Walls();
+    this.gates = new Gates();
+    this.doors = new Doors();
+    this.windows = new Windows();
+    this.roof = new Roof();
+    this.floor = new Floor();
   }
 
   get costTotal(): number {

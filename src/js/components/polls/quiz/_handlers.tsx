@@ -6,6 +6,7 @@ import {
   changePopupChildren,
   togglePopupBackward,
   togglePopupCloseable,
+  togglePopupForward,
   togglePopupVisible,
 } from '../../../../store/popup/actions';
 import Quiz from './quiz';
@@ -29,6 +30,7 @@ const quizOpen = (): void => {
     store.dispatch(buildingChangeFences(0));
   }
   store.dispatch(togglePopupBackward(false));
+  store.dispatch(togglePopupForward(true));
   store.dispatch(togglePopupCloseable(false));
   store.dispatch(quizChangePage(1));
   store.dispatch(togglePopupVisible(true));

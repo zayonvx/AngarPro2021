@@ -4,6 +4,7 @@ import {
   changePopupChildren,
   togglePopupBackward,
   togglePopupCloseable,
+  togglePopupForward,
   togglePopupVisible,
 } from '../../../../store/popup/actions';
 import {
@@ -32,6 +33,7 @@ const calculatorOpen = (): void => {
     store.dispatch(buildingChangeHeight(0));
     store.dispatch(buildingChangeFences(0));
   }
+  store.dispatch(togglePopupForward(true));
   store.dispatch(togglePopupBackward(false));
   store.dispatch(togglePopupCloseable(false));
   store.dispatch(calculatorChangePage(1));

@@ -8,7 +8,7 @@ const initialState: IBuildingState = {
     angle: 0,
     region: 0,
     regionStr: '',
-    archType: 0,
+    archType: 1,
     foundation: 0,
     floor: 0,
     fences: 0,

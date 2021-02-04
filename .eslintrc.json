@@ -92,6 +92,7 @@
     "no-underscore-dangle": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "jsx-a11y/no-noninteractive-element-interactions": "off"
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/no-onchange": "off"
   }
 }

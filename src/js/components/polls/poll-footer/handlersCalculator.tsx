@@ -1,6 +1,6 @@
 import React from 'react';
 import store from '../../../../store/store';
-import { sendCalcPageLayout, setBackButtonVisible } from './_functions';
+import { sendCalcPageLayout, setBackButtonVisible, setForwardButtonVisible } from './_functions';
 import CalcPage002 from '../calculator/calc-pages/page002';
 import CalcPage003 from '../calculator/calc-pages/page003';
 import CalcPage004 from '../calculator/calc-pages/page004';
@@ -23,6 +23,7 @@ export const calculatorForwardPage = (): void => {
     case 3:
       newPage = 4;
       sendCalcPageLayout(<CalcPage004 />);
+      setForwardButtonVisible(false);
       break;
     default:
       break;
@@ -45,6 +46,7 @@ export const calculatorBackwardPage = (): void => {
     case 4:
       newPage = 3;
       sendCalcPageLayout(<CalcPage003 />);
+      setForwardButtonVisible(true);
       break;
     default:
       break;

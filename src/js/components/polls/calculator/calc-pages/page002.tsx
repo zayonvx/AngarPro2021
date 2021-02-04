@@ -17,17 +17,21 @@ import { IBuildingState } from '../../../../../store/building/types';
 const CalcPage002 = (): JSX.Element => {
   const handlerDropDownList = (evt: SyntheticEvent) => {
     const e = evt.currentTarget as HTMLInputElement;
-    const fountationId = CALC_FOUNDATION.find((it) => e.value === it.name).id;
-    const floorId = CALC_FLOOR.type.find((it) => e.value === it.name).id;
-    const fencesId = CALC_FENSES.find((it) => e.value === it.name).id;
+    let fountationId: number;
+    let floorId: number;
+    let fencesId: number;
+
     switch (e.id) {
       case 'dropFoundation':
+        fountationId = CALC_FOUNDATION.find((it) => e.value === it.name).id;
         store.dispatch(buildingChangeFoundation(fountationId));
         break;
       case 'dropFloor':
+        floorId = CALC_FLOOR.type.find((it) => e.value === it.name).id;
         store.dispatch(buildingChangeFloor(floorId));
         break;
       case 'dropFences':
+        fencesId = CALC_FENSES.find((it) => e.value === it.name).id;
         store.dispatch(buildingChangeFences(fencesId));
         break;
       default:

@@ -96,7 +96,7 @@ class Walls extends Fences {
       default:
         break;
     }
-    return this.areaNetto * price * this.taxesMounting;
+    return Math.ceil(this.areaNetto * price * this.taxesMounting);
   }
 }
 

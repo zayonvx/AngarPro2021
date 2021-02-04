@@ -18,7 +18,6 @@ const ButtonBackward = ({ ...props }: Props): JSX.Element => {
       className="button button__transparent button__transparent--dark-gray "
       type="button"
       onClick={handlerClick}
-      style={{ marginRight: '1rem' }}
       id="buttonBackward"
     >
       Назад

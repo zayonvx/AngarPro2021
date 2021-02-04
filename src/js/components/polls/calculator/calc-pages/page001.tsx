@@ -71,13 +71,16 @@ const CalcPage001 = ({ ...props }: Props): JSX.Element => {
   };
   const handlerDropDownList = (evt: SyntheticEvent) => {
     const e = evt.currentTarget as HTMLInputElement;
-    const regionId = CALC_REGIONS.find((it) => e.value === it.name).id;
-    const archId = CALC_ARCHITECTURAL_TYPES.find((it) => e.value === it.name).id;
+    let regionId: number;
+    let archId: number;
+
     switch (e.id) {
       case 'dropRegion':
+        regionId = CALC_REGIONS.find((it) => e.value === it.name).id;
         store.dispatch(buildingChangeRegion(regionId));
         break;
       case 'dropArchType':
+        archId = CALC_ARCHITECTURAL_TYPES.find((it) => e.value === it.name).id;
         store.dispatch(buildingChangeArchType(archId));
         store.dispatch(buildingChangeWidth(0));
         break;

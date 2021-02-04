@@ -19,7 +19,7 @@ const Calculator = ({ ...props }: Props): JSX.Element => {
   };
   return (
     <div className={styles.calculator}>
-      <PollHeader text="Расчет цены здания" handlerClose={handlerClickCalculatorClose} />
+      <PollHeader text="Калькулятор цены здания" handlerClose={handlerClickCalculatorClose} />
       {children}
       <PollFooter handlerBackwardClick={calculatorBackwardPage} handlerForwardClick={calculatorForwardPage} />
     </div>

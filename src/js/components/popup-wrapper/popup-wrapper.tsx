@@ -37,7 +37,7 @@ const PopupWrapper = ({ ...props }: Props): JSX.Element => {
     }
     return document.removeEventListener('keydown', handlerPressPopup);
   });
-
+  // TODO add icon to header of popup
   return (
     <div className={className} onClick={handlerClickPopup} onKeyPress={handlerPressPopup} role="dialog">
       <div

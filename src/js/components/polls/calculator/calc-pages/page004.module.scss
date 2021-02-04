@@ -7,16 +7,16 @@
   color: $color-dark;
   border-spacing: 0;
   border-collapse: collapse;
-  font-size: $font-string-smallest;
-  margin-bottom: $margin-smaller;
+  font-size: $font-string-small;
+  margin-top: 0-$margin-big;
 }
 .cellHeader {
   padding: $margin-small $margin-small;
+  background-color: $color-dark;
+  color: $color-light;
+  font-size: $font-string-normal;
 }
 .cellData {
-  padding: $margin-smaller $margin-small;
-}
-.cellFooter {
   padding: $margin-smaller $margin-small;
 }
 .cellAlignLeft {
@@ -25,11 +25,10 @@
 .cellAlignRight {
   text-align: right;
 }
-.rowAccent {
-  font-size: $font-string-pre-smallest;
-  color: $color-light;
-  background-color: $color-accent;
+.rowData {
+  border-bottom: 0.2rem $color-gray solid;
 }
-.rowData:not(:last-child) {
-  border-bottom: 0.2rem $color-light-gray solid;
+.rowData:nth-last-child(-n + 2) {
+  font-family: $font-stack-regular;
+  font-size: $font-string-normal;
 }
