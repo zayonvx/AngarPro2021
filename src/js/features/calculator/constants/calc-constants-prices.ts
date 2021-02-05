@@ -1,8 +1,6 @@
 import { CALC_FLOOR, CALC_FOUNDATION, CALC_GATES } from './calc-constants-general';
 
-export const priceConcrete = 4500; //  per 1 qubic meter
-export const priceReinforcement = 2500; //  per 1 tonn
-export const pricesFoundation = [
+export const PRICE_FOUNDATION = [
   // with payload
   { id: CALC_FOUNDATION[0].id, price: 0 },
   { id: CALC_FOUNDATION[1].id, price: 4000 }, // per one pile
@@ -10,7 +8,7 @@ export const pricesFoundation = [
   { id: CALC_FOUNDATION[3].id, price: 4500 }, // payload per qubic meter
   { id: CALC_FOUNDATION[4].id, price: 3500 }, // payload per qubic meter
 ];
-export const pricesFloor = [
+export const PRICES_FLOOR = [
   { id: CALC_FLOOR.type[0].id, thickness: 0, price: 0 },
   { id: CALC_FLOOR.type[1].id, thickness: 0.1, price: 500 }, // per 1 square meter with payload (grid + pay + pump
   // +lighthouse)
@@ -20,18 +18,18 @@ export const pricesFloor = [
   // pump+lighthouse)
 ];
 
-export const pricesWallFenses = {
+export const PRICE_WALL_FENCES = {
   priceTent: 210,
   priceProfnastil: 450,
   priceSandwich: 1550,
 };
-export const pricesRoofFenses = {
+export const PRICE_ROOF_FENCES = {
   priceTent: 210,
   priceProfnastil: 550,
   priceSandwich: 1850,
 };
 
-export const pricesGates = [
+export const PRICE_GATES = [
   { id: CALC_GATES.types[0].id, price: 0 },
   { id: CALC_GATES.types[1].id, price: 3000 },
   { id: CALC_GATES.types[2].id, price: 5000 },
@@ -42,17 +40,18 @@ export const pricesGates = [
   { id: CALC_GATES.types[7].id, price: 6000 },
   { id: CALC_GATES.types[8].id, price: 8000 },
 ];
-export const pricesDoors = {
+export const PRICE_DOORS = {
   none: 0,
   PVC: 13000,
   steel: 22000,
 };
-export const pricesWindows = 3000;
-export const priceSkeletonMetal = 95;
-export const priceBolts = 300;
+export const PRICE_WINDOWS = 3000;
 
-export const priceSkeletonMounting = 15;
-export const pricesFensesMounting = {
+export const PRICE_SKELETON_METAL = 95;
+export const PRICE_BOLTS = 300;
+
+export const PRICE_SKELETON_MOUNTING = 15;
+export const PRICE_FENCES_MOUNTING = {
   priceTent: 50,
   priceProfnastil: 100,
   priceSandwich: 200,

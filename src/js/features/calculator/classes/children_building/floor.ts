@@ -1,8 +1,8 @@
-import { CALC_FLOOR, CALC_PRICE_LIST_NAMES } from '../constants/calc-constants-general';
-import store from '../../../../store/store';
-import Building from './building';
-import { pricesFloor } from '../constants/calc-constants-prices';
-import { taxFloor } from '../constants/calc-constants-taxes';
+import { CALC_FLOOR, CALC_PRICE_LIST_NAMES } from '../../constants/calc-constants-general';
+import store from '../../../../../store/store';
+import Building from '../building';
+import { PRICES_FLOOR } from '../../constants/calc-constants-prices';
+import { TAX_FLOOR } from '../../constants/calc-constants-taxes';
 
 class Floor extends Building {
   private readonly type: number;
@@ -32,11 +32,11 @@ class Floor extends Building {
     this.text100 = CALC_FLOOR.type[1].name;
     this.text150 = CALC_FLOOR.type[2].name;
     this.text200 = CALC_FLOOR.type[3].name;
-    this.priceNone = pricesFloor[0].price;
-    this.price100 = pricesFloor[1].price;
-    this.price150 = pricesFloor[2].price;
-    this.price200 = pricesFloor[3].price;
-    this.taxes = taxFloor;
+    this.priceNone = PRICES_FLOOR[0].price;
+    this.price100 = PRICES_FLOOR[1].price;
+    this.price150 = PRICES_FLOOR[2].price;
+    this.price200 = PRICES_FLOOR[3].price;
+    this.taxes = TAX_FLOOR;
   }
 
   get area(): number {
@@ -66,6 +66,11 @@ class Floor extends Building {
     return text;
   }
 
+  get tax(): number {
+    const tax = (this.taxDigit + this.taxPaper) / 2;
+    return tax + 1;
+  }
+
   get cost(): number {
     let price = 0;
     switch (this.type) {
@@ -84,7 +89,7 @@ class Floor extends Building {
       default:
         break;
     }
-    return Math.ceil(this.area * price * this.taxes);
+    return Math.ceil(this.area * price * this.taxes * this.tax);
   }
 }
 

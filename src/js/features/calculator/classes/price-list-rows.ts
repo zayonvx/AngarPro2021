@@ -1,14 +1,14 @@
 import { IPriceRow } from './_types';
 import { CALC_PRICE_LIST_NAMES } from '../constants/calc-constants-general';
 import Building from './building';
-import Foundation from './foundation';
-import Skeleton from './skeleton';
-import Roof from './roof';
-import Walls from './walls';
-import Gates from './gates';
-import Doors from './doors';
-import Windows from './windows';
-import Floor from './floor';
+import Foundation from './children_building/foundation';
+import Skeleton from './children_building/skeleton';
+import Roof from './children_building/children_fences/roof';
+import Walls from './children_building/children_fences/walls';
+import Gates from './children_building/children_openings/gates';
+import Doors from './children_building/children_openings/doors';
+import Windows from './children_building/children_openings/windows';
+import Floor from './children_building/floor';
 
 class PriceListRow {
   private building: Building;

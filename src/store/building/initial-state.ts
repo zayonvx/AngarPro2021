@@ -5,7 +5,7 @@ const initialState: IBuildingState = {
     width: 0,
     length: 0,
     height: 0,
-    angle: 0,
+    angle: 8,
     region: 0,
     regionStr: '',
     archType: 1,

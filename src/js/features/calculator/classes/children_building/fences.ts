@@ -1,7 +1,7 @@
-import Building from './building';
-import { taxFactoryFenses, taxMountingFenses } from '../constants/calc-constants-taxes';
-import { CALC_COEFFS } from '../constants/calc-constants-general';
-import { pricesFensesMounting } from '../constants/calc-constants-prices';
+import Building from '../building';
+import { CALC_COEFFS } from '../../constants/calc-constants-general';
+import { TAX_FACTORY_FENCES, TAX_MOUNTING_FENCES } from '../../constants/calc-constants-taxes';
+import { PRICE_FENCES_MOUNTING } from '../../constants/calc-constants-prices';
 
 export class Fences extends Building {
   protected readonly taxesTent: number;
@@ -26,16 +26,16 @@ export class Fences extends Building {
 
   constructor() {
     super();
-    this.taxesTent = taxFactoryFenses.taxTent;
-    this.taxesProfnastil = taxFactoryFenses.taxesProfnastil;
-    this.taxesSandwich = taxFactoryFenses.taxesSandwich;
+    this.taxesTent = TAX_FACTORY_FENCES.taxTent;
+    this.taxesProfnastil = TAX_FACTORY_FENCES.taxesProfnastil;
+    this.taxesSandwich = TAX_FACTORY_FENCES.taxesSandwich;
     this.additionsTent = CALC_COEFFS.additionsTent;
     this.additionsProfnastil = CALC_COEFFS.additionsProfnastil;
     this.additionsSandwich = CALC_COEFFS.additionsSandwich;
-    this.taxesMounting = taxMountingFenses;
-    this.mountingTent = pricesFensesMounting.priceTent;
-    this.mountingProfnastil = pricesFensesMounting.priceProfnastil;
-    this.mountingSandwich = pricesFensesMounting.priceSandwich;
+    this.taxesMounting = TAX_MOUNTING_FENCES;
+    this.mountingTent = PRICE_FENCES_MOUNTING.priceTent;
+    this.mountingProfnastil = PRICE_FENCES_MOUNTING.priceProfnastil;
+    this.mountingSandwich = PRICE_FENCES_MOUNTING.priceSandwich;
   }
 }
 

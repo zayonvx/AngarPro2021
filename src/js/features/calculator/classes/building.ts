@@ -7,11 +7,12 @@ import {
   CALC_PROFNASTIL,
   CALC_REGIONS,
   CALC_SANDWICH,
-  CALC_SNOW_WEIGHT,
+  // CALC_SNOW_WEIGHT,
   CALC_SPAN_STEP,
   CALC_TENT,
 } from '../constants/calc-constants-general';
 import { convertDegToRad } from '../../../utils/functions';
+import { TAX_DIGIT, TAX_PAPER } from '../constants/calc-constants-taxes';
 
 class Building {
   protected readonly width: number;
@@ -30,6 +31,10 @@ class Building {
 
   protected readonly angle: number;
 
+  protected taxDigit: number;
+
+  protected taxPaper: number;
+
   constructor() {
     this.width = store.getState().building.width;
     this.length = store.getState().building.length;
@@ -39,6 +44,8 @@ class Building {
     this.windowRows = store.getState().building.windowsRows;
     this.archType = store.getState().building.archType;
     this.angle = store.getState().building.angle;
+    this.taxDigit = TAX_DIGIT;
+    this.taxPaper = TAX_PAPER;
   }
 
   get buildingArea(): number {
@@ -54,11 +61,11 @@ class Building {
     return snow;
   }
 
-  get snowWeight(): number {
-    const snow = CALC_SNOW_WEIGHT[this.snowZone];
-    const area = this.buildingArea;
-    return Math.round(snow * area);
-  }
+  // get snowWeight(): number {
+  //   const snow = CALC_SNOW_WEIGHT[this.snowZone];
+  //   const area = this.buildingArea;
+  //   return Math.round(snow * area);
+  // }
 
   get spanStep(): number {
     const maxStep = this.fences === CALC_FENSES[0].id ? CALC_SPAN_STEP.tent : CALC_SPAN_STEP.also;

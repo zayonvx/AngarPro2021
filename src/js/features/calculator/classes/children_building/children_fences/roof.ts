@@ -1,7 +1,7 @@
-import { Fences } from './fences';
-import { pricesRoofFenses } from '../constants/calc-constants-prices';
-import { CALC_CORNICE, CALC_FENSES, CALC_PRICE_LIST_NAMES } from '../constants/calc-constants-general';
-import { convertDegToRad } from '../../../utils/functions';
+import { Fences } from '../fences';
+import { CALC_CORNICE, CALC_FENSES, CALC_PRICE_LIST_NAMES } from '../../../constants/calc-constants-general';
+import { convertDegToRad } from '../../../../../utils/functions';
+import { PRICE_ROOF_FENCES } from '../../../constants/calc-constants-prices';
 
 class Roof extends Fences {
   private readonly priceTent: number;
@@ -18,9 +18,9 @@ class Roof extends Fences {
 
   constructor() {
     super();
-    this.priceTent = pricesRoofFenses.priceTent;
-    this.priceProfnastil = pricesRoofFenses.priceProfnastil;
-    this.priceSandwich = pricesRoofFenses.priceSandwich;
+    this.priceTent = PRICE_ROOF_FENCES.priceTent;
+    this.priceProfnastil = PRICE_ROOF_FENCES.priceProfnastil;
+    this.priceSandwich = PRICE_ROOF_FENCES.priceSandwich;
     this.corniceTent = CALC_CORNICE.tent;
     this.corniceProfnastil = CALC_CORNICE.profnastil;
     this.corniceSandwich = CALC_CORNICE.sandwich;
@@ -81,6 +81,16 @@ class Roof extends Fences {
     return Number(roofArea.toFixed(3));
   }
 
+  get taxMaterial(): number {
+    const tax = this.taxDigit;
+    return tax + 1;
+  }
+
+  get taxMounting(): number {
+    const tax = this.taxPaper;
+    return tax + 1;
+  }
+
   get costMaterial(): number {
     let additionsCoeff: number;
     let price: number;
@@ -109,7 +119,7 @@ class Roof extends Fences {
     }
 
     const factoryCost = Math.ceil(this.area * price * additionsCoeff);
-    const cost = factoryCost * taxes;
+    const cost = factoryCost * taxes * this.taxMaterial;
     return Math.ceil(cost);
   }
 
@@ -138,7 +148,7 @@ class Roof extends Fences {
       default:
         break;
     }
-    return this.area * price * this.taxesMounting;
+    return Math.ceil(this.area * price * this.taxesMounting * this.taxMounting);
   }
 
   nameMounting = CALC_PRICE_LIST_NAMES.roofMounting;

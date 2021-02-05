@@ -1,7 +1,7 @@
-import { CALC_DOORS, CALC_PRICE_LIST_NAMES } from '../constants/calc-constants-general';
-import { pricesDoors } from '../constants/calc-constants-prices';
-import Openings from './openings';
-import store from '../../../../store/store';
+import { CALC_DOORS, CALC_PRICE_LIST_NAMES } from '../../../constants/calc-constants-general';
+import Openings from '../openings';
+import store from '../../../../../../store/store';
+import { PRICE_DOORS } from '../../../constants/calc-constants-prices';
 
 class Doors extends Openings {
   private readonly type: number;
@@ -24,9 +24,9 @@ class Doors extends Openings {
     super();
     this.type = store.getState().building.doorsType;
     this.count = store.getState().building.doorsCount;
-    this.priceNone = pricesDoors.none;
-    this.pricePVC = pricesDoors.PVC;
-    this.priceSteel = pricesDoors.steel;
+    this.priceNone = PRICE_DOORS.none;
+    this.pricePVC = PRICE_DOORS.PVC;
+    this.priceSteel = PRICE_DOORS.steel;
     this.textNone = CALC_DOORS.types[0].name;
     this.textPVC = CALC_DOORS.types[1].name;
     this.textSteel = CALC_DOORS.types[2].name;
@@ -52,6 +52,11 @@ class Doors extends Openings {
     return text;
   }
 
+  get tax(): number {
+    const tax = (this.taxDigit + this.taxPaper) / 2;
+    return tax + 1;
+  }
+
   get cost(): number {
     let price = 0;
     switch (this.type) {
@@ -69,7 +74,7 @@ class Doors extends Openings {
     }
 
     const factoryCostDoors = Math.ceil(this.count * price);
-    const cost = factoryCostDoors * this.taxesValue;
+    const cost = factoryCostDoors * this.taxesValue * this.tax;
     return Math.ceil(cost);
   }
 }

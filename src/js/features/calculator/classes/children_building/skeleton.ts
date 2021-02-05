@@ -1,7 +1,7 @@
-import Building from './building';
-import { taxFactorySkeleton, taxMountingSkeleton } from '../constants/calc-constants-taxes';
-import { priceBolts, priceSkeletonMetal, priceSkeletonMounting } from '../constants/calc-constants-prices';
-import { CALC_COEFFS, CALC_PRICE_LIST_NAMES } from '../constants/calc-constants-general';
+import Building from '../building';
+import { CALC_COEFFS, CALC_PRICE_LIST_NAMES } from '../../constants/calc-constants-general';
+import { TAX_FACTORY_SKELETON, TAX_MOUNTING_SKELETON } from '../../constants/calc-constants-taxes';
+import { PRICE_BOLTS, PRICE_SKELETON_METAL, PRICE_SKELETON_MOUNTING } from '../../constants/calc-constants-prices';
 
 class Skeleton extends Building {
   private readonly taxesMaterial: number;
@@ -18,12 +18,12 @@ class Skeleton extends Building {
 
   constructor() {
     super();
-    this.taxesMaterial = taxFactorySkeleton;
-    this.priceMaterial = priceSkeletonMetal;
-    this.priceBolts = priceBolts;
+    this.taxesMaterial = TAX_FACTORY_SKELETON;
+    this.priceMaterial = PRICE_SKELETON_METAL;
+    this.priceBolts = PRICE_BOLTS;
     this.boltCoeff = CALC_COEFFS.bolts;
-    this.priceMounting = priceSkeletonMounting;
-    this.taxesMounting = taxMountingSkeleton;
+    this.priceMounting = PRICE_SKELETON_MOUNTING;
+    this.taxesMounting = TAX_MOUNTING_SKELETON;
   }
 
   nameMaterial = CALC_PRICE_LIST_NAMES.skeleton;
@@ -33,11 +33,21 @@ class Skeleton extends Building {
     return `Стальной, окрашенный - ${skeletonWeight.toFixed(1)} т.`;
   }
 
+  get taxMaterial(): number {
+    const tax = this.taxDigit;
+    return tax + 1;
+  }
+
+  get taxMounting(): number {
+    const tax = this.taxPaper;
+    return tax + 1;
+  }
+
   get costMaterial(): number {
     const weight = this.skeletonWeight;
     const boltsCost = Math.ceil(weight * this.boltCoeff * this.priceBolts);
     const factoryCost = Math.ceil(weight * this.priceMaterial + boltsCost);
-    return Math.ceil(factoryCost * this.taxesMaterial);
+    return Math.ceil(factoryCost * this.taxesMaterial * this.taxMaterial);
   }
 
   nameMounting = CALC_PRICE_LIST_NAMES.skeletonMounting;
@@ -46,7 +56,7 @@ class Skeleton extends Building {
 
   get costMounting(): number {
     const factoryCost = this.skeletonWeight * this.priceMounting;
-    const cost = factoryCost * this.taxesMounting;
+    const cost = factoryCost * this.taxesMounting * this.taxMounting;
     return Math.ceil(cost);
   }
 }

@@ -1,7 +1,7 @@
-import { CALC_GATES, CALC_PRICE_LIST_NAMES } from '../constants/calc-constants-general';
-import { pricesGates } from '../constants/calc-constants-prices';
-import Openings from './openings';
-import store from '../../../../store/store';
+import { CALC_GATES, CALC_PRICE_LIST_NAMES } from '../../../constants/calc-constants-general';
+import Openings from '../openings';
+import store from '../../../../../../store/store';
+import { PRICE_GATES } from '../../../constants/calc-constants-prices';
 
 class Gates extends Openings {
   private readonly type: number;
@@ -24,6 +24,11 @@ class Gates extends Openings {
     return this.gatesHeight * this.gatesWidth * this.count;
   }
 
+  get tax(): number {
+    const tax = (this.taxDigit + this.taxPaper) / 2;
+    return tax + 1;
+  }
+
   posName = CALC_PRICE_LIST_NAMES.gates;
 
   get description(): string {
@@ -34,8 +39,8 @@ class Gates extends Openings {
   }
 
   get cost(): number {
-    const gatesPrice = pricesGates.find((it) => it.id === this.type).price;
-    return Math.ceil(this.areaGates * gatesPrice * this.taxesValue);
+    const gatesPrice = PRICE_GATES.find((it) => it.id === this.type).price;
+    return Math.ceil(this.areaGates * gatesPrice * this.taxesValue * this.tax);
   }
 }
 

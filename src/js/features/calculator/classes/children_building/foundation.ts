@@ -1,8 +1,8 @@
-import store from '../../../../store/store';
-import { CALC_FOUNDATION, CALC_PRICE_LIST_NAMES } from '../constants/calc-constants-general';
-import { pricesFoundation } from '../constants/calc-constants-prices';
-import { taxFoundation } from '../constants/calc-constants-taxes';
-import Building from './building';
+import store from '../../../../../store/store';
+import { CALC_FOUNDATION, CALC_PRICE_LIST_NAMES } from '../../constants/calc-constants-general';
+import Building from '../building';
+import { TAX_FOUNDATION } from '../../constants/calc-constants-taxes';
+import { PRICE_FOUNDATION } from '../../constants/calc-constants-prices';
 
 class Foundation extends Building {
   private readonly foundation: number;
@@ -12,7 +12,7 @@ class Foundation extends Building {
   constructor() {
     super();
     this.foundation = store.getState().building.foundation;
-    this.taxes = taxFoundation;
+    this.taxes = TAX_FOUNDATION;
   }
 
   get concreteVolume(): number {
@@ -43,6 +43,11 @@ class Foundation extends Building {
     return CALC_FOUNDATION.find((it) => it.id === this.foundation).name;
   }
 
+  get tax(): number {
+    const tax = (this.taxDigit + this.taxPaper) / 2;
+    return tax + 1;
+  }
+
   get cost(): number {
     const index = CALC_FOUNDATION.findIndex((it) => it.id === this.foundation);
     const pileCount = this.steelPileCount;
@@ -53,16 +58,16 @@ class Foundation extends Building {
         costBrutto = 0;
         break;
       case 1:
-        costBrutto = pricesFoundation[1].price * pileCount;
+        costBrutto = PRICE_FOUNDATION[1].price * pileCount;
         break;
       case 2:
-        costBrutto = pricesFoundation[1].price * pileCount + pricesFoundation[2].price * concreteVolume;
+        costBrutto = PRICE_FOUNDATION[1].price * pileCount + PRICE_FOUNDATION[2].price * concreteVolume;
         break;
       default:
-        costBrutto = pricesFoundation[index].price * concreteVolume;
+        costBrutto = PRICE_FOUNDATION[index].price * concreteVolume;
         break;
     }
-    return Math.ceil(costBrutto * this.taxes);
+    return Math.ceil(costBrutto * this.taxes * this.taxDigit * this.tax);
   }
 }
 

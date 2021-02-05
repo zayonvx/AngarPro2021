@@ -1,7 +1,7 @@
-import { Fences } from './fences';
-import { pricesWallFenses } from '../constants/calc-constants-prices';
-import { CALC_FENSES, CALC_PRICE_LIST_NAMES } from '../constants/calc-constants-general';
-import Windows from './windows';
+import { Fences } from '../fences';
+import { CALC_FENSES, CALC_PRICE_LIST_NAMES } from '../../../constants/calc-constants-general';
+import Windows from '../children_openings/windows';
+import { PRICE_WALL_FENCES } from '../../../constants/calc-constants-prices';
 
 class Walls extends Fences {
   private readonly priceTent: number;
@@ -12,9 +12,9 @@ class Walls extends Fences {
 
   constructor() {
     super();
-    this.priceTent = pricesWallFenses.priceTent;
-    this.priceProfnastil = pricesWallFenses.priceProfnastil;
-    this.priceSandwich = pricesWallFenses.priceSandwich;
+    this.priceTent = PRICE_WALL_FENCES.priceTent;
+    this.priceProfnastil = PRICE_WALL_FENCES.priceProfnastil;
+    this.priceSandwich = PRICE_WALL_FENCES.priceSandwich;
   }
 
   posMaterialName = CALC_PRICE_LIST_NAMES.wall;
@@ -39,6 +39,16 @@ class Walls extends Fences {
   get areaNetto(): number {
     const windows = new Windows();
     return this.areaBrutto - windows.area;
+  }
+
+  get taxMaterial(): number {
+    const tax = this.taxDigit;
+    return tax + 1;
+  }
+
+  get taxMounting(): number {
+    const tax = this.taxPaper;
+    return tax + 1;
   }
 
   get costMaterial(): number {
@@ -69,7 +79,7 @@ class Walls extends Fences {
     }
 
     const factoryCost = Math.ceil(this.areaNetto * price * additionsCoeff);
-    const cost = factoryCost * taxes;
+    const cost = factoryCost * taxes * this.taxMaterial;
     return Math.ceil(cost);
   }
 
@@ -96,7 +106,7 @@ class Walls extends Fences {
       default:
         break;
     }
-    return Math.ceil(this.areaNetto * price * this.taxesMounting);
+    return Math.ceil(this.areaNetto * price * this.taxesMounting * this.taxMounting);
   }
 }
 
