@@ -118,11 +118,11 @@ export const CALC_SANDWICH = {
   consumptionK: 1.1,
 };
 
-export const CALC_CORNICE = {
-  tent: 0,
-  profnastil: 0.3,
-  sandwich: 0.3,
-};
+export const CALC_CORNICE = [
+  { id: 0, length: 0 },
+  { id: 1, length: 0.3 },
+  { id: 2, length: 0.3 },
+];
 export const CALC_GATES: {
   types: { id: number; name: string; minWidth: number; minHeight: number; maxWidth: number; maxHeight: number }[];
   quantities: { id: number; name: string }[];
@@ -171,7 +171,9 @@ export const CALC_COEFFS = {
   height: { coeff: 0.045, base: 6 }, // plus/minus metall per meter - base height 6m
   width: { coeffUp: 0.005, coeffDown: 0.015, base: 20 }, // plus/minus metall per meter - base width 20m
   bolts: 0.015,
-  additionsTent: 0.15,
-  additionsProfnastil: 0.1,
-  additionsSandwich: 0.07,
+  fences: [
+    { id: 0, coefficient: 1.15 },
+    { id: 1, coefficient: 1.1 },
+    { id: 2, coefficient: 1.07 },
+  ],
 };

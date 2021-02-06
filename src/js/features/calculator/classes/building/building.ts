@@ -14,7 +14,7 @@ import { convertDegToRad } from '../../../../utils/functions';
 import BuildingDatas from '../_interface';
 
 class Building {
-  protected datas: BuildingDatas;
+  public datas: BuildingDatas;
 
   constructor() {
     this.datas = new BuildingDatas();
@@ -40,7 +40,7 @@ class Building {
   // }
 
   get spanStep(): number {
-    const maxStep = this.datas.fences === CALC_FENSES[0].id ? CALC_SPAN_STEP.tent : CALC_SPAN_STEP.also;
+    const maxStep = this.datas.fencesType === CALC_FENSES[0].id ? CALC_SPAN_STEP.tent : CALC_SPAN_STEP.also;
     const ceil = Math.ceil(this.datas.length / maxStep);
     const step = this.datas.length / ceil;
     return Number(step.toFixed(3));
@@ -50,7 +50,7 @@ class Building {
     const area = this.buildingArea;
     const snow = this.snowZone;
     let coeffFences: number;
-    switch (this.datas.fences) {
+    switch (this.datas.fencesType) {
       case CALC_FENSES[0].id:
         coeffFences = CALC_TENT.consumptionK;
         break;

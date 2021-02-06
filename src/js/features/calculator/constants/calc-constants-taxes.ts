@@ -1,9 +1,9 @@
 export const TAX_FACTORY_SKELETON = 1.23;
-export const TAX_FACTORY_FENCES = {
-  taxTent: 1.35,
-  taxesProfnastil: 1.05,
-  taxesSandwich: 1.05,
-};
+export const TAX_FACTORY_FENCES = [
+  { id: 0, value: 1.35 },
+  { id: 1, value: 1.05 },
+  { id: 2, value: 1.05 },
+];
 export const TAX_MOUNTING_SKELETON = 1.4;
 export const TAX_MOUNTING_FENCES = 1.4;
 export const TAX_FOUNDATION = 1.3;

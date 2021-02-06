@@ -1,0 +1,18 @@
+@import '../../../../../../sass/variables';
+@import '../../../../../../sass/colors';
+
+.wrapper {
+  margin-top: 0-$margin-big;
+  padding: $margin-normal $margin-small;
+}
+.header {
+  margin: 0;
+  font-family: $font-stack-regular;
+  font-size: $font-string-normal;
+}
+.text {
+  margin-top: $margin-smaller;
+  margin-left: $margin-small;
+  font-size: $font-string-small;
+  font-family: $font-stack-regular;
+}

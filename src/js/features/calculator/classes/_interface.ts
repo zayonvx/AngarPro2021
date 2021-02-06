@@ -11,6 +11,7 @@ import {
   TAX_PAPER,
 } from '../constants/calc-constants-taxes';
 import {
+  CALC_ARCHITECTURAL_TYPES,
   CALC_COEFFS,
   CALC_CORNICE,
   CALC_DOORS,
@@ -19,7 +20,8 @@ import {
   CALC_FOUNDATION,
   CALC_GATES,
   CALC_PRICE_LIST_NAMES,
-  CALC_WINDOW_PARAMS,
+  CALC_REGIONS,
+  CALC_WINDOW_PARAMS, CALC_WINDOWS,
 } from '../constants/calc-constants-general';
 import {
   PRICE_BOLTS,
@@ -36,155 +38,135 @@ import {
 } from '../constants/calc-constants-prices';
 
 class BuildingDatas {
-  width = store.getState().building.width;
-
-  length = store.getState().building.length;
-
-  height = store.getState().building.height;
-
-  region = store.getState().building.region;
+  foundationType = store.getState().building.foundation;
 
   archType = store.getState().building.archType;
 
-  angleRoof = store.getState().building.angle;
+  doorsType = store.getState().building.doorsType;
 
-  fences = store.getState().building.fences;
-
-  windowsRows = store.getState().building.windowsRows;
-
-  taxDigit = TAX_DIGIT;
-
-  taxPaper = TAX_PAPER;
-
-  foundationType = store.getState().building.foundation;
-
-  foundationTax = TAX_FOUNDATION;
-
-  foundationPrice = PRICE_FOUNDATION.find((it) => it.id === this.foundationType).price;
-
-  foundationPilePrice = PRICE_FOUNDATION[1].price;
-
-  foundationDescription = CALC_FOUNDATION.find((it) => it.id === this.foundationType).name;
-
-  foundationPosText = CALC_PRICE_LIST_NAMES.foundation;
-
-  foundationRostverkSectionArea = CALC_FOUNDATION[2].sectionArea;
-
-  foundationLineSectionArea = CALC_FOUNDATION[3].sectionArea;
-
-  foundationPlateThickness = CALC_FOUNDATION[4].thickness;
-
-  floorType = store.getState().building.floor;
-
-  floorPrice = PRICES_FLOOR.find((it) => it.id === this.floorType).price;
-
-  floorTax = TAX_FLOOR;
-
-  floorPosText = CALC_PRICE_LIST_NAMES.floor;
-
-  floorDescription = CALC_FLOOR.type.find((it) => it.id === this.floorType).name;
-
-  skeletonTaxesMaterial = TAX_FACTORY_SKELETON;
-
-  skeletonPriceMaterial = PRICE_SKELETON_METAL;
-
-  skeletonPriceBolts = PRICE_BOLTS;
-
-  skeletonBoltCoeff = CALC_COEFFS.bolts;
-
-  skeletonPriceMounting = PRICE_SKELETON_MOUNTING;
-
-  skeletonTaxesMounting = TAX_MOUNTING_SKELETON;
-
-  skeletonMaterialPosNameText = CALC_PRICE_LIST_NAMES.skeleton;
-
-  skeletonMountingPosNameText = CALC_PRICE_LIST_NAMES.skeletonMounting;
-
-  fencesTaxTent = TAX_FACTORY_FENCES.taxTent;
-
-  fencesTaxProfnastil = TAX_FACTORY_FENCES.taxesProfnastil;
-
-  fencesTaxSandwich = TAX_FACTORY_FENCES.taxesSandwich;
-
-  fencesAdditionsTent = CALC_COEFFS.additionsTent;
-
-  fencesAdditionsProfnastil = CALC_COEFFS.additionsProfnastil;
-
-  fencesAdditionsSandwich = CALC_COEFFS.additionsSandwich;
-
-  fencesPriceMountingTent = PRICE_FENCES_MOUNTING.priceTent;
-
-  fencesPriceMountingProfnastil = PRICE_FENCES_MOUNTING.priceProfnastil;
-
-  fencesPriceMountingSandwich = PRICE_FENCES_MOUNTING.priceSandwich;
-
-  fencesTaxMounting = TAX_MOUNTING_FENCES;
-
-  fencesTentDescriptionText = CALC_FENSES[0].name;
-
-  fencesProfnastilDescriptionText = CALC_FENSES[1].name;
-
-  fencesSandwichDescriptionText = CALC_FENSES[2].name;
-
-  roofPriceTent = PRICE_ROOF_FENCES.priceTent;
-
-  roofPriceProfnastil = PRICE_ROOF_FENCES.priceProfnastil;
-
-  roofPriceSandwich = PRICE_ROOF_FENCES.priceSandwich;
-
-  roofCorniceTent = CALC_CORNICE.tent;
-
-  roofCorniceProfnastil = CALC_CORNICE.profnastil;
-
-  roofCorniceSandwich = CALC_CORNICE.sandwich;
-
-  roofMaterialPosName = CALC_PRICE_LIST_NAMES.roof;
-
-  roofMountingPosName = CALC_PRICE_LIST_NAMES.roofMounting;
-
-  wallPriceTent = PRICE_WALL_FENCES.priceTent;
-
-  wallPriceProfnastil = PRICE_WALL_FENCES.priceProfnastil;
-
-  wallPriceSandwich = PRICE_WALL_FENCES.priceSandwich;
-
-  wallMaterialPosName = CALC_PRICE_LIST_NAMES.wall;
-
-  wallMountingPosName = CALC_PRICE_LIST_NAMES.wallMounting;
-
-  openingsTax = TAX_FACTORY_OPENINGS;
+  fencesType = store.getState().building.fences;
 
   gatesType = store.getState().building.gatesType;
 
-  gatesWidth = store.getState().building.gatesWidth;
+  floorType = store.getState().building.floor;
 
-  gatesHeight = store.getState().building.gatesHeight;
+  archTypeName = CALC_ARCHITECTURAL_TYPES.find((it) => it.id === this.archType).name;
 
-  gatesCount = store.getState().building.gatesCount;
-
-  gatesPrice = PRICE_GATES.find((it) => it.id === this.gatesType).price;
-
-  gatesDescriptionNameText = CALC_GATES.types.find((it) => it.id === this.gatesType).name;
-
-  gatesPosNameText = CALC_PRICE_LIST_NAMES.gates;
-
-  doorsType = store.getState().building.doorsType;
+  angleRoof = store.getState().building.angle;
 
   doorsCount = store.getState().building.doorsCount;
-
-  doorsPrice = PRICE_DOORS.find((it) => it.id === this.doorsType).price;
 
   doorsDescription = CALC_DOORS.types.find((it) => it.id === this.doorsType).name;
 
   doorsPosNameText = CALC_PRICE_LIST_NAMES.doors;
 
-  windowsHeight = CALC_WINDOW_PARAMS.windowHeight;
+  doorsPrice = PRICE_DOORS.find((it) => it.id === this.doorsType).price;
+
+  fencesAdditions = CALC_COEFFS.fences.find((it) => it.id === this.fencesType).coefficient;
+
+  fencesPriceMounting = PRICE_FENCES_MOUNTING.find((it) => it.id === this.fencesType).price;
+
+  fencesTaxMounting = TAX_MOUNTING_FENCES;
+
+  fencesTax = TAX_FACTORY_FENCES.find((it) => it.id === this.fencesType).value;
+
+  fencesDescription = CALC_FENSES.find((it) => it.id === this.fencesType).name;
+
+  fencesDescriptionMounting = 'Бригада поставщика';
+
+  floorDescription = CALC_FLOOR.type.find((it) => it.id === this.floorType).name;
+
+  floorPosText = CALC_PRICE_LIST_NAMES.floor;
+
+  floorPrice = PRICES_FLOOR.find((it) => it.id === this.floorType).price;
+
+  floorTax = TAX_FLOOR;
+
+  foundationDescription = CALC_FOUNDATION.find((it) => it.id === this.foundationType).name;
+
+  foundationLineSectionArea = CALC_FOUNDATION[3].sectionArea;
+
+  foundationPilePrice = PRICE_FOUNDATION[1].price;
+
+  foundationPlateThickness = CALC_FOUNDATION[4].thickness;
+
+  foundationPosText = CALC_PRICE_LIST_NAMES.foundation;
+
+  foundationPrice = PRICE_FOUNDATION.find((it) => it.id === this.foundationType).price;
+
+  foundationRostverkSectionArea = CALC_FOUNDATION[2].sectionArea;
+
+  foundationTax = TAX_FOUNDATION;
+
+  gatesCount = store.getState().building.gatesCount;
+
+  gatesDescriptionNameText = CALC_GATES.types.find((it) => it.id === this.gatesType).name;
+
+  gatesHeight = store.getState().building.gatesHeight;
+
+  gatesPosNameText = CALC_PRICE_LIST_NAMES.gates;
+
+  gatesPrice = PRICE_GATES.find((it) => it.id === this.gatesType).price;
+
+  gatesWidth = store.getState().building.gatesWidth;
+
+  height = store.getState().building.height;
+
+  length = store.getState().building.length;
+
+  openingsTax = TAX_FACTORY_OPENINGS;
+
+  region = store.getState().building.region;
+
+  regionName = CALC_REGIONS.find((it) => it.id === this.region).name;
+
+  roofMaterialPosName = CALC_PRICE_LIST_NAMES.roof;
+
+  roofMountingPosName = CALC_PRICE_LIST_NAMES.roofMounting;
+
+  roofCorniceLength = CALC_CORNICE.find((it) => it.id === this.fencesType).length;
+
+  roofPriceMaterial = PRICE_ROOF_FENCES.find((it) => it.id === this.fencesType).price;
+
+  skeletonBoltCoeff = CALC_COEFFS.bolts;
+
+  skeletonMaterialPosNameText = CALC_PRICE_LIST_NAMES.skeleton;
+
+  skeletonMountingPosNameText = CALC_PRICE_LIST_NAMES.skeletonMounting;
+
+  skeletonPriceBolts = PRICE_BOLTS;
+
+  skeletonPriceMaterial = PRICE_SKELETON_METAL;
+
+  skeletonPriceMounting = PRICE_SKELETON_MOUNTING;
+
+  skeletonTaxesMaterial = TAX_FACTORY_SKELETON;
+
+  skeletonTaxesMounting = TAX_MOUNTING_SKELETON;
+
+  taxDigit = TAX_DIGIT;
+
+  taxPaper = TAX_PAPER;
+
+  wallMaterialPosName = CALC_PRICE_LIST_NAMES.wall;
+
+  wallMountingPosName = CALC_PRICE_LIST_NAMES.wallMounting;
+
+  wallPriceMaterial = PRICE_WALL_FENCES.find((it) => it.id === this.fencesType).price;
+
+  width = store.getState().building.width;
+
+  windowsRows = store.getState().building.windowsRows;
 
   windowHorizontalGap = CALC_WINDOW_PARAMS.windowHorizontalGap;
 
-  windowsPrices = PRICE_WINDOWS;
+  windowsHeight = CALC_WINDOW_PARAMS.windowHeight;
 
   windowsPosNameText = CALC_PRICE_LIST_NAMES.windows;
+
+  windowsPrices = PRICE_WINDOWS;
+
+  windowsDescription = CALC_WINDOWS.find((it) => it.id === this.windowsRows).name;
 }
 
 export default BuildingDatas;

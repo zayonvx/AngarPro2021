@@ -6,7 +6,7 @@ class Walls extends Building {
 
   posMountingName = this.datas.wallMountingPosName;
 
-  posMountingDescription = 'Бригада поставщика';
+  posMountingDescription = this.datas.fencesDescriptionMounting;
 
   get areaBox(): number {
     return this.datas.archType === 0
@@ -37,77 +37,21 @@ class Walls extends Building {
   }
 
   get costMaterial(): number {
-    let additionsCoeff: number;
-    let price: number;
-    let taxes: number;
-    switch (this.datas.fences) {
-      case 0: {
-        additionsCoeff = this.datas.fencesAdditionsTent + 1;
-        price = this.datas.wallPriceTent;
-        taxes = this.datas.fencesTaxTent;
-        break;
-      }
-      case 1: {
-        additionsCoeff = this.datas.fencesAdditionsProfnastil + 1;
-        price = this.datas.wallPriceProfnastil;
-        taxes = this.datas.fencesTaxProfnastil;
-        break;
-      }
-      case 2: {
-        additionsCoeff = this.datas.fencesAdditionsSandwich + 1;
-        price = this.datas.wallPriceSandwich;
-        taxes = this.datas.fencesTaxSandwich;
-        break;
-      }
-      default:
-        break;
-    }
-
-    const factoryCost = Math.ceil(this.areaNetto * price * additionsCoeff);
-    const cost = factoryCost * taxes * this.taxMaterial;
-    return Math.ceil(cost);
+    return Math.ceil(
+      this.areaNetto *
+        this.datas.wallPriceMaterial *
+        this.datas.fencesAdditions *
+        this.datas.fencesTax *
+        this.taxMaterial,
+    );
   }
 
   get descriptionMaterial(): string {
-    let fensesName = '';
-    switch (this.datas.fences) {
-      case 0: {
-        fensesName = this.datas.fencesTentDescriptionText;
-        break;
-      }
-      case 1: {
-        fensesName = this.datas.fencesProfnastilDescriptionText;
-        break;
-      }
-      case 2: {
-        fensesName = this.datas.fencesSandwichDescriptionText;
-        break;
-      }
-      default:
-        break;
-    }
-    return `${fensesName}, ${this.areaNetto.toLocaleString(undefined)} кв.м`;
+    return `${this.datas.fencesDescription}, ${this.areaNetto.toLocaleString(undefined)} кв.м`;
   }
 
   get costMounting(): number {
-    let price = 0;
-    switch (this.datas.fences) {
-      case 0: {
-        price = this.datas.fencesPriceMountingTent;
-        break;
-      }
-      case 1: {
-        price = this.datas.fencesPriceMountingProfnastil;
-        break;
-      }
-      case 2: {
-        price = this.datas.fencesPriceMountingSandwich;
-        break;
-      }
-      default:
-        break;
-    }
-    return Math.ceil(this.areaNetto * price * this.datas.fencesTaxMounting * this.taxMounting);
+    return Math.ceil(this.areaNetto * this.datas.fencesPriceMounting * this.datas.fencesTaxMounting * this.taxMounting);
   }
 }
 
