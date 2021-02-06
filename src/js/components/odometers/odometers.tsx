@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './counters.module.scss';
+import styles from './odometers.module.scss';
 import odometers from '../../database/odometers';
-
-const Counters = (): JSX.Element => (
+// TODO create animations of odometers
+const Odometers = (): JSX.Element => (
   <section className={styles.wrapper}>
     <div className={styles.bg_overlay} />
     <ul className={styles.list}>
@@ -19,4 +19,4 @@ const Counters = (): JSX.Element => (
   </section>
 );
 
-export default Counters;
+export default Odometers;

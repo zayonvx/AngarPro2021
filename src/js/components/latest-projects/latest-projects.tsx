@@ -3,7 +3,7 @@ import styles from './latest-projects.module.scss';
 import HeaderOfSection from '../header-of-section/header-of-section';
 import PreviewList from './preview-list';
 import LoadMoreButton from './load-more-button';
-
+// TODO change presentation of cards for touchscreens
 const LatestProjects = (): JSX.Element => (
   <section id="pholio" className={styles.wrapper}>
     <HeaderOfSection

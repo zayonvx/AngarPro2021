@@ -5,7 +5,7 @@ import SectionContent from '../section-content/section-content';
 import LatestProjects from '../latest-projects/latest-projects';
 import { windowResize } from '../../utils/functions';
 import Choose from '../section-choose-us/choose';
-import Counters from '../counters/counters';
+import Odometers from '../odometers/odometers';
 import Contacts from '../section-contacts/contacts';
 import PopupWrapper from '../popup-wrapper/popup-wrapper';
 
@@ -27,7 +27,7 @@ const Main = (): JSX.Element => {
       <SectionContent />
       <LatestProjects />
       <Choose />
-      <Counters />
+      <Odometers />
       <Contacts />
       <PopupWrapper />
     </main>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './advantages.module.scss';
 
-const adv = [
+const ADVANTAGES = [
   {
     id: '001',
     icon: 'fal fa-drafting-compass',
@@ -32,11 +32,11 @@ const adv = [
     link: '#',
   },
 ];
-
+// TODO write descriptions of points of advantages
 const Advantages = (): JSX.Element => (
   <div className={styles.wrapper}>
     <div className={styles.container}>
-      {adv.map((it) => (
+      {ADVANTAGES.map((it) => (
         <div className={styles.avantage} key={it.id}>
           <div className={styles.btn_wrapper}>
             <button className={styles.button} type="button">

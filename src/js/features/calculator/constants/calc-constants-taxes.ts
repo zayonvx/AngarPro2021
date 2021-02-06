@@ -1,4 +1,4 @@
-export const TAX_FACTORY_SKELETON = 1.2;
+export const TAX_FACTORY_SKELETON = 1.23;
 export const TAX_FACTORY_FENCES = {
   taxTent: 1.35,
   taxesProfnastil: 1.05,

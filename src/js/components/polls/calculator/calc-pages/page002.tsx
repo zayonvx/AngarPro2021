@@ -39,22 +39,26 @@ const CalcPage002 = (): JSX.Element => {
     }
   };
 
+  const { foundation } = store.getState().building;
+
   return (
     <div className="popup__wrapper">
       <DropDownList
         legend="Тип фундамента"
         array={CALC_FOUNDATION}
-        selected={store.getState().building.foundation}
+        selected={foundation}
         handlerChange={handlerDropDownList}
         id="dropFoundation"
       />
-      <DropDownList
-        legend="Пол"
-        array={CALC_FLOOR.type}
-        selected={store.getState().building.floor}
-        handlerChange={handlerDropDownList}
-        id="dropFloor"
-      />
+      {foundation > 0 && foundation < 4 ? (
+        <DropDownList
+          legend="Пол"
+          array={CALC_FLOOR.type}
+          selected={store.getState().building.floor}
+          handlerChange={handlerDropDownList}
+          id="dropFloor"
+        />
+      ) : null}
       <DropDownList
         legend="Материал кровли и стен"
         array={CALC_FENSES}

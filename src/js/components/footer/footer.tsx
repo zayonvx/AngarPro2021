@@ -17,7 +17,7 @@ const Footer = (): JSX.Element => (
           {getList(contactOffice)}
         </div>
         <div className={styles.address_wrapper}>
-          <h5 className={styles.address_title}>Производство</h5>
+          <h5 className={styles.address_title}>Основная производстводственная площадка</h5>
           {getList(contactFactory)}
         </div>
       </div>

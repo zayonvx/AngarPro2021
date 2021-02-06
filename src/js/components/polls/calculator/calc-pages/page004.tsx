@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './page004.module.scss';
-import PriceList from '../../../../features/calculator/classes/price-list';
+import PriceList from '../../../../features/calculator/classes/price-list/price-list';
 
 const CalcPage004 = (): JSX.Element => {
   const priceList = new PriceList();

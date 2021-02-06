@@ -37,22 +37,27 @@ export const CALC_ARCHITECTURAL_TYPES: { id: number; name: string; minWidth: num
 export const CALC_FOUNDATION: { id: number; name: string; sectionArea?: number; thickness?: number }[] = [
   { id: 0, name: 'Без фундамента' },
   { id: 1, name: 'Стальные сваи' },
-  { id: 2, name: 'Стальные сваи с ж/б ростверком', sectionArea: 0.175 },
-  { id: 3, name: 'Монолитный, ленточный', sectionArea: 0.2 },
+  { id: 2, name: 'Стальные сваи с ж/б ростверком', sectionArea: 0.2 },
+  { id: 3, name: 'Монолитный, ленточный', sectionArea: 0.3 },
   { id: 4, name: 'Монолитная ж/б плита', thickness: 0.2 },
 ];
 export const CALC_PILES: { loadCapacity: number; stepButt: 5 } = {
   loadCapacity: 8000, // kilogramms
   stepButt: 5,
 };
-export const CALC_FLOOR: { type: { id: number; name: string }[]; grinding: { price: number } } = {
+export const CALC_FLOOR: {
+  type: { id: number; name: string }[];
+  grinding: { price: number };
+  layered: { price: number };
+} = {
   type: [
     { id: 0, name: 'Без полов' },
     { id: 1, name: 'Монолит 100мм' },
     { id: 2, name: 'Монолит 150мм' },
     { id: 3, name: 'Монолит 200мм' },
   ],
-  grinding: { price: 0 },
+  grinding: { price: 1560 },
+  layered: { price: 2190 },
 };
 export const CALC_CRANE: { type: string[]; capacites: string[] } = {
   type: ['нет', 'подвесной, электрический'],

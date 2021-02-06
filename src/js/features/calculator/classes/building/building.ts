@@ -1,4 +1,3 @@
-import store from '../../../../store/store';
 import {
   CALC_COEFFS,
   CALC_FENSES,
@@ -10,54 +9,27 @@ import {
   // CALC_SNOW_WEIGHT,
   CALC_SPAN_STEP,
   CALC_TENT,
-} from '../constants/calc-constants-general';
-import { convertDegToRad } from '../../../utils/functions';
-import { TAX_DIGIT, TAX_PAPER } from '../constants/calc-constants-taxes';
+} from '../../constants/calc-constants-general';
+import { convertDegToRad } from '../../../../utils/functions';
+import BuildingDatas from '../_interface';
 
 class Building {
-  protected readonly width: number;
-
-  protected readonly length: number;
-
-  protected readonly fences: number;
-
-  protected readonly region: number;
-
-  protected readonly height: number;
-
-  protected readonly windowRows: number;
-
-  protected readonly archType: number;
-
-  protected readonly angle: number;
-
-  protected taxDigit: number;
-
-  protected taxPaper: number;
+  protected datas: BuildingDatas;
 
   constructor() {
-    this.width = store.getState().building.width;
-    this.length = store.getState().building.length;
-    this.height = store.getState().building.height;
-    this.fences = store.getState().building.fences;
-    this.region = store.getState().building.region;
-    this.windowRows = store.getState().building.windowsRows;
-    this.archType = store.getState().building.archType;
-    this.angle = store.getState().building.angle;
-    this.taxDigit = TAX_DIGIT;
-    this.taxPaper = TAX_PAPER;
+    this.datas = new BuildingDatas();
   }
 
   get buildingArea(): number {
-    return this.length * this.width;
+    return this.datas.length * this.datas.width;
   }
 
   get buildingPerimeter(): number {
-    return (this.width + this.length) * 2;
+    return (this.datas.length + this.datas.width) * 2;
   }
 
   get snowZone(): number {
-    const { snow } = CALC_REGIONS.find((it) => it.id === this.region);
+    const { snow } = CALC_REGIONS.find((it) => it.id === this.datas.region);
     return snow;
   }
 
@@ -68,9 +40,9 @@ class Building {
   // }
 
   get spanStep(): number {
-    const maxStep = this.fences === CALC_FENSES[0].id ? CALC_SPAN_STEP.tent : CALC_SPAN_STEP.also;
-    const ceil = Math.ceil(this.length / maxStep);
-    const step = this.length / ceil;
+    const maxStep = this.datas.fences === CALC_FENSES[0].id ? CALC_SPAN_STEP.tent : CALC_SPAN_STEP.also;
+    const ceil = Math.ceil(this.datas.length / maxStep);
+    const step = this.datas.length / ceil;
     return Number(step.toFixed(3));
   }
 
@@ -78,7 +50,7 @@ class Building {
     const area = this.buildingArea;
     const snow = this.snowZone;
     let coeffFences: number;
-    switch (this.fences) {
+    switch (this.datas.fences) {
       case CALC_FENSES[0].id:
         coeffFences = CALC_TENT.consumptionK;
         break;
@@ -93,9 +65,9 @@ class Building {
         break;
     }
 
-    const heightDelta = this.height - CALC_COEFFS.height.base;
+    const heightDelta = this.datas.height - CALC_COEFFS.height.base;
     const heightCoeff = 1 + heightDelta * CALC_COEFFS.height.coeff;
-    const widthDelta = this.width - CALC_COEFFS.width.base;
+    const widthDelta = this.datas.width - CALC_COEFFS.width.base;
     const widthBaseCoeff = widthDelta > 0 ? CALC_COEFFS.width.coeffUp : CALC_COEFFS.width.coeffDown;
     const widthCoeff = 1 + Math.abs(widthDelta) * widthBaseCoeff;
     const consumption = CALC_METAL_CONSUMPTION[snow] * heightCoeff * widthCoeff;
@@ -106,8 +78,8 @@ class Building {
 
   get steelPileCount(): number {
     const buildingWeight = this.skeletonWeight + this.spanStep;
-    const lenPiles = (this.length / this.spanStep) * 2 + 2;
-    const widPiles = Math.ceil(this.width / CALC_PILES.stepButt - 1) * 2;
+    const lenPiles = (this.datas.length / this.spanStep) * 2 + 2;
+    const widPiles = Math.ceil(this.datas.width / CALC_PILES.stepButt - 1) * 2;
     const perimeterPiles = lenPiles + widPiles;
     const weightPiles = Math.ceil(buildingWeight / CALC_PILES.loadCapacity);
     return perimeterPiles > weightPiles ? perimeterPiles : weightPiles;
@@ -115,15 +87,15 @@ class Building {
 
   get gableHeight(): number {
     let heightGable: number;
-    switch (this.archType) {
+    switch (this.datas.archType) {
       case 0:
-        heightGable = this.width * Math.tan(convertDegToRad(this.angle));
+        heightGable = this.datas.width * Math.tan(convertDegToRad(this.datas.angleRoof));
         break;
       case 1:
-        heightGable = (this.width / 2) * Math.tan(convertDegToRad(this.angle));
+        heightGable = (this.datas.width / 2) * Math.tan(convertDegToRad(this.datas.angleRoof));
         break;
       case 2:
-        heightGable = (this.width / 4) * Math.tan(convertDegToRad(this.angle));
+        heightGable = (this.datas.width / 4) * Math.tan(convertDegToRad(this.datas.angleRoof));
         break;
       default:
         heightGable = 0;
@@ -135,15 +107,15 @@ class Building {
   get atticArea(): number {
     const atticHeight = this.gableHeight;
     let areaAttic: number;
-    switch (this.archType) {
+    switch (this.datas.archType) {
       case 0:
-        areaAttic = (this.width * atticHeight) / 2;
+        areaAttic = (this.datas.width * atticHeight) / 2;
         break;
       case 1:
-        areaAttic = (this.width / 2) * atticHeight;
+        areaAttic = (this.datas.width / 2) * atticHeight;
         break;
       case 2:
-        areaAttic = (this.width / 4) * atticHeight * 2;
+        areaAttic = (this.datas.width / 4) * atticHeight * 2;
         break;
       default:
         areaAttic = 0;
@@ -153,7 +125,7 @@ class Building {
   }
 
   get buttArea(): number {
-    const areaButt = this.height * this.width + this.atticArea;
+    const areaButt = this.datas.height * this.datas.width + this.atticArea;
     return Number(areaButt.toFixed(3));
   }
 }

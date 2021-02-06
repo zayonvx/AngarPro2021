@@ -1,5 +1,5 @@
 import PriceListRow from './price-list-rows';
-import { IPriceRow } from './_types';
+import { IPriceRow } from '../_types';
 
 class PriceList {
   private priceRow: PriceListRow;

@@ -27,71 +27,76 @@ interface Props {
   fences: number;
 }
 
+const handlerInputList = (evt: SyntheticEvent) => {
+  const e = evt.currentTarget as HTMLInputElement;
+  switch (e.id) {
+    case 'inputWidth':
+      store.dispatch(buildingChangeGatesWidth(Number(e.value)));
+      break;
+    case 'inputHeight':
+      store.dispatch(buildingChangeGatesHeight(Number(e.value)));
+      break;
+    default:
+      break;
+  }
+};
+const handlerDropDownList = (evt: SyntheticEvent) => {
+  const e = evt.currentTarget as HTMLInputElement;
+  let gatesId: number;
+  let currentGatesCount: number;
+  let doorsId: number;
+  let currentDoorsCount: number;
+  let windowsId: number;
+  let defaultGatesWidth: number;
+  let defaultGatesHeight: number;
+
+  switch (e.id) {
+    case 'dropGatesType':
+      gatesId = CALC_GATES.types.find((it) => e.value === it.name).id;
+      store.dispatch(buildingChangeGatesType(gatesId));
+
+      defaultGatesWidth = (CALC_GATES.types[gatesId].minWidth + CALC_GATES.types[gatesId].maxWidth) / 2;
+      defaultGatesHeight = (CALC_GATES.types[gatesId].minHeight + CALC_GATES.types[gatesId].maxHeight) / 2;
+
+      store.dispatch(buildingChangeGatesHeight(defaultGatesHeight));
+      store.dispatch(buildingChangeGatesWidth(defaultGatesWidth));
+
+      if (gatesId > 0) {
+        store.dispatch(buildingChangeGatesCount(1));
+      } else {
+        store.dispatch(buildingChangeGatesCount(0));
+      }
+
+      break;
+    case 'dropDoorsType':
+      doorsId = CALC_DOORS.types.find((it) => e.value === it.name).id;
+      store.dispatch(buildingChangeDoorsType(doorsId));
+      if (doorsId > 0) {
+        store.dispatch(buildingChangeDoorsCount(1));
+      } else {
+        store.dispatch(buildingChangeDoorsCount(0));
+      }
+      break;
+    case 'dropWindowsType':
+      windowsId = CALC_WINDOWS.find((it) => e.value === it.name).id;
+      store.dispatch(buildingChangeWindowsType(windowsId));
+      break;
+    case 'dropGatesCount':
+      currentGatesCount = Number(e.value);
+      store.dispatch(buildingChangeGatesCount(currentGatesCount));
+      break;
+    case 'dropDoorsCount':
+      currentDoorsCount = Number(e.value);
+      store.dispatch(buildingChangeDoorsCount(currentDoorsCount));
+      break;
+
+    default:
+      break;
+  }
+};
+
 const CalcPage003 = ({ ...props }: Props): JSX.Element => {
   const { gatesType, doorsType, gatesCount, doorsCount, windowsRows, fences } = props;
-
-  const handlerInputList = (evt: SyntheticEvent) => {
-    const e = evt.currentTarget as HTMLInputElement;
-    switch (e.id) {
-      case 'inputWidth':
-        store.dispatch(buildingChangeGatesWidth(Number(e.value)));
-        break;
-      case 'inputHeight':
-        store.dispatch(buildingChangeGatesHeight(Number(e.value)));
-        break;
-      default:
-        break;
-    }
-  };
-  const handlerDropDownList = (evt: SyntheticEvent) => {
-    const e = evt.currentTarget as HTMLInputElement;
-    let gatesId: number;
-    let currentGatesCount: number;
-    let doorsId: number;
-    let currentDoorsCount: number;
-    let windowsId: number;
-    let defaultGatesWidth: number;
-    let defaultGatesHeight: number;
-
-    switch (e.id) {
-      case 'dropGatesType':
-        gatesId = CALC_GATES.types.find((it) => e.value === it.name).id;
-        store.dispatch(buildingChangeGatesType(gatesId));
-
-        defaultGatesWidth = (CALC_GATES.types[gatesId].minWidth + CALC_GATES.types[gatesId].maxWidth) / 2;
-        defaultGatesHeight = (CALC_GATES.types[gatesId].minHeight + CALC_GATES.types[gatesId].maxHeight) / 2;
-
-        store.dispatch(buildingChangeGatesHeight(defaultGatesHeight));
-        store.dispatch(buildingChangeGatesWidth(defaultGatesWidth));
-
-        if (gatesId > 0) {
-          store.dispatch(buildingChangeGatesCount(1));
-        } else {
-          store.dispatch(buildingChangeGatesCount(0));
-        }
-
-        break;
-      case 'dropDoorsType':
-        doorsId = CALC_DOORS.types.find((it) => e.value === it.name).id;
-        store.dispatch(buildingChangeDoorsType(doorsId));
-        break;
-      case 'dropWindowsType':
-        windowsId = CALC_WINDOWS.find((it) => e.value === it.name).id;
-        store.dispatch(buildingChangeWindowsType(windowsId));
-        break;
-      case 'dropGatesCount':
-        currentGatesCount = Number(e.value);
-        store.dispatch(buildingChangeGatesCount(currentGatesCount));
-        break;
-      case 'dropDoorsCount':
-        currentDoorsCount = Number(e.value);
-        store.dispatch(buildingChangeDoorsCount(currentDoorsCount));
-        break;
-
-      default:
-        break;
-    }
-  };
 
   const paramsWidth = () => {
     const min = CALC_GATES.types[gatesType].minWidth;
@@ -165,7 +170,7 @@ const CalcPage003 = ({ ...props }: Props): JSX.Element => {
             <DropDownList
               legend="К-во"
               array={CALC_DOORS.quantities}
-              selected={doorsCount}
+              selected={doorsCount - 1}
               handlerChange={handlerDropDownList}
               id="dropDoorsCount"
             />

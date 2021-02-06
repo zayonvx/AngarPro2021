@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './choose.module.scss';
-
+// TODO find a good image to illustrate
 const texts = {
   h4: 'Почему выбирают нас',
   h5: 'внимательность, качество, искренность',
