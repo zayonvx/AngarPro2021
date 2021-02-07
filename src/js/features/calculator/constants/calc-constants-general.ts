@@ -123,30 +123,6 @@ export const CALC_CORNICE = [
   { id: 1, length: 0.3 },
   { id: 2, length: 0.3 },
 ];
-export const CALC_GATES: {
-  types: { id: number; name: string; minWidth: number; minHeight: number; maxWidth: number; maxHeight: number }[];
-  quantities: { id: number; name: string }[];
-  step: number;
-} = {
-  types: [
-    { id: 0, name: 'Нет', minWidth: 0, minHeight: 0, maxWidth: 0, maxHeight: 0 },
-    { id: 1, name: 'Распашные', minWidth: 3, minHeight: 3, maxWidth: 4, maxHeight: 6 },
-    { id: 2, name: 'Распашные утепленные', minWidth: 3, minHeight: 3, maxWidth: 4, maxHeight: 6 },
-    { id: 3, name: 'Сдвижные', minWidth: 2, minHeight: 2, maxWidth: 5, maxHeight: 6 },
-    { id: 4, name: 'Сдвижные утепленные', minWidth: 2, minHeight: 2, maxWidth: 5, maxHeight: 6 },
-    { id: 5, name: 'Подъемные, без привода', minWidth: 2.5, minHeight: 2.2, maxWidth: 5, maxHeight: 5 },
-    { id: 6, name: 'Подъемные, с приводом', minWidth: 2.5, minHeight: 2.2, maxWidth: 5, maxHeight: 5 },
-    { id: 7, name: 'Роллетные', minWidth: 2.5, minHeight: 2.2, maxWidth: 6, maxHeight: 6 },
-    { id: 8, name: 'Сдвижные типа "книжка"', minWidth: 6, minHeight: 3, maxWidth: 21, maxHeight: 10 },
-  ],
-  quantities: [
-    { id: 0, name: '1' },
-    { id: 1, name: '2' },
-    { id: 2, name: '3' },
-    { id: 3, name: '4' },
-  ],
-  step: 0.1,
-};
 export const CALC_DOORS: { types: { id: number; name: string }[]; quantities: { id: number; name: string }[] } = {
   types: [
     { id: 0, name: 'Нет' },
@@ -177,3 +153,31 @@ export const CALC_COEFFS = {
     { id: 2, coefficient: 1.07 },
   ],
 };
+
+export const CALC_GATES: {
+  types: { id: number; name: string; minWidth: number; minHeight: number; maxWidth: number; maxHeight: number }[];
+  quantities: { id: number; name: string }[];
+  step: number;
+} = {
+  types: [
+    { id: 0, name: 'Нет', minWidth: 0, minHeight: 0, maxWidth: 0, maxHeight: 0 },
+    { id: 1, name: 'Распашные', minWidth: 3, minHeight: 3, maxWidth: 4, maxHeight: 6 },
+    { id: 2, name: 'Распашные утепленные', minWidth: 3, minHeight: 3, maxWidth: 4, maxHeight: 6 },
+    { id: 3, name: 'Сдвижные', minWidth: 2, minHeight: 2, maxWidth: 5, maxHeight: 6 },
+    { id: 4, name: 'Сдвижные утепленные', minWidth: 2, minHeight: 2, maxWidth: 5, maxHeight: 6 },
+    { id: 5, name: 'Подъемные, без привода', minWidth: 2.5, minHeight: 2.2, maxWidth: 5, maxHeight: 5 },
+    { id: 6, name: 'Подъемные, с приводом', minWidth: 2.5, minHeight: 2.2, maxWidth: 5, maxHeight: 5 },
+    { id: 7, name: 'Роллетные', minWidth: 2.5, minHeight: 2.2, maxWidth: 6, maxHeight: 6 },
+    { id: 8, name: 'Сдвижные типа "книжка"', minWidth: 6, minHeight: 3, maxWidth: 21, maxHeight: 10 },
+  ],
+  quantities: [
+    { id: 0, name: '1' },
+    { id: 1, name: '2' },
+    { id: 2, name: '3' },
+    { id: 3, name: '4' },
+  ],
+  step: 0.1,
+};
+export const CALC_GATES_TENT = [0, 1, 3, 7];
+export const CALC_GATES_PROFNASTIL = [0, 1, 3, 5, 6, 7];
+export const CALC_GATES_SANDWICH = [0, 2, 4, 5, 6, 8];

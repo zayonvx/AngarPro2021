@@ -10,9 +10,12 @@
   padding: $margin-small $margin-normal;
   margin-bottom: $margin-big;
 }
-.text {
+.textWrapper {
   font-family: $font-stack-regular;
   font-size: $font-string-normal;
+}
+.text {
+  margin-left: $margin-tiny;
 }
 .button {
   border: none;

@@ -11,7 +11,6 @@ class Foundation extends Building {
     const tax = (this.datas.taxDigit + this.datas.taxPaper) / 2;
     return tax + 1;
   }
-  // TODO plate price incoffect
 
   get concreteVolume(): number {
     let volume = 0;

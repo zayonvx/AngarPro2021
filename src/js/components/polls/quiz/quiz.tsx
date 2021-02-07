@@ -21,7 +21,11 @@ const Quiz = ({ ...props }: Props): JSX.Element => {
   };
   return (
     <div className={styles.quiz}>
-      <PollHeader text="Узнайте цену за 6 шагов" handlerClose={handlerOnClickQuizClose} />
+      <PollHeader
+        text="Получите предложение на строительство"
+        handlerClose={handlerOnClickQuizClose}
+        iconClass="fal fa-file-alt"
+      />
       {children}
       <PollFooter
         handlerBackwardClick={quizBackwardPage}

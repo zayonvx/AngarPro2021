@@ -1,0 +1,38 @@
+.buttonForward i {
+  left: 65%;
+}
+.buttonForward {
+  &:hover i {
+    opacity: 1;
+    left: 75%;
+  }
+  &:hover span {
+    left: -10%;
+  }
+}
+
+.buttonBackward i {
+  left: 25%;
+}
+.buttonBackward {
+  &:hover i {
+    opacity: 1;
+    left: 18%;
+  }
+  &:hover span {
+    left: 22%;
+  }
+}
+
+.buttonSend i {
+  left: 72%;
+}
+.buttonSend {
+  &:hover i {
+    opacity: 1;
+    left: 80%;
+  }
+  &:hover span {
+    left: -10%;
+  }
+}

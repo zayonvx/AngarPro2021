@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { IPopupState } from '../../../../store/popup/types';
+import styles from './buttons.module.scss';
 
 interface Props {
   visible: boolean;
@@ -15,12 +16,13 @@ const ButtonForward = ({ ...props }: Props): JSX.Element => {
 
   return (
     <button
-      className="button button__accent button__accent--dark-gray"
+      className={`${styles.buttonForward} button button__accent button__accent--bordered`}
       type="button"
       onClick={handlerClick}
       id="buttonForward"
     >
-      Далее
+      <span className="button__text">Далее</span>
+      <i className="far fa-arrow-right button__icon" />
     </button>
   );
 };

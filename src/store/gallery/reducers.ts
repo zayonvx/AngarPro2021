@@ -2,6 +2,7 @@ import initialState from './initial-state';
 import {
   GALLERY_CHANGE_COORDINATES,
   GALLERY_CHANGE_CURRENT_PHOTO,
+  GALLERY_TOGGLE_IMAGE_LOADED,
   GALLERY_TOGGLE_MAP_SHOW,
   GalleryActionsCreators,
   IGalleryState,
@@ -15,6 +16,8 @@ const galleryRedusers = (state = initialState.gallery, action: GalleryActionsCre
       return { ...state, mapVisible: action.payload };
     case GALLERY_CHANGE_COORDINATES:
       return { ...state, coordinates: action.payload };
+    case GALLERY_TOGGLE_IMAGE_LOADED:
+      return { ...state, loaded: action.payload };
     default:
       return state;
   }

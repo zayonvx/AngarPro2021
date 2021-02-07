@@ -3,7 +3,14 @@ import { connect } from 'react-redux';
 import { IBuildingState } from '../../../../../store/building/types';
 import styles from './page003.module.scss';
 import DropDownList from '../../drop-down-list/drop-down-list';
-import { CALC_DOORS, CALC_GATES, CALC_WINDOWS } from '../../../../features/calculator/constants/calc-constants-general';
+import {
+  CALC_DOORS,
+  CALC_GATES,
+  CALC_GATES_PROFNASTIL,
+  CALC_GATES_SANDWICH,
+  CALC_GATES_TENT,
+  CALC_WINDOWS,
+} from '../../../../features/calculator/constants/calc-constants-general';
 import store from '../../../../../store/store';
 import {
   buildingChangeDoorsCount,
@@ -27,6 +34,27 @@ interface Props {
   fences: number;
 }
 
+const gatesDropDownTypes = (gatesType: number) => {
+  let typesArray = [];
+  switch (gatesType) {
+    case 0:
+      typesArray = CALC_GATES_TENT;
+      break;
+    case 1:
+      typesArray = CALC_GATES_PROFNASTIL;
+      break;
+    case 2:
+      typesArray = CALC_GATES_SANDWICH;
+      break;
+    default:
+      break;
+  }
+  const typeNamesArray: Array<{ name: string; id: number }> = [];
+  typesArray.forEach((type) => {
+    typeNamesArray.push(CALC_GATES.types.find((it) => it.id === type));
+  });
+  return typeNamesArray;
+};
 const handlerInputList = (evt: SyntheticEvent) => {
   const e = evt.currentTarget as HTMLInputElement;
   switch (e.id) {
@@ -116,7 +144,7 @@ const CalcPage003 = ({ ...props }: Props): JSX.Element => {
       <div className={styles.gatesWrapper}>
         <DropDownList
           legend="Ворота"
-          array={CALC_GATES.types}
+          array={gatesDropDownTypes(store.getState().building.fences)}
           selected={gatesType}
           handlerChange={handlerDropDownList}
           id="dropGatesType"

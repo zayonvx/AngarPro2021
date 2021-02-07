@@ -5,6 +5,7 @@ const initialState: IGalleryState = {
     currentPhoto: '001',
     mapVisible: false,
     coordinates: [],
+    loaded: false,
   },
 };
 

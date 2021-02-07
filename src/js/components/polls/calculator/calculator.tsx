@@ -17,10 +17,14 @@ const Calculator = ({ ...props }: Props): JSX.Element => {
   const handlerClickCalculatorClose = (): void => {
     store.dispatch(togglePopupVisible(false));
   };
-  // TODO add block with building description
+
   return (
     <div className={styles.calculator}>
-      <PollHeader text="Калькулятор цены здания" handlerClose={handlerClickCalculatorClose} />
+      <PollHeader
+        text="Калькулятор цены здания"
+        handlerClose={handlerClickCalculatorClose}
+        iconClass="fal fa-calculator"
+      />
       {children}
       <PollFooter handlerBackwardClick={calculatorBackwardPage} handlerForwardClick={calculatorForwardPage} />
     </div>

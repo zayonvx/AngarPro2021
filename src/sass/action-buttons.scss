@@ -3,7 +3,9 @@
 
 .button {
   text-align: center;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   transition: all 0.3s ease;
   transform: translateZ(0);
@@ -35,6 +37,7 @@ $disable-color: $color-gray;
   color: $color-dark-gray;
   border-color: $color-dark-gray;
 }
+
 .button__transparent--disabled {
   color: $disable-color;
   border-color: $disable-color;
@@ -63,6 +66,14 @@ $disable-color: $color-gray;
     background-color: $color-dark-gray;
     border-color: $color-dark-gray;
     color: $color-light;
+  }
+}
+.button__accent--bordered {
+  color: $color-light;
+  &:hover {
+    background-color: $color-light;
+    border-color: $color-accent;
+    color: $color-accent;
   }
 }
 .button__accent--disabled {

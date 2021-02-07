@@ -47,7 +47,9 @@ class Walls extends Building {
   }
 
   get descriptionMaterial(): string {
-    return `${this.datas.fencesDescription}, ${this.areaNetto.toLocaleString(undefined)} кв.м`;
+    return `${this.datas.fencesDescription}, ${(this.areaNetto * this.datas.fencesAdditions).toLocaleString(
+      undefined,
+    )} кв.м`;
   }
 
   get costMounting(): number {

@@ -1,12 +1,14 @@
 export const GALLERY_CHANGE_CURRENT_PHOTO = 'GALLERY_CHANGE_CURRENT_PHOTO';
 export const GALLERY_TOGGLE_MAP_SHOW = 'GALLERY_TOGGLE_MAP_SHOW';
 export const GALLERY_CHANGE_COORDINATES = 'GALLERY_CHANGE_COORDINATES';
+export const GALLERY_TOGGLE_IMAGE_LOADED = 'GALLERY_TOGGLE_IMAGE_LOADED';
 
 export interface IGalleryState {
   gallery: {
     currentPhoto: string;
     mapVisible: boolean;
     coordinates: number[];
+    loaded: boolean;
   };
 }
 
@@ -25,4 +27,13 @@ interface ChangeGalleryCoordinates {
   payload: number[];
 }
 
-export type GalleryActionsCreators = ChangeCurrentPhoto | ToggleGalleryMapVisible | ChangeGalleryCoordinates;
+interface ToggleGalleryImageLoaded {
+  type: typeof GALLERY_TOGGLE_IMAGE_LOADED;
+  payload: boolean;
+}
+
+export type GalleryActionsCreators =
+  | ChangeCurrentPhoto
+  | ToggleGalleryMapVisible
+  | ChangeGalleryCoordinates
+  | ToggleGalleryImageLoaded;

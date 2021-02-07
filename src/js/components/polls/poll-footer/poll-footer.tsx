@@ -14,7 +14,6 @@ interface Props {
 const defaultProps = {
   handlerSendClick: null,
 };
-// TODO add animated arrows to buttons
 const PollFooter = ({ ...props }: Props): JSX.Element => {
   const { handlerBackwardClick, handlerForwardClick, handlerSendClick } = props;
   return (
