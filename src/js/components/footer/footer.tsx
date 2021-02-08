@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './footer.module.scss';
 import { contactFactory, contactOffice } from '../../database/contact-data';
+import YandexMetrica from '../_metrics/YandexMetrica';
 
 const getList = (array: { string: string; ID: string }[]) => array.map((it) => (
   <p className={styles.address_text} key={it.ID}>
@@ -36,6 +37,7 @@ const Footer = (): JSX.Element => (
         </div>
       </div>
     </div>
+    <YandexMetrica />
   </footer>
 );
 
