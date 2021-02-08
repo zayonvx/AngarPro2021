@@ -5,7 +5,6 @@ function telegramCalc($time, $description, $concrete, $options) {
     $descriptionF = "Общие данные: ";
     $concreteF = "Нулевой цикл: ";
     $optionsF = "Проемы: ";
-    $txt="";
 
     $arr = array(
         $timeF => $time,
@@ -19,7 +18,7 @@ function telegramCalc($time, $description, $concrete, $options) {
     }
     $bot_token = "1094014637:AAGDcDmU8ggmpYiG14yjZAZy3sqMKQykZe0";
     $chat_id = "-439440818";
-    fopen("https://features.telegram.org/bot{$bot_token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
+    fopen("https://api.telegram.org/bot{$bot_token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
 }
 
 $dataPost = file_get_contents('php://input');

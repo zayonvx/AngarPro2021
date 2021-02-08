@@ -9,7 +9,7 @@ const getList = (array: { string: string; ID: string }[]) => array.map((it) => (
 ));
 
 const Footer = (): JSX.Element => (
-  <div className={styles.footer}>
+  <footer className={styles.footer}>
     <div className={styles.wrapper}>
       <div className={styles.data_wrapper}>
         <div className={styles.address_wrapper}>
@@ -36,7 +36,7 @@ const Footer = (): JSX.Element => (
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 );
 
 export default Footer;

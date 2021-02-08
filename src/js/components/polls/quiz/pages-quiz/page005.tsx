@@ -1,9 +1,9 @@
-import React, { SyntheticEvent } from 'react';
+import React, { SyntheticEvent, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PageSubtitle from '../../page-subtitle/page-subtitle';
 import InputRange from '../../input-range/input-range';
 import store from '../../../../../store/store';
-import { buildingChangeLength } from '../../../../../store/building/actions';
+import { buildingChangeLength} from '../../../../../store/building/actions';
 import { IBuildingState } from '../../../../../store/building/types';
 import { buildingDefaultSizes } from '../../../../utils/const';
 
@@ -18,8 +18,13 @@ const QuizPage005 = ({ ...props }: Props): JSX.Element => {
     const newLength = Number(e.value);
     store.dispatch(buildingChangeLength(newLength));
   };
-
   const params = buildingDefaultSizes.length;
+
+  useEffect(() => {
+    if (length === 0) {
+      store.dispatch(buildingChangeLength((params.max + params.min) / 2));
+    }
+  });
 
   return (
     <div className="popup__wrapper">

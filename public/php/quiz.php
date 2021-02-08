@@ -45,7 +45,6 @@ function telegramQuiz($name, $email, $phone, $size, $h, $span, $typeName, $site)
     $spanF = "Пролеты: ";
     $typeNameF = "Покрытие: ";
     $siteF = "Регион: ";
-    $txt="";
 
     $arr = array(
         $nameF => $name,
@@ -64,7 +63,7 @@ function telegramQuiz($name, $email, $phone, $size, $h, $span, $typeName, $site)
 
     $token = "1094014637:AAGDcDmU8ggmpYiG14yjZAZy3sqMKQykZe0";
     $chat_id = "-439440818";
-    fopen("https://features.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
+    fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
 }
 
 function getTypeName($type, $warming, $sandwich) {
@@ -96,7 +95,8 @@ function getTypeName($type, $warming, $sandwich) {
     return $value;
 }
 
-function getHeight($height, $craneHeight) {
+function getHeight($height, $craneHeight, $cranePower) {
+    $value="";
     if ($height>0) {
         $value=$height."м";
     } else {
@@ -128,7 +128,7 @@ $sandwich = cleanPost($data['sandwich']);
 
 $typeName=getTypeName($type, $warming, $sandwich);
 
-$h=getHeight($height, $craneHeight);
+$h=getHeight($height, $craneHeight, $cranePower);
 
 if( !empty($name) && !empty($email) && !empty($phone) && !empty($site)) {
     mailQuiz($name, $email, $phone, $size, $h, $span, $typeName, $site);

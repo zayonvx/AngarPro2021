@@ -24,6 +24,9 @@ const QuizPage006 = ({ ...props }: Props): JSX.Element => {
   useEffect(() => {
     const buttonForward = document.getElementById('buttonForward');
     buttonForward.classList.remove('button__accent--disabled');
+    if (height === 0) {
+      store.dispatch(buildingChangeHeight((params.max + params.min) / 2));
+    }
   });
 
   return (

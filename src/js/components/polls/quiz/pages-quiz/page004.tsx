@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from 'react';
+import React, { SyntheticEvent, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PageSubtitle from '../../page-subtitle/page-subtitle';
 import InputRange from '../../input-range/input-range';
@@ -18,8 +18,13 @@ const QuizPage004 = ({ ...props }: Props): JSX.Element => {
     const newWidth = Number(e.value);
     store.dispatch(buildingChangeWidth(newWidth));
   };
-
   const params = buildingDefaultSizes.width;
+
+  useEffect(() => {
+    if (width === 0) {
+      store.dispatch(buildingChangeWidth((params.max + params.min) / 2));
+    }
+  });
 
   return (
     <div className="popup__wrapper">

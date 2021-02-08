@@ -142,7 +142,6 @@ const SectionHero = ({ ...props }: StateProps): JSX.Element => {
       <div className={styles.slider_swiper}>
         <Loading loaded={loaded} />
         <div id="slider_swiper_payload">
-          {/* TODO need move pagination to external element */}
           <div className="paginationParent">
             <button className={`${styles.nav} ${styles.prev}`} ref={leftNavEl} type="button" onClick={handlerNavClick}>
               <span className="far fa-chevron-left" />
