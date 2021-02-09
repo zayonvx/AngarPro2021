@@ -23,7 +23,6 @@ interface Props {
 // TODO add animations to gallery
 // TODO add descriptions to photos
 // TODO add tag <picture>
-// TODO add loaders for images
 const Gallery = ({ ...props }: Props): JSX.Element => {
   const { projectID } = props;
   const { currentPhoto } = props;
