@@ -3,12 +3,11 @@ import styles from './footer.module.scss';
 import { contactFactory, contactOffice } from '../../database/contact-data';
 import YandexMetrica from '../_metrics/YandexMetrica';
 
-const getList = (array: { string: string; ID: string }[]) =>
-  array.map((it) => (
-    <p className={styles.address_text} key={it.ID}>
-      {it.string}
-    </p>
-  ));
+const getList = (array: { string: string; ID: string }[]) => array.map((it) => (
+  <p className={styles.address_text} key={it.ID}>
+    {it.string}
+  </p>
+));
 
 const Footer = (): JSX.Element => (
   <footer className={styles.footer}>
