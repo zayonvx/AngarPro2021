@@ -8,13 +8,14 @@
   justify-content: center;
   width: 100%;
   position: relative;
+  overflow: hidden;
   @media (min-width: $tablet-width) {
     height: $hero_height_desktop;
     padding: 0;
   }
 }
 .image {
-  width: 100%;
+  //width: 100%;
   object-fit: cover;
 }
 .wrapper {

@@ -1,7 +1,7 @@
 export const slides = [
   {
     id: 'slide0',
-    fileBG: '/img/system/HeroImages/hero_image_1.jpg',
+    fileNamePrefix: '/img/system/hero-image/1-',
     textMaster: 'каркасные здания из сендвич панелей',
     textSlave: {
       top: 'У нас вы можете заказать проектирование, производство и монтаж здания из сендвич панелей.',
@@ -12,7 +12,7 @@ export const slides = [
   },
   {
     id: 'slide1',
-    fileBG: '/img/system/HeroImages/hero_image_2.jpg',
+    fileNamePrefix: '/img/system/hero-image/2-',
     textMaster: 'ангары и навесы из профлиста',
     textSlave: {
       top: 'Мы производим и монтируем комплекты каркасных ангаров с ограждениями из профнастила.',
@@ -23,7 +23,7 @@ export const slides = [
   },
   {
     id: 'slide2',
-    fileBG: '/img/system/HeroImages/hero_image_3.jpg',
+    fileNamePrefix: '/img/system/hero-image/3-',
     textMaster: 'тентовые каркасные здания',
     textSlave: {
       top: 'Проектирование, произвоство и монтаж каркасных тентовых ангаров, павильонов, тепляков и укрытий.',

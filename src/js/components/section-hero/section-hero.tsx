@@ -164,7 +164,7 @@ const SectionHero = ({ ...props }: StateProps): JSX.Element => {
           >
             {slides.map((it) => (
               <Slides
-                fileName={it.fileBG}
+                fileNamePrefix={it.fileNamePrefix}
                 masterText={it.textMaster}
                 slaveTextTop={it.textSlave.top}
                 slaveTextBottom={it.textSlave.bottom}

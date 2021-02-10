@@ -36,8 +36,6 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
   useEffect(() => {
     setPreviewSize();
   });
-  // TODO add tag <picture>
-  // TODO add loaders for images
   return (
     <ul className={`fadeIn ${styles.list}`}>
       {order.map((it) => {
@@ -48,11 +46,14 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
           <li className={`fadeIn ${styles.list_item} preview__list-item`} key={id}>
             <button className={styles.button} onClick={handlerOnClick} type="button" id={`gp${id}`}>
               <div className={`${styles.image_wrapper} preview__image-wrapper`}>
-                <img
-                  className={`${styles.image} preview__image`}
-                  src={`/img/photos/gallery/preview/preview_${id}.jpg`}
-                  alt="Превью фотогалереи"
-                />
+                <picture>
+                  <source type="image/webp" srcSet={`/img/photos/gallery/preview/preview_${id}.webp`} />
+                  <img
+                    className={`${styles.image} preview__image`}
+                    src={`/img/photos/gallery/preview/preview_${id}.jpg`}
+                    alt="Превью фотогалереи"
+                  />
+                </picture>
                 <div className={styles.triangle} />
               </div>
 

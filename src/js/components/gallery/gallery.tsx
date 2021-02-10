@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { projects } from '../../database/gallery-base';
 import styles from './gallery.module.scss';
@@ -12,25 +12,23 @@ import ModalHeader from '../modal-header/modal-header';
 import { togglePopupVisible } from '../../../store/popup/actions';
 import { IGalleryState } from '../../../store/gallery/types';
 import Loading from '../loading/loading';
+import Image from './image';
 
 interface Props {
   projectID: string;
-  currentPhoto: string;
   visibleMap: boolean;
   loaded: boolean;
 }
 // TODO add swipes for slider
 // TODO add animations to gallery
 // TODO add descriptions to photos
-// TODO add tag <picture>
 const Gallery = ({ ...props }: Props): JSX.Element => {
   const { projectID } = props;
-  const { currentPhoto } = props;
+  const { currentPhoto } = store.getState().gallery;
   const { visibleMap } = props;
   const { loaded } = props;
   const project = projects.find((it) => it.id === projectID);
   store.dispatch(changeGalleryCoordinates(project.coordinates));
-  const image: React.Ref<HTMLImageElement> = useRef(null);
 
   const handlerClickPrev = () => {
     const imageNum = Number(currentPhoto);
@@ -45,28 +43,17 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
     const newImage = imageNum === project.photos.length ? '001' : setTrailingZeros(Number(currentPhoto) + 1, 3);
     store.dispatch(changeCurrentPhoto(newImage));
   };
-
   const handlerClose = () => {
     store.dispatch(changeCurrentPhoto('001'));
     store.dispatch(togglePopupVisible(false));
   };
-
-  const fileName = `/img/photos/gallery/${project.id}__${currentPhoto}-photo-1x.jpg`;
-  const handlerImageLoad = () => {
-    store.dispatch(toggleGalleryImageLoaded(true));
-  };
-  useEffect(() => {
-    image.current.src = fileName;
-  });
 
   return (
     <>
       <div className={styles.wrapper}>
         <div>
           <Loading loaded={loaded} />
-          <div style={{ display: 'flex' }}>
-            <img src="" className={styles.image} onLoad={handlerImageLoad} alt="Фото ангара" ref={image} />
-          </div>
+          <Image projectId={projectID} currentPhoto={currentPhoto} />
         </div>
         <PaginationChevron handlerClickNext={handlerClickNext} handlerClickPrev={handlerClickPrev} />
         <ModalHeader header={project.name} buttonMapVisible zedIndex={300} handlerClose={handlerClose} />
@@ -82,7 +69,6 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
 };
 
 const mapState = (state: IGalleryState) => ({
-  currentPhoto: state.gallery.currentPhoto,
   visibleMap: state.gallery.mapVisible,
   loaded: state.gallery.loaded,
 });
