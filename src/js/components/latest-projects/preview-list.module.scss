@@ -20,19 +20,21 @@
   position: relative;
   cursor: pointer;
   background-color: $color-light;
-  animation-duration: 400ms;
-  &:hover .image_wrapper {
-    top: -10rem;
-  }
-  &:hover .image {
-    filter: grayscale(0%);
-  }
-  &:hover .triangle {
-    opacity: 1;
-  }
-  &:hover .description_wrapper {
-    opacity: 1;
-    bottom: 0;
+  @media (min-width: $desktop-width) {
+    animation-duration: 400ms;
+    &:hover .image_wrapper {
+      top: -10rem;
+    }
+    &:hover .image {
+      filter: grayscale(0%);
+    }
+    &:hover .triangle {
+      opacity: 1;
+    }
+    &:hover .description_wrapper {
+      opacity: 1;
+      bottom: 0;
+    }
   }
 }
 .button {
@@ -53,10 +55,13 @@
 .image {
   z-index: 60;
   position: relative;
-  filter: grayscale(95%);
   width: 100%;
   object-fit: contain;
   transition: filter 600ms;
+  filter: brightness(70%);
+  @media (min-width: $desktop-width) {
+    filter: grayscale(95%);
+  }
 }
 .triangle {
   z-index: 61;
@@ -72,30 +77,40 @@
   transition: opacity 400ms;
 }
 .description_wrapper {
-  z-index: 59;
+  padding: 0 $margin-tiny;
+  z-index: 61;
   position: absolute;
   height: 10rem;
-  font-size: $font-string-normal;
-  font-family: $font-stack-regular;
-  color: $color-dark;
   line-height: 2.4rem;
-  opacity: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  bottom: 0;
+  color: $color-light;
   align-items: center;
-  bottom: -10rem;
   transition: bottom 400ms, opacity 600ms;
+  @media (min-width: $desktop-width) {
+    color: $color-dark;
+    bottom: -10rem;
+    opacity: 0;
+    z-index: 59;
+  }
 }
 .header {
-  letter-spacing: 0.1rem;
   margin: 0;
 }
 .link {
+  font-size: $font-string-normal;
+  font-family: $font-stack-light;
+  letter-spacing: 0.2rem;
   text-decoration: none;
   color: inherit;
-  &:hover {
-    color: $color-accent;
+  @media (min-width: $desktop-width) {
+    font-size: $font-string-small;
+    letter-spacing: 0.1rem;
+    &:hover {
+      color: $color-accent;
+    }
   }
 }
 .text {
