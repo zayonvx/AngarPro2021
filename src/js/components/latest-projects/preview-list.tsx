@@ -7,7 +7,7 @@ import store from '../../../store/store';
 import { changePopupChildren, togglePopupCloseable, togglePopupVisible } from '../../../store/popup/actions';
 import Gallery from '../gallery/gallery';
 import { IPreviewState } from '../../../store/preview/types';
-
+//TODO add animation to hide/unhide all projects
 interface Props {
   collapsed: boolean;
   previewsInRow: number;

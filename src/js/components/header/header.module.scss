@@ -14,19 +14,22 @@
   position: relative;
   max-width: $desktop-width;
   margin: 0 auto;
-  padding: 0 $margin-large;
+  padding: $margin-big $margin-large $margin-big $margin-big;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: $color-dark;
+  @media (min-width: $tablet-width) {
+    padding: $margin-big $margin-large;
+  }
   @media (min-width: $desktop-width) {
-    padding: 0 6rem;
     color: $color-light;
   }
 }
 .menu_burger {
   font-size: 3rem;
+  padding: $margin-small;
   cursor: pointer;
-  margin: $margin-large 0;
   outline: none;
   border: none;
   background-color: transparent;
@@ -41,17 +44,14 @@
 .logo {
   width: 152px;
   height: 4.5rem;
-  margin-top: 4rem;
-  @media (min-width: $tablet-width) {
-    margin-top: 3.9rem;
-  }
+  margin-top: -1rem;
   @media (min-width: $tablet-width) {
     height: 4rem;
   }
 }
 .list {
   list-style: none;
-  margin: $margin-large 0;
+  margin: $margin-normal 0;
   padding: 0;
   display: none;
   font-family: $font-stack-medium;
