@@ -21,7 +21,7 @@
 .list {
   list-style: none;
   margin: 0 auto;
-  padding: 0 20rem;
+  padding: 0;
   max-width: 1100px;
   position: relative;
   z-index: 1;
@@ -46,10 +46,6 @@
   color: $color-accent;
   font-size: 5rem;
   margin: 0 0 $margin-normal;
-}
-.digit {
-  font-family: $font-stack-regular;
-  font-size: 4.8rem;
 }
 .text {
   font-family: $font-stack-light;

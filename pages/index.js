@@ -25,7 +25,7 @@ export default function Home() {
         <link rel="stylesheet" href={'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css'} />
         <meta name="msapplication-TileColor" content="#10b8c7" />
         <meta name="theme-color" content="#10b8c7" />
-        <script src={'/scripts/odometer.min.js'} />
+        {/*<script src={'/scripts/odometer.min.js'} />*/}
       </Head>
       <Header />
       <Main />
