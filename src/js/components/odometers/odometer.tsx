@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { isOnVisibleSpace } from '../../utils/functions';
 
 const Odometer = dynamic(import('react-odometerjs'), {
   ssr: false,
@@ -9,14 +10,6 @@ interface Props {
   valueEnd: number;
   id: string;
 }
-
-const isOnVisibleSpace = (element: Element): boolean => {
-  const bodyHeight = window.innerHeight;
-  const elemRect = element.getBoundingClientRect();
-  const offset = elemRect.top; // - bodyRect.top;
-  if (offset < 0) return false;
-  return offset <= bodyHeight;
-};
 
 const OdometerElement = ({ ...props }: Props): JSX.Element => {
   const { valueEnd } = props;

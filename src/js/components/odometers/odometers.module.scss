@@ -2,12 +2,12 @@
 @import '../../../sass/variables';
 
 .wrapper {
-  padding: $margin-larger 0;
+  padding: $margin-large 0;
   background-repeat: no-repeat;
   margin: 0;
   width: 100%;
-  background-image: url('/img/system/stone-24.jpg');
-  background-position: 50%;
+  background-image: url('/img/system/stone-23.jpg');
+  background-position-x: 50%;
   position: relative;
 }
 .bg_overlay {
@@ -16,7 +16,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(245, 245, 245, 0.8);
+  background: rgba(245, 245, 245, 0.6);
 }
 .list {
   list-style: none;

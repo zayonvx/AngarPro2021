@@ -2,6 +2,14 @@ import { sliderParameters } from '../database/slides';
 import store from '../../store/store';
 import { changePreviewsInRow, changePreviewsRows } from '../../store/preview/actions';
 
+export const isOnVisibleSpace = (element: Element): boolean => {
+  const bodyHeight = window.innerHeight;
+  const elemRect = element.getBoundingClientRect();
+  const offset = elemRect.top; // - bodyRect.top;
+  if (offset < 0) return false;
+  return offset <= bodyHeight;
+};
+
 export const getTransform = (el: Element): string[] => {
   const thing = /matrix(?:(3d)\(-{0,1}\d+(?:, -{0,1}\d+)*(?:, (-{0,1}\d+))(?:, (-{0,1}\d+))(?:, (-{0,1}\d+)), -{0,1}\d+\)|\(-{0,1}\d+(?:, -{0,1}\d+)*(?:, (-{0,1}\d+))(?:, (-{0,1}\d+))\))/;
   const transform = window.getComputedStyle(el, null).getPropertyValue('-webkit-transform');
