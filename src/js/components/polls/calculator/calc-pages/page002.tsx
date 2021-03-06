@@ -10,9 +10,14 @@ import {
 } from '../../../../features/calculator/constants/calc-constants-general';
 import store from '../../../../../store/store';
 import {
+  buildingChangeDoorsCount,
+  buildingChangeDoorsType,
   buildingChangeFences,
   buildingChangeFloor,
   buildingChangeFoundation,
+  buildingChangeGatesCount,
+  buildingChangeGatesType,
+  buildingChangeWindowsType,
 } from '../../../../../store/building/actions';
 import DropDownList from '../../drop-down-list/drop-down-list';
 import { IBuildingState } from '../../../../../store/building/types';
@@ -60,6 +65,11 @@ const CalcPage002 = ({ ...props }: Props): JSX.Element => {
       case 'dropFences':
         fencesId = CALC_FENSES.find((it) => e.value === it.name).id;
         store.dispatch(buildingChangeFences(fencesId));
+        store.dispatch(buildingChangeGatesType(0));
+        store.dispatch(buildingChangeGatesCount(0));
+        store.dispatch(buildingChangeDoorsType(0));
+        store.dispatch(buildingChangeDoorsCount(0));
+        store.dispatch(buildingChangeWindowsType(0));
         setDefaultFoundation(fencesId);
         break;
       default:

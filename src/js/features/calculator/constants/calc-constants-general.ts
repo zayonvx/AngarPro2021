@@ -130,8 +130,10 @@ export const CALC_CORNICE = [
 export const CALC_DOORS: { types: { id: number; name: string }[]; quantities: { id: number; name: string }[] } = {
   types: [
     { id: 0, name: 'Нет' },
-    { id: 1, name: 'Из профиля ПВХ' },
-    { id: 2, name: 'Стальная, утепленная' },
+    { id: 1, name: 'Каркас обшитый профлистом' },
+    { id: 2, name: 'Из профиля ПВХ' },
+    { id: 3, name: 'Стальная, холодная' },
+    { id: 4, name: 'Стальная, утепленная' },
   ],
   quantities: [
     { id: 0, name: '1' },
@@ -140,6 +142,10 @@ export const CALC_DOORS: { types: { id: number; name: string }[]; quantities: { 
     { id: 3, name: '4' },
   ],
 };
+export const CALC_DOORS_TENT = [0, 1, 2];
+export const CALC_DOORS_PROFNASTIL = [0, 1, 2, 3];
+export const CALC_DOORS_SANDWICH = [0, 2, 4];
+
 export const CALC_WINDOWS: { id: number; name: string }[] = [
   { id: 0, name: 'Нет' },
   { id: 1, name: 'ПВХ, 1 лента окон по периметру' },

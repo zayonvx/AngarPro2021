@@ -5,6 +5,9 @@ import styles from './page003.module.scss';
 import DropDownList from '../../drop-down-list/drop-down-list';
 import {
   CALC_DOORS,
+  CALC_DOORS_PROFNASTIL,
+  CALC_DOORS_SANDWICH,
+  CALC_DOORS_TENT,
   CALC_GATES,
   CALC_GATES_PROFNASTIL,
   CALC_GATES_SANDWICH,
@@ -34,24 +37,45 @@ interface Props {
   fences: number;
 }
 
-const gatesDropDownTypes = (gatesType: number) => {
-  let typesArray = [];
-  switch (gatesType) {
+const gatesDropDownTypes = (fencesId: number) => {
+  let gatesTypesArray = [];
+  switch (fencesId) {
     case 0:
-      typesArray = CALC_GATES_TENT;
+      gatesTypesArray = CALC_GATES_TENT;
       break;
     case 1:
-      typesArray = CALC_GATES_PROFNASTIL;
+      gatesTypesArray = CALC_GATES_PROFNASTIL;
       break;
     case 2:
-      typesArray = CALC_GATES_SANDWICH;
+      gatesTypesArray = CALC_GATES_SANDWICH;
       break;
     default:
       break;
   }
   const typeNamesArray: Array<{ name: string; id: number }> = [];
-  typesArray.forEach((type) => {
+  gatesTypesArray.forEach((type) => {
     typeNamesArray.push(CALC_GATES.types.find((it) => it.id === type));
+  });
+  return typeNamesArray;
+};
+const doorsDropDownTypes = (fencesId: number) => {
+  let doorsTypesArray = [];
+  switch (fencesId) {
+    case 0:
+      doorsTypesArray = CALC_DOORS_TENT;
+      break;
+    case 1:
+      doorsTypesArray = CALC_DOORS_PROFNASTIL;
+      break;
+    case 2:
+      doorsTypesArray = CALC_DOORS_SANDWICH;
+      break;
+    default:
+      break;
+  }
+  const typeNamesArray: Array<{ name: string; id: number }> = [];
+  doorsTypesArray.forEach((type) => {
+    typeNamesArray.push(CALC_DOORS.types.find((it) => it.id === type));
   });
   return typeNamesArray;
 };
@@ -188,7 +212,7 @@ const CalcPage003 = ({ ...props }: Props): JSX.Element => {
       <div className={styles.doorsWrapper}>
         <DropDownList
           legend="Двери"
-          array={CALC_DOORS.types}
+          array={doorsDropDownTypes(store.getState().building.fences)}
           selected={doorsType}
           handlerChange={handlerDropDownList}
           id="dropDoorsType"

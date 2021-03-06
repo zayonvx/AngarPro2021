@@ -15,12 +15,13 @@ const defaultProps = {
 
 const DropDownList = ({ ...props }: Props): JSX.Element => {
   const { legend, array, selected, handlerChange, id } = props;
+  let selectedOption = array.find((it) => it.id === selected);
   return (
     <div className={styles.wrapper}>
       {legend ? <p className="legend__input">{legend}</p> : null}
-      <select className={styles.input} onChange={handlerChange} id={id}>
+      <select className={styles.input} onChange={handlerChange} value={selectedOption.name} id={id}>
         {array.map((it) => (
-          <option value={it.name} selected={it.id === selected} key={it.id}>
+          <option value={it.name} key={it.id}>
             {it.name}
           </option>
         ))}

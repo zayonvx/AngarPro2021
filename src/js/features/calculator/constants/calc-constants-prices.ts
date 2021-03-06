@@ -44,8 +44,10 @@ export const PRICE_GATES = [
 ];
 export const PRICE_DOORS = [
   { id: 0, price: 0 },
-  { id: 1, price: 13000 },
-  { id: 2, price: 22000 },
+  { id: 1, price: 2500 },
+  { id: 2, price: 13000 },
+  { id: 3, price: 16000 },
+  { id: 4, price: 22000 },
 ];
 export const PRICE_WINDOWS = 3000;
 
