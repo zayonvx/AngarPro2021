@@ -7,7 +7,7 @@ export const isOnVisibleSpace = (element: Element): boolean => {
   const elemRect = element.getBoundingClientRect();
   const offsetTop = elemRect.top;
   const offsetBottom = elemRect.bottom;
-  return offsetTop > 0 || offsetBottom < bodyHeight;
+  return (offsetTop < 0 && offsetBottom < 0) || (offsetTop < bodyHeight && offsetBottom < bodyHeight);
 };
 
 export const getTransform = (el: Element): string[] => {
