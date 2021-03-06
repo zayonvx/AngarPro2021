@@ -41,6 +41,10 @@ export const CALC_FOUNDATION: { id: number; name: string; sectionArea?: number; 
   { id: 3, name: 'Монолитный, ленточный', sectionArea: 0.3 },
   { id: 4, name: 'Монолитная ж/б плита', thickness: 0.2 },
 ];
+export const CALC_FOUNDATION_TENT = [0, 1, 2, 3];
+export const CALC_FOUNDATION_PROFNASTIL = [1, 2, 3];
+export const CALC_FOUNDATION_SANDWICH = [2, 3, 4];
+
 export const CALC_PILES: { loadCapacity: number; stepButt: 5 } = {
   loadCapacity: 8000, // kilogramms
   stepButt: 5,

@@ -18,9 +18,9 @@ const DropDownList = ({ ...props }: Props): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       {legend ? <p className="legend__input">{legend}</p> : null}
-      <select className={styles.input} defaultValue={array[selected].name} onChange={handlerChange} id={id}>
+      <select className={styles.input} onChange={handlerChange} id={id}>
         {array.map((it) => (
-          <option value={it.name} key={it.id}>
+          <option value={it.name} selected={it.id === selected} key={it.id}>
             {it.name}
           </option>
         ))}

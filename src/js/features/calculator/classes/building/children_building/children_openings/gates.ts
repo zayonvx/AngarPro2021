@@ -5,7 +5,6 @@ class Gates extends Openings {
     return this.datas.gatesHeight * this.datas.gatesWidth * this.datas.gatesCount;
   }
 
-  // TODO add logic for mixin gates and fences
   get tax(): number {
     const tax = (this.datas.taxDigit + this.datas.taxPaper) / 2;
     return tax + 1;

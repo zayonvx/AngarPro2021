@@ -6,6 +6,7 @@ import {
   CALC_PROFNASTIL,
   CALC_REGIONS,
   CALC_SANDWICH,
+  CALC_SNOW_WEIGHT,
   // CALC_SNOW_WEIGHT,
   CALC_SPAN_STEP,
   CALC_TENT,
@@ -33,11 +34,11 @@ class Building {
     return snow;
   }
 
-  // get snowWeight(): number {
-  //   const snow = CALC_SNOW_WEIGHT[this.snowZone];
-  //   const area = this.buildingArea;
-  //   return Math.round(snow * area);
-  // }
+  get snowWeight(): number {
+    const snow = CALC_SNOW_WEIGHT[this.snowZone];
+    const area = this.buildingArea;
+    return Math.round(snow * area);
+  }
 
   get spanStep(): number {
     const maxStep = this.datas.fencesType === CALC_FENSES[0].id ? CALC_SPAN_STEP.tent : CALC_SPAN_STEP.also;
@@ -77,10 +78,16 @@ class Building {
   }
 
   get steelPileCount(): number {
-    const buildingWeight = this.skeletonWeight + this.spanStep;
-    const lenPiles = (this.datas.length / this.spanStep) * 2 + 2;
-    const widPiles = Math.ceil(this.datas.width / CALC_PILES.stepButt - 1) * 2;
-    const perimeterPiles = lenPiles + widPiles;
+    const pileMaxLoad = CALC_PILES.loadCapacity;
+    const buildingWeight = this.skeletonWeight + this.spanStep + this.snowWeight;
+    const supportCount = this.datas.length / this.spanStep;
+    const loadPerSupport = Math.ceil(buildingWeight / 2 / supportCount);
+
+    const pilesPerSupport = Math.ceil(loadPerSupport / pileMaxLoad);
+    const lenghtPilesCount = supportCount * pilesPerSupport * 2;
+
+    const widthPilesCount = Math.ceil(this.datas.width / CALC_PILES.stepButt - 1) * 2;
+    const perimeterPiles = lenghtPilesCount + widthPilesCount;
     const weightPiles = Math.ceil(buildingWeight / CALC_PILES.loadCapacity);
     return perimeterPiles > weightPiles ? perimeterPiles : weightPiles;
   }

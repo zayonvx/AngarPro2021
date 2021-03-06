@@ -4,6 +4,9 @@ import {
   CALC_FENSES,
   CALC_FLOOR,
   CALC_FOUNDATION,
+  CALC_FOUNDATION_PROFNASTIL,
+  CALC_FOUNDATION_SANDWICH,
+  CALC_FOUNDATION_TENT,
 } from '../../../../features/calculator/constants/calc-constants-general';
 import store from '../../../../../store/store';
 import {
@@ -14,7 +17,31 @@ import {
 import DropDownList from '../../drop-down-list/drop-down-list';
 import { IBuildingState } from '../../../../../store/building/types';
 
-const CalcPage002 = (): JSX.Element => {
+interface Props {
+  fences: number;
+  foundation: number;
+  floor: number;
+}
+
+const CalcPage002 = ({ ...props }: Props): JSX.Element => {
+  const { fences, foundation, floor } = props;
+
+  const setDefaultFoundation = (fencesId) => {
+    switch (fencesId) {
+      case 0:
+        store.dispatch(buildingChangeFoundation(CALC_FOUNDATION_TENT[0]));
+        break;
+      case 1:
+        store.dispatch(buildingChangeFoundation(CALC_FOUNDATION_PROFNASTIL[0]));
+        break;
+      case 2:
+        store.dispatch(buildingChangeFoundation(CALC_FOUNDATION_SANDWICH[0]));
+        break;
+      default:
+        break;
+    }
+  };
+
   const handlerDropDownList = (evt: SyntheticEvent) => {
     const e = evt.currentTarget as HTMLInputElement;
     let fountationId: number;
@@ -33,19 +60,47 @@ const CalcPage002 = (): JSX.Element => {
       case 'dropFences':
         fencesId = CALC_FENSES.find((it) => e.value === it.name).id;
         store.dispatch(buildingChangeFences(fencesId));
+        setDefaultFoundation(fencesId);
         break;
       default:
         break;
     }
   };
 
-  const { foundation } = store.getState().building;
+  const foundationDropDownTypes = (fencesId) => {
+    let typesArray = [];
+    switch (fencesId) {
+      case 0:
+        typesArray = CALC_FOUNDATION_TENT;
+        break;
+      case 1:
+        typesArray = CALC_FOUNDATION_PROFNASTIL;
+        break;
+      case 2:
+        typesArray = CALC_FOUNDATION_SANDWICH;
+        break;
+      default:
+        break;
+    }
+    const typeNamesArray: Array<{ name: string; id: number }> = [];
+    typesArray.forEach((type) => {
+      typeNamesArray.push(CALC_FOUNDATION.find((it) => it.id === type));
+    });
+    return typeNamesArray;
+  };
 
   return (
     <div className="popup__wrapper">
       <DropDownList
+        legend="Материал кровли и стен"
+        array={CALC_FENSES}
+        selected={fences}
+        handlerChange={handlerDropDownList}
+        id="dropFences"
+      />
+      <DropDownList
         legend="Тип фундамента"
-        array={CALC_FOUNDATION}
+        array={foundationDropDownTypes(fences)}
         selected={foundation}
         handlerChange={handlerDropDownList}
         id="dropFoundation"
@@ -54,18 +109,11 @@ const CalcPage002 = (): JSX.Element => {
         <DropDownList
           legend="Пол"
           array={CALC_FLOOR.type}
-          selected={store.getState().building.floor}
+          selected={floor}
           handlerChange={handlerDropDownList}
           id="dropFloor"
         />
       ) : null}
-      <DropDownList
-        legend="Материал кровли и стен"
-        array={CALC_FENSES}
-        selected={store.getState().building.fences}
-        handlerChange={handlerDropDownList}
-        id="dropFences"
-      />
     </div>
   );
 };

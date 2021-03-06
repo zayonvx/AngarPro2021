@@ -40,8 +40,6 @@ class Foundation extends Building {
         cost = this.datas.foundationPrice;
         break;
       case 1:
-        // TODO add logic of multiply piles
-        // TODO make hiding drop down typeof building
         cost = this.datas.foundationPilePrice * this.steelPileCount;
         break;
       case 2:
