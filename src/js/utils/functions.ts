@@ -5,9 +5,9 @@ import { changePreviewsInRow, changePreviewsRows } from '../../store/preview/act
 export const isOnVisibleSpace = (element: Element): boolean => {
   const bodyHeight = window.innerHeight;
   const elemRect = element.getBoundingClientRect();
-  const offset = elemRect.top; // - bodyRect.top;
-  if (offset < 0) return false;
-  return offset <= bodyHeight;
+  const offsetTop = elemRect.top;
+  const offsetBottom = elemRect.bottom;
+  return offsetTop > 0 || offsetBottom < bodyHeight;
 };
 
 export const getTransform = (el: Element): string[] => {

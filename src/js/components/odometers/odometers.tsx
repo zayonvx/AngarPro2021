@@ -11,7 +11,7 @@ const Odometers = (): JSX.Element => {
       if (isOnVisibleSpace(backgroundElement)) {
         const elementTop = Math.round(backgroundElement.getBoundingClientRect().top);
         const bodyHeight = window.innerHeight;
-        const position = (elementTop / bodyHeight) * 25;
+        const position = (elementTop / bodyHeight) * 20;
         backgroundElement.style.backgroundPositionY = `${position}%`;
       }
     });

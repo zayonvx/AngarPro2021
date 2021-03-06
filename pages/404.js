@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const ErrorPage = () => {
   return (
-    <section className={'wrapper404'}>
+    <main className={'wrapper404'}>
       <div className={'container404'}>
         <h1 className={'header404'}>Ошибка 404</h1>
         <div className={'data-wrapper404'}>
@@ -15,7 +15,7 @@ const ErrorPage = () => {
           </Link>
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 
