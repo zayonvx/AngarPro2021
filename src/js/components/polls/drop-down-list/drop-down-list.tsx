@@ -15,7 +15,7 @@ const defaultProps = {
 
 const DropDownList = ({ ...props }: Props): JSX.Element => {
   const { legend, array, selected, handlerChange, id } = props;
-  let selectedOption = array.find((it) => it.id === selected);
+  const selectedOption = array.find((it) => it.id === selected);
   return (
     <div className={styles.wrapper}>
       {legend ? <p className="legend__input">{legend}</p> : null}

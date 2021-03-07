@@ -14,7 +14,7 @@ const HeaderOfSection = ({ ...props }: Props): JSX.Element => {
     <div className={styles.header_container}>
       <h3 className={styles.header}>{header}</h3>
       <Divider />
-      <p className={styles.text}>{text}</p>
+      {text === '' ? null : <p className={styles.text}>{text}</p>}
     </div>
   );
 };

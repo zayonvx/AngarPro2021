@@ -55,7 +55,12 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
           <Loading loaded={loaded} />
           <Image projectId={projectID} currentPhoto={currentPhoto} />
         </div>
-        <PaginationChevron handlerClickNext={handlerClickNext} handlerClickPrev={handlerClickPrev} />
+        <PaginationChevron
+          handlerClickNext={handlerClickNext}
+          handlerClickPrev={handlerClickPrev}
+          textPrev="назад"
+          textNext="вперед"
+        />
         <ModalHeader header={project.name} buttonMapVisible zedIndex={300} handlerClose={handlerClose} />
         <Footer
           projecDescription={project.description}

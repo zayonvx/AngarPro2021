@@ -1,0 +1,26 @@
+@import '../../../sass/colors';
+@import '../../../sass/variables';
+
+.section {
+  box-sizing: border-box;
+  background-color: $color-light-gray;
+  overflow: hidden;
+  position: relative;
+}
+
+.ribbon {
+  position: relative;
+  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 $margin-normal $margin-normal;
+  transition-duration: 500ms;
+  transition-property: left;
+  transition-timing-function: ease-in-out;
+}
+
+.chevronContainer {
+  position: relative;
+  height: 6rem;
+  background-color: $color-gray;
+}

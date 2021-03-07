@@ -1,0 +1,50 @@
+@import '../../../sass/colors';
+@import '../../../sass/variables';
+
+.card {
+  background-color: white;
+  min-width: 300px;
+  margin-right: $margin-normal;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.2rem;
+  @media (min-width: $desktop-width) {
+    min-width: 450px;
+  }
+}
+.card:last-child {
+  margin-right: 0;
+}
+
+.image {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.container {
+  padding: $margin-small $margin-small;
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+  color: $color-dark-gray;
+  font-family: $font-stack-regular;
+  font-size: $font-string-small;
+}
+
+.header {
+  color: $color-accent;
+  font-family: $font-stack-regular;
+  font-size: $font-string-normal;
+  margin-bottom: $margin-tiny;
+}
+
+.text {
+  color: $color-dark;
+  font-family: $font-stack-light;
+  font-size: $font-string-normal;
+  flex-basis: 100px;
+}
