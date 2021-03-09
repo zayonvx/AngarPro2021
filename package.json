@@ -14,7 +14,6 @@
   "dependencies": {
     "caniuse-lite": "^1.0.30001183",
     "leaflet": "^1.7.1",
-    "moment": "^2.29.1",
     "next": "^10.0.6",
     "node-sass": "^5.0.0",
     "normalize.css": "^8.0.1",
