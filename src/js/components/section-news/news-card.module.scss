@@ -4,6 +4,7 @@
 .card {
   background-color: white;
   min-width: 300px;
+  width: 300px;
   margin-right: $margin-normal;
   overflow: hidden;
   display: flex;
@@ -11,15 +12,22 @@
   border-radius: 0.2rem;
   @media (min-width: $desktop-width) {
     min-width: 450px;
+    width: 450px;
   }
+  box-shadow: 0 0 15px $color-gray;
 }
 .card:last-child {
   margin-right: 0;
 }
 
+.picture {
+  background-color: tomato;
+  height: 20rem;
+  overflow: hidden;
+}
+
 .image {
   width: 100%;
-  height: 20rem;
   object-fit: cover;
 }
 
@@ -32,19 +40,19 @@
 .date {
   color: $color-dark-gray;
   font-family: $font-stack-regular;
-  font-size: $font-string-small;
+  font-size: $font-string-smallest;
 }
 
 .header {
   color: $color-accent;
   font-family: $font-stack-regular;
   font-size: $font-string-normal;
-  margin-bottom: $margin-tiny;
+  margin-bottom: $margin-small;
 }
 
 .text {
   color: $color-dark;
   font-family: $font-stack-light;
   font-size: $font-string-normal;
-  flex-basis: 100px;
+  flex-basis: 13rem;
 }

@@ -9,7 +9,7 @@ const News = (): JSX.Element => {
   const [leftRibbon, setLeftRibbon] = useState(0);
   const ribbonEl: React.Ref<HTMLDivElement> = useRef(null);
   const cardWidth = useRef(0);
-  // let cardWidth = 0;
+
   const handlerClickRight = () => {
     if (leftRibbon < 0) {
       setLeftRibbon(leftRibbon + cardWidth.current);
@@ -34,12 +34,19 @@ const News = (): JSX.Element => {
     cardWidth.current = card.offsetWidth + margin;
   });
 
+  newsArray.sort((a, b) => {
+    const aDate = new Date(a.date);
+    const bDate = new Date(b.date);
+    if (aDate > bDate) return -1;
+    return aDate < bDate ? 1 : 0;
+  });
+
   return (
     <div className={styles.section}>
-      <HeaderOfSection header="Наши последние новости" text="" />
+      <HeaderOfSection header="Наши новости" text="Отчеты о проделанной работе" />
       <div ref={ribbonEl} className={styles.ribbon} style={styleLeft}>
         {newsArray.map((it) => (
-          <NewsCard key={it.id} imagePath={it.image} date={it.date} header={it.header} text={it.text} />
+          <NewsCard key={it.id} imagePath={it.image} date={it.dateLocal} header={it.header} text={it.text} />
         ))}
       </div>
       <div className={styles.chevronContainer}>
