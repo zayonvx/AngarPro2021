@@ -6,7 +6,7 @@ import {
   GalleryActionsCreators,
 } from './types';
 
-export const changeCurrentPhoto = (value: string): GalleryActionsCreators => ({
+export const changeCurrentPhoto = (value: number): GalleryActionsCreators => ({
   type: GALLERY_CHANGE_CURRENT_PHOTO,
   payload: value,
 });

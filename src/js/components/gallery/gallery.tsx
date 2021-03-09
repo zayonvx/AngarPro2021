@@ -28,32 +28,31 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
   const { visibleMap } = props;
   const { loaded } = props;
   const project = projects.find((it) => it.id === projectID);
+  const photoCortage = project.photos;
   store.dispatch(changeGalleryCoordinates(project.coordinates));
 
   const handlerClickPrev = () => {
-    const imageNum = Number(currentPhoto);
     store.dispatch(toggleGalleryImageLoaded(false));
-    const newImage =
-      imageNum === 1 ? setTrailingZeros(project.photos.length, 3) : setTrailingZeros(Number(currentPhoto) - 1, 3);
-    store.dispatch(changeCurrentPhoto(newImage));
+    store.dispatch(changeCurrentPhoto(currentPhoto === 0 ? project.photos.length - 1 : currentPhoto - 1));
   };
   const handlerClickNext = () => {
-    const imageNum = Number(currentPhoto);
     store.dispatch(toggleGalleryImageLoaded(false));
-    const newImage = imageNum === project.photos.length ? '001' : setTrailingZeros(Number(currentPhoto) + 1, 3);
-    store.dispatch(changeCurrentPhoto(newImage));
+    store.dispatch(changeCurrentPhoto(currentPhoto === project.photos.length - 1 ? 0 : currentPhoto + 1));
   };
   const handlerClose = () => {
-    store.dispatch(changeCurrentPhoto('001'));
+    store.dispatch(changeCurrentPhoto(0));
     store.dispatch(togglePopupVisible(false));
   };
+
+  const currentPhotoString = setTrailingZeros(photoCortage[currentPhoto], 3);
+  console.log(currentPhotoString);
 
   return (
     <>
       <div className={styles.wrapper}>
         <div>
           <Loading loaded={loaded} />
-          <Image projectId={projectID} currentPhoto={currentPhoto} />
+          <Image projectId={projectID} currentPhoto={currentPhotoString} />
         </div>
         <PaginationChevron
           handlerClickNext={handlerClickNext}
@@ -65,7 +64,7 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
         <Footer
           projecDescription={project.description}
           projectTotalPhotos={project.photos.length}
-          galleryCurrentPhoto={currentPhoto}
+          galleryCurrentPhoto={currentPhotoString}
         />
         <ObjectMap visible={visibleMap} projectId={projectID} projectName={project.name} />
       </div>

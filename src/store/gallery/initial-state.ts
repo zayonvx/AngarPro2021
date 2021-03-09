@@ -2,7 +2,7 @@ import { IGalleryState } from './types';
 
 const initialState: IGalleryState = {
   gallery: {
-    currentPhoto: '001',
+    currentPhoto: 0,
     mapVisible: false,
     coordinates: [],
     loaded: false,

@@ -5,7 +5,7 @@ export const GALLERY_TOGGLE_IMAGE_LOADED = 'GALLERY_TOGGLE_IMAGE_LOADED';
 
 export interface IGalleryState {
   gallery: {
-    currentPhoto: string;
+    currentPhoto: number;
     mapVisible: boolean;
     coordinates: number[];
     loaded: boolean;
@@ -14,7 +14,7 @@ export interface IGalleryState {
 
 interface ChangeCurrentPhoto {
   type: typeof GALLERY_CHANGE_CURRENT_PHOTO;
-  payload: string;
+  payload: number;
 }
 
 interface ToggleGalleryMapVisible {
