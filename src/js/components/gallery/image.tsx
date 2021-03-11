@@ -2,18 +2,16 @@ import React, { useEffect, useRef } from 'react';
 import store from '../../../store/store';
 import { toggleGalleryImageLoaded } from '../../../store/gallery/actions';
 import styles from './gallery.module.scss';
+import { setTrailingZeros } from '../../utils/functions';
 
-interface Props {
-  projectId: string;
-  currentPhoto: string;
-}
-
-const Image = ({ ...props }: Props): JSX.Element => {
-  const { projectId } = props;
-  const { currentPhoto } = props;
+const Image = (): JSX.Element => {
+  const { project } = store.getState().gallery;
+  const { photoIndex } = store.getState().gallery;
+  const projectNameNumber = setTrailingZeros(project.id, 3);
+  const imageNameNumber = setTrailingZeros(project.photos[photoIndex], 3);
   const image: React.Ref<HTMLImageElement> = useRef(null);
 
-  const fileNamePrefix = `/img/photos/gallery/${projectId}__${currentPhoto}-photo-`;
+  const fileNamePrefix = `/img/photos/gallery/${projectNameNumber}__${imageNameNumber}-photo-`;
   const handlerImageLoad = () => {
     store.dispatch(toggleGalleryImageLoaded(true));
   };

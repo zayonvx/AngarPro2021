@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { SyntheticEvent, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styles from './preview-list.module.scss';
 import { projects, projectsOrder } from '../../database/gallery-base';
-import { setPreviewSize } from '../../utils/functions';
+import { setPreviewSize, setTrailingZeros } from '../../utils/functions';
 import store from '../../../store/store';
 import { changePopupChildren, togglePopupCloseable, togglePopupVisible } from '../../../store/popup/actions';
 import Gallery from '../gallery/gallery';
 import { IPreviewState } from '../../../store/preview/types';
+import { changeProject } from '../../../store/gallery/actions';
 // TODO add animation to hide/unhide all projects
 interface Props {
   collapsed: boolean;
@@ -24,13 +25,13 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
     order = projectsOrder.slice(0, orderLenght);
   }
 
-  const handlerOnClick = (event): void => {
-    const e = event as MouseEvent;
-    const project = e.currentTarget as Element;
-    const projectID = project.id.slice(2);
+  const handlerOnClick = (evt: SyntheticEvent) => {
+    const projectId = Number(evt.currentTarget.id);
+    const project = projects.find((it) => it.id === projectId);
+    store.dispatch(changeProject(project));
     store.dispatch(togglePopupCloseable(true));
     store.dispatch(togglePopupVisible(true));
-    store.dispatch(changePopupChildren(<Gallery projectID={projectID} />));
+    store.dispatch(changePopupChildren(<Gallery />));
   };
 
   useEffect(() => {
@@ -42,12 +43,13 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
         const { id } = projects[it - 1];
         const header = projects[it - 1].name;
         const text = projects[it - 1].location;
+        const fileNameId = setTrailingZeros(id, 3);
         return (
           <li className={`fadeIn ${styles.list_item} preview__list-item`} key={id}>
-            <button className={styles.button} onClick={handlerOnClick} type="button" id={`gp${id}`}>
+            <button className={styles.button} onClick={handlerOnClick} type="button" id={String(id)}>
               <div className={`${styles.image_wrapper} preview__image-wrapper`}>
                 <picture>
-                  <source type="image/webp" srcSet={`/img/photos/gallery/preview/preview_${id}.webp`} />
+                  <source type="image/webp" srcSet={`/img/photos/gallery/preview/preview_${fileNameId}.webp`} />
                   <img
                     className={`${styles.image} preview__image`}
                     src={`/img/photos/gallery/preview/preview_${id}.jpg`}

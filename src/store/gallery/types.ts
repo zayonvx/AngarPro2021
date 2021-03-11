@@ -1,15 +1,23 @@
+import { IProject } from '../../js/database/gallery-base';
+
 export const GALLERY_CHANGE_CURRENT_PHOTO = 'GALLERY_CHANGE_CURRENT_PHOTO';
 export const GALLERY_TOGGLE_MAP_SHOW = 'GALLERY_TOGGLE_MAP_SHOW';
 export const GALLERY_CHANGE_COORDINATES = 'GALLERY_CHANGE_COORDINATES';
 export const GALLERY_TOGGLE_IMAGE_LOADED = 'GALLERY_TOGGLE_IMAGE_LOADED';
+export const GALLERY_CHANGE_PROJECT = 'GALLERY_CHANGE_PROJECT';
 
 export interface IGalleryState {
   gallery: {
-    currentPhoto: number;
+    project: IProject;
+    photoIndex: number;
     mapVisible: boolean;
-    coordinates: number[];
     loaded: boolean;
   };
+}
+
+interface ChangeProject {
+  type: typeof GALLERY_CHANGE_PROJECT;
+  payload: IProject;
 }
 
 interface ChangeCurrentPhoto {
@@ -36,4 +44,5 @@ export type GalleryActionsCreators =
   | ChangeCurrentPhoto
   | ToggleGalleryMapVisible
   | ChangeGalleryCoordinates
-  | ToggleGalleryImageLoaded;
+  | ToggleGalleryImageLoaded
+  | ChangeProject;

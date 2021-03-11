@@ -2,9 +2,9 @@ import { IGalleryState } from './types';
 
 const initialState: IGalleryState = {
   gallery: {
-    currentPhoto: 0,
+    project: { id: 0, photos: [], coordinates: [], description: '', location: '', name: '' },
+    photoIndex: 0,
     mapVisible: false,
-    coordinates: [],
     loaded: false,
   },
 };

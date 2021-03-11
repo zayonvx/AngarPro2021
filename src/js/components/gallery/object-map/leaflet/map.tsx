@@ -2,16 +2,15 @@ import React from 'react';
 import { LatLngExpression } from 'leaflet';
 import { Container, Popup, Marker, Layer } from '../../../../utils/leaflet-ssr';
 import { setTrailingZeros } from '../../../../utils/functions';
-import { projects } from '../../../../database/gallery-base';
+import { IProject } from '../../../../database/gallery-base';
 import styles from './map.module.scss';
 
 interface Props {
-  projectId: string;
+  project: IProject;
 }
 
 const GalleryLeaflet = ({ ...props }: Props): JSX.Element => {
-  const { projectId } = props;
-  const project = projects.find((it) => it.id === projectId);
+  const { project } = props;
 
   const zoom = 13;
   const coordinates: LatLngExpression = [project.coordinates[0], project.coordinates[1]];

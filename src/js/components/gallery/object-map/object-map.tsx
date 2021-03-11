@@ -7,8 +7,6 @@ import { toggleGalleryMapVisible } from '../../../../store/gallery/actions';
 
 interface Props {
   visible: boolean;
-  projectId: string;
-  projectName: string;
 }
 
 const ObjectMap = ({ ...props }: Props): JSX.Element => {
@@ -16,8 +14,7 @@ const ObjectMap = ({ ...props }: Props): JSX.Element => {
   if (!visible) {
     return null;
   }
-  const { projectName } = props;
-  const { projectId } = props;
+  const { project } = store.getState().gallery;
 
   const handlerCloseMap = () => {
     store.dispatch(toggleGalleryMapVisible(!visible));
@@ -25,8 +22,8 @@ const ObjectMap = ({ ...props }: Props): JSX.Element => {
 
   return (
     <div className={styles.wrapper}>
-      <GalleryLeaflet projectId={projectId} />
-      <ModalHeader header={projectName} buttonMapVisible={false} zedIndex={400} handlerClose={handlerCloseMap} />
+      <GalleryLeaflet project={project} />
+      <ModalHeader header={project.name} buttonMapVisible={false} zedIndex={400} handlerClose={handlerCloseMap} />
     </div>
   );
 };
