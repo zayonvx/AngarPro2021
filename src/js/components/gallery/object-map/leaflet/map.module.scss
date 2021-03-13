@@ -1,12 +1,6 @@
-.wrapper {
-}
-.header {
-  width: 25rem;
-  text-align: center;
-  margin-bottom: 1rem;
-}
 .image {
-  width: 25rem;
-  height: 15rem;
-  border-radius: 0.2rem;
+  object-fit: cover;
+  width: 200px;
+  height: 160px;
+  margin-top: 1rem;
 }

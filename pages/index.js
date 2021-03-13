@@ -22,10 +22,8 @@ export default function Home() {
         <link rel="manifest" href={'/site.webmanifest'} />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <title>{'АнгарПро - строительство быстровозводимых зданий'}</title>
-        <link rel="stylesheet" href={'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css'} />
         <meta name="msapplication-TileColor" content="#10b8c7" />
         <meta name="theme-color" content="#10b8c7" />
-        {/*<script src={'/scripts/odometer.min.js'} />*/}
       </Head>
       <Header />
       <Main />

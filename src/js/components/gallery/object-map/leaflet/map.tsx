@@ -14,9 +14,7 @@ const GalleryLeaflet = ({ ...props }: Props): JSX.Element => {
 
   const zoom = 13;
   const coordinates: LatLngExpression = [project.coordinates[0], project.coordinates[1]];
-  const { description } = project;
-  const path = 'https://angarpro.com/img/photos/gallery/preview/__';
-  const imageURL = `${path + setTrailingZeros(Number(project.id), 3)}-gallery-preview-1x.jpg`;
+  const path = `https://angarpro.com/img/photos/gallery/preview/preview_${setTrailingZeros(project.id, 3)}.jpg`;
 
   return (
     <Container center={coordinates} zoom={zoom} zoomControl={false} style={{ width: '100%', height: '100%' }}>
@@ -24,8 +22,7 @@ const GalleryLeaflet = ({ ...props }: Props): JSX.Element => {
       <Marker position={coordinates}>
         <Popup>
           <div className={styles.wrapper}>
-            <div className={styles.header}>{description}</div>
-            <img src={imageURL} className={styles.image} alt="Превью объекта" />
+            <img src={path} className={styles.image} alt="Превью объекта" />
           </div>
         </Popup>
       </Marker>

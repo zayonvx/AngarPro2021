@@ -14,7 +14,6 @@ export const isOnVisibleSpace = (element: Element): boolean => {
 
   return visible;
 };
-
 export const getTransform = (el: Element): string[] => {
   const thing = /matrix(?:(3d)\(-{0,1}\d+(?:, -{0,1}\d+)*(?:, (-{0,1}\d+))(?:, (-{0,1}\d+))(?:, (-{0,1}\d+)), -{0,1}\d+\)|\(-{0,1}\d+(?:, -{0,1}\d+)*(?:, (-{0,1}\d+))(?:, (-{0,1}\d+))\))/;
   const transform = window.getComputedStyle(el, null).getPropertyValue('-webkit-transform');

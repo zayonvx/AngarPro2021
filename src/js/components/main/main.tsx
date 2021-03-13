@@ -26,9 +26,9 @@ const Main = (): JSX.Element => {
       <SectionHero />
       <SectionContent />
       <LatestProjects />
-      <News />
       <Choose />
       <Odometers />
+      <News />
       <Contacts />
       <PopupWrapper />
     </main>
