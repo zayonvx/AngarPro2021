@@ -8,6 +8,9 @@
 @import '404';
 @import 'odometer';
 @import 'leaflet';
+@import '~swiper/swiper';
+@import '~swiper/components/navigation/navigation';
+@import '~swiper/components/lazy/lazy';
 
 * {
   margin: 0;

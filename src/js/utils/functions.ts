@@ -1,4 +1,3 @@
-import { sliderParameters } from '../database/slides';
 import store from '../../store/store';
 import { changePreviewsInRow, changePreviewsRows } from '../../store/preview/actions';
 
@@ -14,26 +13,7 @@ export const isOnVisibleSpace = (element: Element): boolean => {
 
   return visible;
 };
-export const getTransform = (el: Element): string[] => {
-  const thing = /matrix(?:(3d)\(-{0,1}\d+(?:, -{0,1}\d+)*(?:, (-{0,1}\d+))(?:, (-{0,1}\d+))(?:, (-{0,1}\d+)), -{0,1}\d+\)|\(-{0,1}\d+(?:, -{0,1}\d+)*(?:, (-{0,1}\d+))(?:, (-{0,1}\d+))\))/;
-  const transform = window.getComputedStyle(el, null).getPropertyValue('-webkit-transform');
-  const results = thing.exec(transform); // transform.match(thing);
 
-  if (!results) return ['0', '0', '0'];
-  if (results[1] === '3d') return results.slice(2, 5);
-
-  results.push(String(0));
-  return results.slice(5, 8); // returns the [X,Y,Z,1] values
-};
-export const setHeroWrapperWidth = (): void => {
-  const element = document.getElementById('sliderWrapper');
-  element.style.transitionDuration = '0s';
-  const width = document.documentElement.clientWidth;
-  element.style.width = `${String(width * 3)}px`;
-  // slides.forEach((it) => {
-  //   // document.getElementById(it.id).style.width = `${String(width)}px`;
-  // });
-};
 export const setPreviewSize = (): void => {
   const { clientWidth } = document.documentElement;
   let previewsInRow = 7;
@@ -70,16 +50,7 @@ export const setPreviewSize = (): void => {
   });
 };
 export const windowResize = (): void => {
-  const elementSliderWrapper = document.getElementById('sliderWrapper');
-  setHeroWrapperWidth();
   setPreviewSize();
-  const state = store.getState();
-  const sliderNumber = state.slider.currentSlider;
-  const leftCoord = String(document.documentElement.clientWidth * (0 - sliderNumber));
-  elementSliderWrapper.style.transform = ` translate3d(${leftCoord}px, 0px, 0px)`;
-  setTimeout(() => {
-    elementSliderWrapper.style.transitionDuration = sliderParameters.wrapperAnimationTransition.durationMain;
-  }, 500);
 };
 export const toggleBodyNoScroll = (value: boolean): null => {
   try {

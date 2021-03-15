@@ -1,4 +1,4 @@
-export const slides = [
+export const slidesHero = [
   {
     id: 'slide0',
     fileNamePrefix: '/img/system/hero-image/1-',
@@ -36,7 +36,7 @@ export const slides = [
 export const sliderParameters = {
   wrapperAnimationTransition: {
     durationMain: '800ms',
-    durationTouchStart: '50ms',
+    durationTouchStart: '0ms',
   },
   acceptSwipeDistance: 150,
   LEFT: 'left',

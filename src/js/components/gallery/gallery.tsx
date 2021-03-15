@@ -9,12 +9,10 @@ import ObjectMap from './object-map/object-map';
 import ModalHeader from '../modal-header/modal-header';
 import { togglePopupVisible } from '../../../store/popup/actions';
 import { IGalleryState } from '../../../store/gallery/types';
-import Loading from '../loading/loading';
 import Image from './image';
 
 interface Props {
   visibleMap: boolean;
-  loaded: boolean;
   photoIndex: number;
 }
 // TODO add swipes for slider
@@ -24,7 +22,6 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
   const { project } = store.getState().gallery;
   const { photoIndex } = props;
   const { visibleMap } = props;
-  const { loaded } = props;
 
   const handlerClickPrev = () => {
     store.dispatch(toggleGalleryImageLoaded(false));
@@ -44,7 +41,6 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
     <>
       <div className={styles.wrapper}>
         <div>
-          <Loading loaded={loaded} />
           <Image />
         </div>
         <PaginationChevron
@@ -63,7 +59,6 @@ const Gallery = ({ ...props }: Props): JSX.Element => {
 
 const mapState = (state: IGalleryState) => ({
   visibleMap: state.gallery.mapVisible,
-  loaded: state.gallery.loaded,
   photoIndex: state.gallery.photoIndex,
   project: state.gallery.project,
 });
