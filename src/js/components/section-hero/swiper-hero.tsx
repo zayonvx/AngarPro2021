@@ -38,6 +38,7 @@ const SwiperHero = (): JSX.Element => (
     navigation={{
       prevEl: '.button__prev',
       nextEl: '.button__next',
+      disabledClass: 'visHidden',
     }}
     onSlideChange={handlerSlideChange}
     preloadImages={false}

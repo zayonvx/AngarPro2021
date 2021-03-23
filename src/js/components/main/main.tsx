@@ -9,6 +9,7 @@ import Odometers from '../odometers/odometers';
 import Contacts from '../section-contacts/contacts';
 import PopupWrapper from '../popup-wrapper/popup-wrapper';
 import News from '../section-news/news';
+import Gallery from '../gallery/gallery';
 
 const Main = (): JSX.Element => {
   const handlerWindowResize = () => {
@@ -31,6 +32,7 @@ const Main = (): JSX.Element => {
       <News />
       <Contacts />
       <PopupWrapper />
+      <Gallery />
     </main>
   );
 };

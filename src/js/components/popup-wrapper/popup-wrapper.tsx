@@ -8,13 +8,12 @@ import { IPopupState } from '../../../store/popup/types';
 interface Props {
   visible: boolean;
   children: JSX.Element;
-  closeable: boolean;
 }
 
 const PopupWrapper = ({ ...props }: Props): JSX.Element => {
   const { visible } = props;
   const { children } = props;
-  const { closeable } = props;
+  const { closeable } = store.getState().popup;
   toggleBodyNoScroll(visible);
   const className = visible ? 'popup active' : 'popup';
 
@@ -37,6 +36,7 @@ const PopupWrapper = ({ ...props }: Props): JSX.Element => {
     }
     return document.removeEventListener('keydown', handlerPressPopup);
   });
+  if (!visible) return null;
   return (
     <div className={className} onClick={handlerClickPopup} onKeyPress={handlerPressPopup} role="dialog">
       <div
@@ -55,7 +55,6 @@ const PopupWrapper = ({ ...props }: Props): JSX.Element => {
 const mapState = (state: IPopupState) => ({
   visible: state.popup.visible,
   children: state.popup.children,
-  closeable: state.popup.closeable,
 });
 
 export default connect(mapState)(PopupWrapper);

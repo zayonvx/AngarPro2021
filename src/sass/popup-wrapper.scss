@@ -2,7 +2,7 @@
 @import './variables';
 
 .popup {
-  background-color: rgba($color-dark, 0.9);
+  background-color: $color-popup-background;
   position: fixed;
   top: 0;
   left: 0;

@@ -4,10 +4,8 @@ import styles from './preview-list.module.scss';
 import { projects, projectsOrder } from '../../database/gallery-base';
 import { setPreviewSize, setTrailingZeros } from '../../utils/functions';
 import store from '../../../store/store';
-import { changePopupChildren, togglePopupCloseable, togglePopupVisible } from '../../../store/popup/actions';
-import Gallery from '../gallery/gallery';
 import { IPreviewState } from '../../../store/preview/types';
-import { changeProject } from '../../../store/gallery/actions';
+import { changeProject, galleryVisibleToggle } from '../../../store/gallery/actions';
 // TODO add animation to hide/unhide all projects
 interface Props {
   collapsed: boolean;
@@ -29,9 +27,7 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
     const projectId = Number(evt.currentTarget.id);
     const project = projects.find((it) => it.id === projectId);
     store.dispatch(changeProject(project));
-    store.dispatch(togglePopupCloseable(true));
-    store.dispatch(togglePopupVisible(true));
-    store.dispatch(changePopupChildren(<Gallery />));
+    store.dispatch(galleryVisibleToggle(true));
   };
 
   useEffect(() => {

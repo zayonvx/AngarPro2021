@@ -11,6 +11,7 @@
   justify-content: space-between;
 }
 .nav {
+  display: none;
   position: relative;
   height: 6rem;
   width: 4rem;
@@ -20,7 +21,6 @@
   cursor: pointer;
   background-color: $color-dark;
   transition: all 0.3s;
-  display: flex;
   justify-content: center;
   align-items: center;
   border: none;
@@ -31,6 +31,9 @@
   }
   &:hover .text {
     transform: rotateY(0);
+  }
+  @media (min-width: $tablet-width) {
+    display: flex;
   }
   @media (min-width: $desktop-width) {
     width: 5rem;

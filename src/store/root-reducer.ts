@@ -6,7 +6,6 @@ import galleryRedusers from './gallery/reducers';
 import quizRedusers from './quiz/reducers';
 import calculatorRedusers from './calculator/reducers';
 import buildingRedusers from './building/reducers';
-import loadedRedusers from './loaded/reducers';
 
 export default combineReducers({
   slider: sliderRedusers,
@@ -16,5 +15,4 @@ export default combineReducers({
   quiz: quizRedusers,
   calculator: calculatorRedusers,
   building: buildingRedusers,
-  loaded: loadedRedusers,
 });

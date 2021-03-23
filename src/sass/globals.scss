@@ -11,6 +11,8 @@
 @import '~swiper/swiper';
 @import '~swiper/components/navigation/navigation';
 @import '~swiper/components/lazy/lazy';
+@import '~swiper/components/pagination/pagination';
+@import 'swiperjs';
 
 * {
   margin: 0;
@@ -29,7 +31,7 @@ html {
   }
 }
 .visHidden {
-  display: none;
+  display: none !important;
 }
 .noscroll {
   overflow: hidden;
