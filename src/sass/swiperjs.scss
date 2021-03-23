@@ -2,14 +2,15 @@
 @import './variables';
 
 .swiper-pagination-bullet {
-  opacity: 1;
   width: 1.2rem;
   height: 1.2rem;
   background-color: $color-light;
+  opacity: 0.5;
+  margin: 0 0.5rem !important;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: $color-accent;
+  opacity: 1;
 }
 
 .swiper-container {

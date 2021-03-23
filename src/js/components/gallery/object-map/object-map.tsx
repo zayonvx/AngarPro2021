@@ -4,20 +4,17 @@ import GalleryLeaflet from './leaflet/map';
 import ModalHeader from '../../modal-header/modal-header';
 import store from '../../../../store/store';
 import { toggleGalleryMapVisible } from '../../../../store/gallery/actions';
+import { IProject } from '../../../database/gallery-base';
 
 interface Props {
-  visible: boolean;
+  project: IProject;
 }
 
 const ObjectMap = ({ ...props }: Props): JSX.Element => {
-  const { visible } = props;
-  if (!visible) {
-    return null;
-  }
-  const { project } = store.getState().gallery;
+  const { project } = props;
 
   const handlerCloseMap = () => {
-    store.dispatch(toggleGalleryMapVisible(!visible));
+    store.dispatch(toggleGalleryMapVisible(false));
   };
 
   return (

@@ -11,7 +11,7 @@ export const isOnVisibleSpace = (element: Element): boolean => {
   if (offsetTop > 0 && offsetTop < bodyHeight) visible = true;
   if (offsetBottom > 0 && offsetBottom < bodyHeight) visible = true;
 
-  return visible;
+  return visible;// ?
 };
 
 export const setPreviewSize = (): void => {

@@ -43,6 +43,7 @@ const SwiperHero = (): JSX.Element => (
     onSlideChange={handlerSlideChange}
     preloadImages={false}
     lazy={{ loadPrevNext: true }}
+    grabCursor
   >
     {slidesHero.map((it) => (
       <SwiperSlide tag="li" key={it.id}>

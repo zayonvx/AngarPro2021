@@ -1,5 +1,6 @@
 import React from 'react';
 import { LatLngExpression } from 'leaflet';
+
 import { Container, Popup, Marker, Layer } from '../../../../utils/leaflet-ssr';
 import { setTrailingZeros } from '../../../../utils/functions';
 import { IProject } from '../../../../database/gallery-base';

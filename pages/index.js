@@ -24,6 +24,7 @@ export default function Home() {
         <title>{'АнгарПро - строительство быстровозводимых зданий'}</title>
         <meta name="msapplication-TileColor" content="#10b8c7" />
         <meta name="theme-color" content="#10b8c7" />
+        <link rel="stylesheet" href={'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'} />
       </Head>
       <Header />
       <Main />
