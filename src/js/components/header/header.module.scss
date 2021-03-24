@@ -2,10 +2,11 @@
 @import '../../../sass/colors';
 
 .header {
-  background-color: transparent;
+  background-color: $color-light;
   position: relative;
   z-index: 10000;
   @media (min-width: $desktop-width) {
+    background-color: transparent;
     width: 100%;
     position: absolute;
   }
