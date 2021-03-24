@@ -1,4 +1,4 @@
-import SwiperCore, { Navigation, Lazy } from 'swiper';
+import SwiperCore, { Navigation, Lazy, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import React from 'react';
 import { slidesHero } from '../../database/slides-hero';
@@ -7,7 +7,7 @@ import NavigationPrev from './navigation-prev';
 import NavigationNext from './navigation-next';
 import Preloder from '../preloder/preloader';
 
-SwiperCore.use([Navigation, Lazy]);
+SwiperCore.use([Navigation, Lazy, Autoplay]);
 
 const handlerSlideChange = (swiper: SwiperCore) => {
   const texts = Array.from(document.getElementsByClassName('texts--animated'));
@@ -44,6 +44,8 @@ const SwiperHero = (): JSX.Element => (
     preloadImages={false}
     lazy={{ loadPrevNext: true }}
     grabCursor
+    autoplay={{ delay: 10000 }}
+    speed={1000}
   >
     {slidesHero.map((it) => (
       <SwiperSlide tag="li" key={it.id}>

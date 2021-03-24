@@ -11,11 +11,11 @@ export const isOnVisibleSpace = (element: Element): boolean => {
   if (offsetTop > 0 && offsetTop < bodyHeight) visible = true;
   if (offsetBottom > 0 && offsetBottom < bodyHeight) visible = true;
 
-  return visible;// ?
+  return visible; // ?
 };
 
 export const setPreviewSize = (): void => {
-  const { clientWidth } = document.documentElement;
+  const { clientWidth } = document.getElementById('latest-button-wrapper');
   let previewsInRow = 7;
   let previewsRows = 2;
   if (clientWidth <= 1920) {
@@ -49,6 +49,7 @@ export const setPreviewSize = (): void => {
     it.setAttribute('style', styleLi);
   });
 };
+
 export const windowResize = (): void => {
   setPreviewSize();
 };

@@ -34,7 +34,7 @@ const PreviewList = ({ ...props }: Props): JSX.Element => {
     setPreviewSize();
   });
   return (
-    <ul className={`fadeIn ${styles.list}`}>
+    <ul className={`fadeIn ${styles.list}`} id="latest-button-wrapper">
       {order.map((it) => {
         const { id } = projects[it - 1];
         const header = projects[it - 1].name;

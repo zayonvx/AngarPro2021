@@ -31,7 +31,7 @@ const Slide = ({ ...props }: PropsSlides): JSX.Element => {
 
   return (
     <div className={styles.slide}>
-      <picture className="swiper-lazy">
+      <picture className={`${styles.image} swiper-lazy`}>
         <source
           media="(min-width: 1921px)"
           data-srcset={`${fileNamePrefix}5120-1x.webp, ${fileNamePrefix}5120-2x.webp 2x`} // image 2560px
@@ -80,7 +80,7 @@ const Slide = ({ ...props }: PropsSlides): JSX.Element => {
         <img
           data-src={`${fileNamePrefix}0818-1x.jpg`}
           data-srcset={`${fileNamePrefix}0818-2x.jpg 2x`}
-          className={`swiper-lazy ${styles.image}`}
+          className="swiper-lazy"
           id={id}
           alt={alt}
           ref={image}
