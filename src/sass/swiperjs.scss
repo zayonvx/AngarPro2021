@@ -16,3 +16,21 @@
 .swiper-container {
   max-height: 100vh;
 }
+
+.slider-news {
+  width: auto;
+}
+
+.swiper-scrollbar {
+  height: 3rem !important;
+  border-radius: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  background-color: $color-gray !important;
+}
+
+.swiper-scrollbar-drag {
+  background-color: $color-accent;
+  height: 3rem;
+  border-radius: 0;
+}

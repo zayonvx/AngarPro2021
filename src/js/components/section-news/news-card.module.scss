@@ -3,27 +3,25 @@
 
 .card {
   background-color: white;
-  min-width: 300px;
-  width: 300px;
-  margin-right: $margin-normal;
+  width: 350px;
+  height: 450px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border-radius: 0.2rem;
   @media (min-width: $desktop-width) {
-    min-width: 450px;
-    width: 450px;
+    width: 400px;
+    height: 500px;
   }
-  box-shadow: 0 0 15px $color-gray;
-}
-.card:last-child {
-  margin-right: 0;
 }
 
 .picture {
-  background-color: tomato;
-  height: 20rem;
+  flex-basis: 25rem;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  background-color: #10b8c7;
 }
 
 .image {
@@ -32,27 +30,30 @@
 }
 
 .container {
-  padding: $margin-small $margin-small;
+  padding-top: $margin-normal;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  text-transform: uppercase;
+  font-size: $font-string-small;
+  font-family: $font-stack-regular;
+  margin-bottom: $margin-smaller;
+  letter-spacing: 0.15rem;
+}
+
+.text {
+  padding-top: $margin-normal;
+  flex-grow: 1;
+  font-family: $font-stack-light;
+  font-size: $font-string-normal;
 }
 
 .date {
   color: $color-dark-gray;
   font-family: $font-stack-regular;
-  font-size: $font-string-smallest;
-}
-
-.header {
-  color: $color-accent;
-  font-family: $font-stack-regular;
-  font-size: $font-string-normal;
-  margin-bottom: $margin-small;
-}
-
-.text {
-  color: $color-dark;
-  font-family: $font-stack-light;
-  font-size: $font-string-normal;
-  flex-basis: 13rem;
+  font-size: $font-string-small;
 }

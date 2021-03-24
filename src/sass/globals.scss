@@ -11,12 +11,17 @@
 @import '~swiper/components/navigation/navigation';
 @import '~swiper/components/lazy/lazy';
 @import '~swiper/components/pagination/pagination';
+@import '~swiper/components/scrollbar/scrollbar';
 @import 'swiperjs';
 
 * {
   margin: 0;
   padding: 0;
   user-select: none;
+}
+
+ul {
+  list-style: none;
 }
 
 html {

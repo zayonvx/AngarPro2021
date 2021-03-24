@@ -20,8 +20,11 @@ const NewsCard = ({ ...props }: Props): JSX.Element => {
 
       <div className={styles.container}>
         <h4 className={styles.header}>{header}</h4>
+        <span className={styles.date}>
+          <i className="fal fa-calendar-alt" />
+          {` ${date}`}
+        </span>
         <p className={styles.text}>{text}</p>
-        <span className={styles.date}>{date}</span>
       </div>
     </div>
   );
